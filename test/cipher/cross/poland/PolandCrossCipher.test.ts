@@ -1,16 +1,16 @@
-import { KidscipherGlyphs } from "../../../../src/fonts/KidscipherGlyphs";
-import { PolandCrossCipher } from "../../../../src/index";
+import { describe, beforeEach, it, expect } from 'vitest';
+import { KidscipherGlyphs } from '../../../../src/fonts/KidscipherGlyphs';
+import { PolandCrossCipher } from '../../../../src/index';
 
-
-describe("PolandCrossCipher", () => {
+describe('PolandCrossCipher', () => {
   let cipher: PolandCrossCipher;
 
   beforeEach(() => {
     cipher = new PolandCrossCipher();
   });
 
-  it("should encode single letters correctly", () => {
-    const input = "ABCD";
+  it('should encode single letters correctly', () => {
+    const input = 'ABCD';
     const expected =
       KidscipherGlyphs.POLAND_CROSS_A +
       KidscipherGlyphs.POLAND_CROSS_B +
@@ -21,29 +21,47 @@ describe("PolandCrossCipher", () => {
     expect(encoded).toBe(expected);
   });
 
-  it("should encode multi-character letter CH correctly", () => {
-    const input = "CH";
+  it('should encode multi-character letter CH correctly', () => {
+    const input = 'CH';
     const expected = KidscipherGlyphs.POLAND_CROSS_CH;
 
     const encoded = cipher.encode(input);
     expect(encoded).toBe(expected);
   });
 
-  it("should decode encoded text correctly", () => {
-    const input = "ABCH";
-    const encoded = cipher.encode(input, { input: { caseSensitive: false, letterSeparator: "", wordSeparator: " " }, output: { casing: "upper", letterSeparator: "", wordSeparator: " " } });
-    const decoded = cipher.decode(encoded, { input: { caseSensitive: false, letterSeparator: "", wordSeparator: " " }, output: { casing: "upper", letterSeparator: "", wordSeparator: " " } });
+  it('should decode encoded text correctly', () => {
+    const input = 'ABCH';
+    const encoded = cipher.encode(input, {
+      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+      output: { casing: 'upper', letterSeparator: '', wordSeparator: ' ' },
+    });
+    const decoded = cipher.decode(encoded, {
+      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+      output: { casing: 'upper', letterSeparator: '', wordSeparator: ' ' },
+    });
 
     expect(decoded).toBe(input);
   });
 
-  it("should handle spaces correctly", () => {
-    const input = "A B K";
+  it('should handle spaces correctly', () => {
+    const input = 'A B K';
 
-    const encoded = cipher.encode(input, { input: { caseSensitive: false, letterSeparator: "", wordSeparator: " " }, output: { casing: "upper", letterSeparator: "", wordSeparator: " " } });
-    expect(encoded).toBe(KidscipherGlyphs.POLAND_CROSS_A + " " + KidscipherGlyphs.POLAND_CROSS_B + " " + KidscipherGlyphs.POLAND_CROSS_K);
-    
-    const decoded = cipher.decode(encoded, { input: { caseSensitive: false, letterSeparator: "", wordSeparator: " " }, output: { casing: "upper", letterSeparator: "", wordSeparator: " " } });
-    expect(decoded).toBe("A B K");
+    const encoded = cipher.encode(input, {
+      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+      output: { casing: 'upper', letterSeparator: '', wordSeparator: ' ' },
+    });
+    expect(encoded).toBe(
+      KidscipherGlyphs.POLAND_CROSS_A +
+        ' ' +
+        KidscipherGlyphs.POLAND_CROSS_B +
+        ' ' +
+        KidscipherGlyphs.POLAND_CROSS_K,
+    );
+
+    const decoded = cipher.decode(encoded, {
+      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+      output: { casing: 'upper', letterSeparator: '', wordSeparator: ' ' },
+    });
+    expect(decoded).toBe('A B K');
   });
 });
