@@ -13,7 +13,7 @@
     "prebuild-fonts": "npm run generate-font-svg && npm run generate-font"
   },
   "files": [
-    "dist"
+    "dist/**/*"
   ],
   "devDependencies": {
     "@eslint/js": "^9.35.0",
