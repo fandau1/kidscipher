@@ -1,7 +1,4 @@
-import {
-  CasingOptions,
-  CipherOptions,
-} from '../../core/cipher-options/CipherOptions';
+import { CipherOptions } from '../../core/cipher-options/CipherOptions';
 
 class SubstitutionCipher {
   protected encodeMap: Record<string, string>;

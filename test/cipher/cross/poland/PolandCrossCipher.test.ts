@@ -1,6 +1,6 @@
 import { describe, beforeEach, it, expect } from 'vitest';
-import { KidscipherGlyphs } from '../../../../src/fonts/KidscipherGlyphs';
 import { PolandCrossCipher } from '../../../../src/index';
+import { KidscipherGlyphs } from '../../../../src/font';
 
 describe('PolandCrossCipher', () => {
   let cipher: PolandCrossCipher;

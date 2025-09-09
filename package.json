@@ -2,10 +2,19 @@
   "name": "kidscipher",
   "version": "0.1.0",
   "license": "MIT",
-  "main": "dist/index.cjs.js",
-  "module": "dist/index.esm.js",
-  "types": "dist/types/index.d.ts",
   "type": "module",
+  "types": "dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/index.esm.js",
+      "require": "./dist/index.cjs.js"
+    },
+    "./font": {
+      "import": "./dist/font.esm.js",
+      "require": "./dist/font.cjs.js"
+    },
+    "./kidscipher.css": "./dist/kidscipher.css"
+  },
   "scripts": {
     "build": "rollup -c",
     "test": "vitest",

@@ -1,7 +1,4 @@
-import {
-  CasingOptions,
-  CipherOptions,
-} from '../../core/cipher-options/CipherOptions';
+import { CipherOptions } from '../../core/cipher-options/CipherOptions';
 
 type ShiftOptions = {
   shift: number;
@@ -98,14 +95,17 @@ class ShiftAlphabetCipher {
       .map((symbol) => {
         if (symbol === outputWordSeparator) return outputWordSeparator;
         if (symbol === outputLetterSeparator) return outputLetterSeparator;
-        const index = this.mapAlphabet.indexOf(symbol);
-        if (index === -1) return '';
-        const shiftedIndex =
-          (index - shift + this.mapAlphabet.length) % this.mapAlphabet.length;
-        const decoded = this.mapAlphabet[shiftedIndex];
-        if (casing === 'upper') return decoded.toUpperCase();
-        if (casing === 'lower') return decoded.toLowerCase();
-        return decoded; // original
+
+        if (this.mapAlphabet.includes(symbol)) {
+          const index = this.mapAlphabet.indexOf(symbol);
+
+          const shiftedIndex =
+            (index - shift + this.mapAlphabet.length) % this.mapAlphabet.length;
+          const decoded = this.mapAlphabet[shiftedIndex];
+          if (casing === 'upper') return decoded.toUpperCase();
+          if (casing === 'lower') return decoded.toLowerCase();
+          return decoded;
+        }
       })
       .join(outputLetterSeparator);
   }
