@@ -14,7 +14,10 @@ describe('MorseCodeCipher', () => {
   });
 
   test('decodes Morse back to text with default options', () => {
-    const result = morse.decode('...././.-../.-../---///.--/---/.-./.-../-..');
+    const result = morse.decode(
+      '...././.-../.-../---///.--/---/.-./.-../-..',
+      {},
+    );
     expect(result).toBe('hello world');
   });
 

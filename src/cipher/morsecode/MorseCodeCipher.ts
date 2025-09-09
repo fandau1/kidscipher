@@ -1,9 +1,13 @@
 import SubstitutionCipher from '../substitution/SubstitutionCipher';
 import { CipherOptions } from '../../core/cipher-options/CipherOptions';
+import { withDefaultCipherOptions } from '../../core/cipher-options/CipherOptionsDefault';
+import { CipherConfigurationsRecord } from '../Cipher';
 
-export type MorseCodeCipherOptions = CipherOptions & {
-  dotDashMapping?: { dot: string; dash: string };
-};
+export type MorseCodeCipherOptions =
+  | CipherConfigurationsRecord
+  | {
+      dotDashMapping?: { dot?: string; dash?: string };
+    };
 
 class MorseCodeCipher extends SubstitutionCipher {
   static MORSE_CODE_MAP: Record<string, string> = {
@@ -51,18 +55,25 @@ class MorseCodeCipher extends SubstitutionCipher {
 
   encode(
     input: string,
-    opts: MorseCodeCipherOptions = {
-      dotDashMapping: { dot: '.', dash: '-' },
-      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+    configuration?: MorseCodeCipherOptions,
+    opts?: CipherOptions,
+  ): string {
+    const { dotDashMapping = { dot: '.', dash: '-' } } = configuration || {};
+
+    const mergedOpts = withDefaultCipherOptions(opts, {
+      input: {
+        caseSensitive: true,
+        letterSeparator: '',
+        wordSeparator: ' ',
+      },
       output: {
         casing: 'original',
         letterSeparator: '/',
         wordSeparator: '///',
       },
-    },
-  ): string {
-    const { dotDashMapping } = opts;
-    const encoded = super.encode(input, opts);
+    });
+
+    const encoded = super.encode(input, configuration, mergedOpts);
 
     if (dotDashMapping) {
       return encoded
@@ -80,17 +91,19 @@ class MorseCodeCipher extends SubstitutionCipher {
 
   decode(
     input: string,
-    opts: MorseCodeCipherOptions = {
-      dotDashMapping: { dot: '.', dash: '-' },
+    configuration?: MorseCodeCipherOptions,
+    opts?: CipherOptions,
+  ): string {
+    const { dotDashMapping = { dot: '.', dash: '-' } } = configuration || {};
+
+    const mergedOpts = withDefaultCipherOptions(opts, {
       input: {
-        caseSensitive: false,
+        caseSensitive: true,
         letterSeparator: '/',
         wordSeparator: '///',
       },
       output: { casing: 'lower', letterSeparator: '', wordSeparator: ' ' },
-    },
-  ): string {
-    const { dotDashMapping } = opts;
+    });
 
     let normalized = input;
 
@@ -106,7 +119,7 @@ class MorseCodeCipher extends SubstitutionCipher {
         .join('');
     }
 
-    return super.decode(normalized, opts);
+    return super.decode(normalized, configuration, mergedOpts);
   }
 }
 

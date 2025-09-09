@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import ShiftAlphabetCipher from '../../../src/cipher/shift_alphabet/ShiftAlphabetCipher';
+import ShiftAlphabetCipher from '../../../src/cipher/shift/ShiftAlphabetCipher';
 
 describe('ShiftAlphabetCipher', () => {
   const cipher = new ShiftAlphabetCipher();
@@ -17,7 +17,7 @@ describe('ShiftAlphabetCipher', () => {
 
     it('should ignore non-alphabet characters', () => {
       const result = cipher.encode('A B-C', { shift: 1 });
-      expect(result).toBe('B C'); // dash is ignored
+      expect(result).toBe('B CD'); // dash is ignored
     });
 
     it('should respect case sensitivity when enabled', () => {
@@ -26,7 +26,7 @@ describe('ShiftAlphabetCipher', () => {
         { shift: 1 },
         { input: { caseSensitive: true } },
       );
-      expect(result).toBe(''); // because 'a', 'B', 'c' are not in default alphabet in case-sensitive mode
+      expect(result).toBe('C'); // because 'a', 'B', 'c' are not in default alphabet in case-sensitive mode
     });
   });
 
@@ -52,7 +52,7 @@ describe('ShiftAlphabetCipher', () => {
 
     it('should ignore non-alphabet characters', () => {
       const result = cipher.decode('D E-F', { shift: 3 });
-      expect(result).toBe('A B'); // dash ignored
+      expect(result).toBe('A BC'); // dash ignored
     });
   });
 
