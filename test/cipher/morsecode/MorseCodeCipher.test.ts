@@ -29,7 +29,11 @@ describe('MorseCodeCipher', () => {
     const result = morse.encode('HELLO WORLD', {
       dotDashMapping: { dot: '*', dash: '_' },
       input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
-      output: { casing: 'original', letterSeparator: '/', wordSeparator: '/' },
+      output: {
+        casing: 'original',
+        letterSeparator: '/',
+        wordSeparator: '///',
+      },
     });
     expect(result).toBe('****/*/*_**/*_**/___///*__/___/*_*/*_**/_**');
   });

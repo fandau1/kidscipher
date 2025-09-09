@@ -30,13 +30,19 @@ describe('PolandCrossCipher', () => {
   });
 
   it('should decode encoded text correctly', () => {
-    const input = 'ABCH';
+    const input = 'ABC';
     const encoded = cipher.encode(input, {
-      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
-      output: { casing: 'upper', letterSeparator: '', wordSeparator: ' ' },
+      input: { caseSensitive: true, letterSeparator: '', wordSeparator: ' ' },
+      output: { casing: 'original', letterSeparator: '', wordSeparator: ' ' },
     });
+    expect(encoded).toBe(
+      KidscipherGlyphs.POLAND_CROSS_A +
+        KidscipherGlyphs.POLAND_CROSS_B +
+        KidscipherGlyphs.POLAND_CROSS_C,
+    );
+
     const decoded = cipher.decode(encoded, {
-      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+      input: { caseSensitive: true, letterSeparator: '', wordSeparator: ' ' },
       output: { casing: 'upper', letterSeparator: '', wordSeparator: ' ' },
     });
 
@@ -47,8 +53,8 @@ describe('PolandCrossCipher', () => {
     const input = 'A B K';
 
     const encoded = cipher.encode(input, {
-      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
-      output: { casing: 'upper', letterSeparator: '', wordSeparator: ' ' },
+      input: { caseSensitive: true, letterSeparator: '', wordSeparator: ' ' },
+      output: { casing: 'original', letterSeparator: '', wordSeparator: ' ' },
     });
     expect(encoded).toBe(
       KidscipherGlyphs.POLAND_CROSS_A +
@@ -59,7 +65,7 @@ describe('PolandCrossCipher', () => {
     );
 
     const decoded = cipher.decode(encoded, {
-      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+      input: { caseSensitive: true, letterSeparator: '', wordSeparator: ' ' },
       output: { casing: 'upper', letterSeparator: '', wordSeparator: ' ' },
     });
     expect(decoded).toBe('A B K');

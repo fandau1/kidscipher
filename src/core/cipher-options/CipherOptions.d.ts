@@ -15,5 +15,5 @@ export type OutputCipherOptions = {
 
 export type CipherOptions = {
   input?: InputCipherOptions;
-  output?: PostprocessCipherOptions;
+  output?: OutputCipherOptions;
 }
