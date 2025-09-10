@@ -17,7 +17,19 @@ const PROJECT_OUTPUT_DIR = path.resolve(__dirname, '../../src/fonts');
 ensureDir(OUTPUT_DIR);
 ensureDir(PROJECT_OUTPUT_DIR);
 
-const svgFiles = getAllSVGFiles(SVG_DIR);
+const folderOrder = ['cross_poland', 'chinese'];
+
+// Collect SVG files in order
+let svgFiles = [];
+for (const folder of folderOrder) {
+  const folderPath = path.join(SVG_DIR, folder);
+  if (fs.existsSync(folderPath)) {
+    const files = getAllSVGFiles(folderPath); // your util function
+    svgFiles = svgFiles.concat(files);
+  } else {
+    console.warn(`⚠️ Folder not found: ${folderPath}`);
+  }
+}
 
 // 1️. Generate JS glyphs
 const glyphs = generateGlyphs(svgFiles, INIT_GLYMP);
