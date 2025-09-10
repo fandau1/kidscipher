@@ -1,4 +1,3 @@
-// rollup.config.js
 import resolve from '@rollup/plugin-node-resolve';
 import commonjs from '@rollup/plugin-commonjs';
 import postcss from 'rollup-plugin-postcss';
@@ -34,16 +33,16 @@ export default [
   {
     input: 'src/index.ts',
     output: [
-      { file: 'dist/index.cjs.js', format: 'cjs', sourcemap: true },
-      { file: 'dist/index.esm.js', format: 'esm', sourcemap: true },
+      { file: 'dist/index.cjs.js', format: 'cjs', sourcemap: false },
+      { file: 'dist/index.esm.js', format: 'esm', sourcemap: false },
     ],
     plugins,
   },
   {
     input: 'src/font.ts',
     output: [
-      { file: 'dist/font.cjs.js', format: 'cjs', sourcemap: true },
-      { file: 'dist/font.esm.js', format: 'esm', sourcemap: true },
+      { file: 'dist/font.cjs.js', format: 'cjs', sourcemap: false },
+      { file: 'dist/font.esm.js', format: 'esm', sourcemap: false },
     ],
     plugins,
   },
