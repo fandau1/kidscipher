@@ -20,10 +20,14 @@ export function generateChineseGlyphs() {
     mkdirSync(outDir, { recursive: true });
   }
 
+  let total = 0;
   Object.entries(CHINESE_REVERSE_MAP).forEach(([letter, config]) => {
-    const svg = generateSvgSymbolChinese(config, {});
-    const filePath = path.join(outDir, `${SYMBOL_PREFIX}${letter}.svg`);
-    writeFileSync(filePath, svg, 'utf-8');
-    console.log(`Generated ${filePath}`);
+    for (let i = 1; i <= 10; i++) {
+      const svg = generateSvgSymbolChinese(config, { seed: total.toString() });
+      const filePath = path.join(outDir, `${SYMBOL_PREFIX}${letter}_${i}.svg`);
+      writeFileSync(filePath, svg, 'utf-8');
+      console.log(`Generated ${filePath}`);
+      total++;
+    }
   });
 }

@@ -1,4 +1,5 @@
-import { approxIntersect, generateRandomLineCoordinates } from './utils.js';
+import { LineGenerator } from './line-generator.js';
+import { approxIntersect } from './utils.js';
 
 export function generateSvgSymbolChinese(config, opts) {
   const {
@@ -9,9 +10,12 @@ export function generateSvgSymbolChinese(config, opts) {
     showLetter = false,
     randomness = 0.3,
     minSpacing = 8,
+    seed = undefined,
   } = opts ?? {};
   const rows = config.row + 1; // počet vodorovných čar
   const cols = config.column + 1; // počet svislých čar
+
+  const lineGenerator = new LineGenerator(seed);
 
   const margin = 10;
   const innerW = width - 2 * margin;
@@ -25,7 +29,7 @@ export function generateSvgSymbolChinese(config, opts) {
   while (vertLines.length < cols || horLines.length < rows) {
     // generuj vertikální čáru
     if (vertLines.length < cols) {
-      const line = generateRandomLineCoordinates(
+      const line = lineGenerator.generateRandomLineCoordinates(
         true,
         margin,
         innerW,
@@ -64,7 +68,7 @@ export function generateSvgSymbolChinese(config, opts) {
 
     // generuj horizontální čáru
     if (horLines.length < rows) {
-      const line = generateRandomLineCoordinates(
+      const line = lineGenerator.generateRandomLineCoordinates(
         false,
         margin,
         innerW,
