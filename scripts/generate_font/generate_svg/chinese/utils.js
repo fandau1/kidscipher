@@ -14,3 +14,21 @@ export const approxIntersect = (lineA, lineB) => {
 
   return horizontalOverlap && verticalOverlap;
 };
+
+export const lineToPolygon = ({ x1, y1, x2, y2 }, strokeWidth) => {
+  const dx = x2 - x1;
+  const dy = y2 - y1;
+  const len = Math.sqrt(dx * dx + dy * dy);
+  const nx = ((dy / len) * strokeWidth) / 2;
+  const ny = ((-dx / len) * strokeWidth) / 2;
+
+  // čtyři rohy obdélníku kolem čáry
+  const points = [
+    [x1 + nx, y1 + ny],
+    [x2 + nx, y2 + ny],
+    [x2 - nx, y2 - ny],
+    [x1 - nx, y1 - ny],
+  ];
+
+  return `<polygon points="${points.map((p) => p.join(',')).join(' ')}" fill="black"/>`;
+};

@@ -1,11 +1,10 @@
 import { LineGenerator } from './line-generator.js';
-import { approxIntersect } from './utils.js';
+import { approxIntersect, lineToPolygon } from './utils.js';
 
 export function generateSvgSymbolChinese(config, opts) {
   const {
     width = 100,
     height = 100,
-    stroke = '#000',
     strokeWidth = 3,
     showLetter = false,
     randomness = 0.3,
@@ -119,14 +118,14 @@ export function generateSvgSymbolChinese(config, opts) {
   // svislé čáry – náhodné x, náhodné délky
   for (const line of vertLines) {
     const { x1, x2, y1, y2, midX, midY } = line;
-    lines += `<path d="M${x1},${y1} Q${midX},${midY} ${x2},${y2}" stroke="${stroke}" stroke-width="${strokeWidth}" fill="none"/>`;
+    lines += lineToPolygon({ x1, x2, y1, y2 }, strokeWidth);
   }
 
   // vodorovné čáry – náhodné y, náhodné délky
   for (const line of horLines) {
     const { x1, x2, y1, y2, midX, midY } = line;
 
-    lines += `<path d="M${x1},${y1} Q${midX},${midY} ${x2},${y2}" stroke="${stroke}" stroke-width="${strokeWidth}" fill="none"/>`;
+    lines += lineToPolygon({ x1, x2, y1, y2 }, strokeWidth);
   }
 
   const letter = showLetter
