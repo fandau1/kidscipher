@@ -19,7 +19,15 @@ jobs:
           node-version: 22
           cache: npm
 
-      - name: Install dependencies
+      # Install kidscipher dependencies
+      - name: Install kidscipher dependencies
+        run: npm ci
+
+      # Build kidscipher package
+      - name: Build kidscipher package
+        run: npm run build
+
+      - name: Install docs dependencies
         run: |
           cd docs
           npm ci
