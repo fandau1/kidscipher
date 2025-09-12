@@ -1,5 +1,7 @@
 import './styles.css';
 
+export { default as Cipher } from './cipher/Cipher';
+
 export { default as SubstitutionCipher } from './cipher/substitution/SubstitutionCipher';
 export { default as MorseCodeCipher } from './cipher/morsecode/MorseCodeCipher';
 

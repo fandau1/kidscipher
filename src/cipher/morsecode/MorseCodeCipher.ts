@@ -62,7 +62,7 @@ class MorseCodeCipher extends SubstitutionCipher {
 
     const mergedOpts = withDefaultCipherOptions(opts, {
       input: {
-        caseSensitive: true,
+        caseSensitive: false,
         letterSeparator: '',
         wordSeparator: ' ',
       },
@@ -98,7 +98,7 @@ class MorseCodeCipher extends SubstitutionCipher {
 
     const mergedOpts = withDefaultCipherOptions(opts, {
       input: {
-        caseSensitive: true,
+        caseSensitive: false,
         letterSeparator: '/',
         wordSeparator: '///',
       },

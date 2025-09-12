@@ -1,0 +1,17 @@
+.heroBanner {
+  text-align: center;
+  padding: 4rem 0;
+}
+
+.buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px; /* consistent spacing */
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.features {
+  padding: 3rem 0;
+  text-align: center;
+}
