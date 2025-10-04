@@ -1,4 +1,4 @@
-![NPM Version](https://img.shields.io/npm/v/kid)
+![NPM Version](https://img.shields.io/npm/v/kidscipher)
 
 # kidscipher
 
