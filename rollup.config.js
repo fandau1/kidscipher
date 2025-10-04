@@ -20,12 +20,15 @@ const plugins = [
     clean: true,
     exclude: ['**/test/**'],
   }),
-  postcss({ inject: true }),
   url({
     limit: 0,
     include: ['**/*.png', '**/*.ttf', '**/*.woff', '**/*.woff2'],
     fileName: '[name][hash][extname]',
     destDir: 'dist/assets',
+  }),
+  postcss({
+    inject: true, // inject CSS into JS bundle
+    minimize: true,
   }),
 ];
 

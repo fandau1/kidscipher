@@ -8,7 +8,7 @@ import { ensureDir } from './utils.js';
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const INIT_GLYMP = 100;
+const INIT_GLYMP = 57345; // Private Use Area (PUA) = hex U+E000–U+F8FF
 const FONT_NAME = 'Kidscipher';
 const SVG_DIR = path.resolve(__dirname, './svg');
 const OUTPUT_DIR = path.resolve(__dirname, './output');

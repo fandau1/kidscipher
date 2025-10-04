@@ -1,4 +1,4 @@
-import './styles.css';
+import './font';
 
 export { default as Cipher } from './cipher/Cipher';
 
