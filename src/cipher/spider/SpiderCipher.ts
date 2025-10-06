@@ -21,13 +21,13 @@ class SpiderCipher extends SubstitutionCyclicCipher {
     N: ['FV', 'MO'],
     O: ['CZ', 'MN'],
     P: ['GL', 'RS'],
-    // Q: ["Q"],    // sifra neumi Q
+    // Q: ["Q"],    // cipher can't Q
     R: ['PS', 'UY'],
     S: ['IM', 'PR'],
     T: ['DK', 'UV'],
     U: ['TV', 'RY'],
     V: ['FN', 'TU'],
-    // W: ["W"],    // sifra neumi W
+    // W: ["W"],    // cipher can't W
     X: ['AJ', 'YZ'],
     Y: ['RU', 'XZ'],
     Z: ['CO', 'XY'],

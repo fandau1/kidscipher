@@ -47,7 +47,7 @@ The font allows you to render encoded text as graphical symbols (necesary only f
   - ❌ Chess
   - ❌ Cipher table
   - ❌ Fractions (need font)
-- ❌ Spider-Net Cipher
+- ✅ Spider-Net Cipher
 - ✅ Chinese Cipher (need font)
 
 ## Development
