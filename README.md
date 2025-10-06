@@ -43,7 +43,7 @@ The font allows you to render encoded text as graphical symbols (necesary only f
   - ❌ Hebrew Cross (need font)
   - ❌ Small Cross (need font)
   - ❌ Different Cross (need font)
-  - ❌ Phone
+  - ✅ Mobile
   - ❌ Chess
   - ❌ Cipher table
   - ❌ Fractions (need font)

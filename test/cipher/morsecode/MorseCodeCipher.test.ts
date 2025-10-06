@@ -1,5 +1,5 @@
 import { beforeEach, describe, expect, test } from 'vitest';
-import MorseCodeCipher from '../../../src/cipher/morsecode/MorseCodeCipher';
+import { MorseCodeCipher } from '../../../src';
 
 describe('MorseCodeCipher', () => {
   let morse: MorseCodeCipher;
