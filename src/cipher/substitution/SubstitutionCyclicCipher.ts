@@ -1,4 +1,5 @@
-import Cipher from '../Cipher';
+import { CipherOptions } from '../../core/cipher-options/CipherOptions';
+import Cipher, { CipherConfigurationsRecord } from '../Cipher';
 
 class SubstitutionCyclicCipher extends Cipher {
   protected encodeMap: Record<string, string[]>;
@@ -26,10 +27,14 @@ class SubstitutionCyclicCipher extends Cipher {
 
     // inialization counters
     this.counters = {};
+    this.resetCounters();
+  }
+
+  resetCounters = () => {
     for (const key of Object.keys(this.encodeMap)) {
       this.counters[key] = 0;
     }
-  }
+  };
 
   encodeToken(token: string): string {
     const options = this.encodeMap[token];
@@ -38,6 +43,17 @@ class SubstitutionCyclicCipher extends Cipher {
     const index = this.counters[token] % options.length; // cyclic
     this.counters[token] += 1;
     return options[index];
+  }
+
+  encode(
+    input: string,
+    configuration?: CipherConfigurationsRecord,
+    opts?: CipherOptions,
+  ): string {
+    const value = super.encode(input, configuration, opts);
+
+    this.resetCounters();
+    return value;
   }
 
   decodeToken(token: string): string {

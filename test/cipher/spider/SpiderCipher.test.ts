@@ -2,11 +2,7 @@ import { describe, it, expect, beforeEach } from 'vitest';
 import { SpiderCipher } from '../../../src';
 
 describe('SpiderCipher', () => {
-  let cipher: SpiderCipher;
-
-  beforeEach(() => {
-    cipher = new SpiderCipher();
-  });
+  let cipher = new SpiderCipher();
 
   it('should encode a single letter correctly', () => {
     const encodedA = cipher.encode('A');
@@ -41,8 +37,7 @@ describe('SpiderCipher', () => {
 
   it('should cycle through multiple substitutions', () => {
     // A -> ['BC', 'JX']
-    expect(cipher.encode('A')).toBe('BC'); // first cycle
-    expect(cipher.encode('A')).toBe('JX'); // second cycle
+    expect(cipher.encode('AAA')).toBe('BC JX BC'); // first cycle
     expect(cipher.encode('A')).toBe('BC'); // back to first
   });
 
