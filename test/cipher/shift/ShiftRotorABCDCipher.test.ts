@@ -21,10 +21,30 @@ describe('ShiftRotorABCDCipher', () => {
     });
 
     it('should be able work with shift', () => {
-      const result = cipher.encode('ATZ2', { shifts: [1, 3, 0] });
-      expect(result).toBe('ADA BBA BDC CAB');
+      const result = cipher.encode('ATZ2', { shifts: [5, 9, 18] });
+      expect(result).toBe('CDB ABA ADC BAB');
     });
   });
 
-  describe('decode', () => {});
+  describe('decode', () => {
+    it('should decode a simple encoded string', () => {
+      const result = cipher.decode('AAA AAB AAC', { shifts: [0, 0, 0] });
+      expect(result).toBe('ABC');
+    });
+
+    it('should decode multiple encoded chars', () => {
+      const result = cipher.decode('BDD CCD CAB DBA', { shifts: [0, 0, 0] });
+      expect(result).toBe('LTZ2');
+    });
+
+    it('should decode multiple words', () => {
+      const result = cipher.decode('AAA AAA | AAA', { shifts: [0, 0, 0] });
+      expect(result).toBe('AA A');
+    });
+
+    it('should decode with applied shifts', () => {
+      const result = cipher.decode('CDB ABA ADC BAB', { shifts: [5, 9, 18] });
+      expect(result).toBe('ATZ2');
+    });
+  });
 });

@@ -27,7 +27,7 @@ class ShiftRotorCipher extends Cipher {
 
     let results: string[] = [];
     let lastSymbol = token;
-    let lastSymbolIndex = this.baseAlphabet.encodeToken(lastSymbol, {
+    const baseSymbolIndex = this.baseAlphabet.encodeToken(lastSymbol, {
       shift: 0,
       inputAsIndex: false,
       outputAsIndex: true,
@@ -36,15 +36,10 @@ class ShiftRotorCipher extends Cipher {
       const rotor = this.rotors[i];
       const shift = shifts[i % shifts.length] ?? 0;
 
-      lastSymbol = rotor.encodeToken(lastSymbolIndex, {
+      lastSymbol = rotor.encodeToken(baseSymbolIndex, {
         shift,
         inputAsIndex: true,
         outputAsIndex: false,
-      });
-      lastSymbolIndex = rotor.encodeToken(lastSymbolIndex, {
-        shift,
-        inputAsIndex: true,
-        outputAsIndex: true,
       });
       results.push(lastSymbol);
     }
