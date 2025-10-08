@@ -4,6 +4,7 @@ export type InputCipherOptions = {
   letterSeparator?: string = "";
   wordSeparator?: string = " / ";
   caseSensitive?: boolean = false;
+  normalizeDiacritics?: boolean = false;
 };
 
 export type OutputCipherOptions = {

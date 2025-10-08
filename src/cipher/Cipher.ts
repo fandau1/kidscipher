@@ -1,4 +1,6 @@
 import { CipherOptions } from '../core/cipher-options/CipherOptions';
+import Processor from '../core/cipher-options/Processor';
+import processingPipeline from '../core/cipher-options/ProcessorPipeline';
 
 export type CipherConfigurationsRecord = Record<string, any>;
 
@@ -15,6 +17,7 @@ abstract class Cipher {
   ): string {
     const {
       caseSensitive = false,
+      normalizeDiacritics = true,
       letterSeparator: inputLetterSeparator = '',
       wordSeparator: inputWordSeparator = '///',
     } = opts?.input || {};
@@ -25,8 +28,12 @@ abstract class Cipher {
       wordSeparator: outputWordSeparator = ' ',
     } = opts?.output || {};
 
+    const preprocessedInput = processingPipeline(input, [
+      Processor.normalizeDiacritics(normalizeDiacritics),
+    ]);
+
     // normalize input into words and letters
-    const words = input.split(inputWordSeparator);
+    const words = preprocessedInput.split(inputWordSeparator);
 
     const encodedWords = words.map((word) => {
       const letters = inputLetterSeparator
@@ -63,6 +70,7 @@ abstract class Cipher {
   ): string {
     const {
       caseSensitive = false,
+      normalizeDiacritics = false,
       letterSeparator: inputLetterSeparator = '',
       wordSeparator: inputWordSeparator = ' ',
     } = opts?.input || {};
@@ -73,8 +81,12 @@ abstract class Cipher {
       wordSeparator: outputWordSeparator = ' ',
     } = opts?.output || {};
 
+    const preprocessedInput = processingPipeline(input, [
+      Processor.normalizeDiacritics(normalizeDiacritics),
+    ]);
+
     // split encoded text into words
-    const words = input.split(inputWordSeparator);
+    const words = preprocessedInput.split(inputWordSeparator);
     const decodedWords = words.map((word) => {
       const symbols = word.split(inputLetterSeparator);
 

@@ -10,6 +10,7 @@ export function withDefaultCipherOptions(
   return {
     input: {
       caseSensitive: false,
+      normalizeDiacritics: false,
       letterSeparator: '',
       wordSeparator: ' ',
       ...defaults?.input,
