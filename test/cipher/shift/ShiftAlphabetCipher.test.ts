@@ -55,13 +55,4 @@ describe('ShiftAlphabetCipher', () => {
       expect(result).toBe('A BC'); // dash ignored
     });
   });
-
-  describe('custom alphabet', () => {
-    it('should work with a custom alphabet', () => {
-      const custom = ['X', 'Y', 'Z', 'A', 'B', 'C'];
-      const customCipher = new ShiftAlphabetCipher(custom);
-      const result = customCipher.encode('X', { shift: 2 });
-      expect(result).toBe('Z');
-    });
-  });
 });

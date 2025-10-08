@@ -1,12 +1,14 @@
 import { CipherOptions } from '../../core/cipher-options/CipherOptions';
 import { withDefaultCipherOptions } from '../../core/cipher-options/CipherOptionsDefault';
-import { CipherConfigurationsRecord } from '../Cipher';
+import Cipher, { CipherConfigurationsRecord } from '../Cipher';
 import ShiftCipher from './ShiftCipher';
 
 type ShiftAlphabetCipherOptions =
   | CipherConfigurationsRecord
   | {
       shift: number;
+      outputAsIndex?: boolean; // output index instead of letter
+      inputAsIndex?: boolean; // interpret input as index instead of letter
     };
 
 class ShiftAlphabetCipher extends ShiftCipher {
@@ -39,53 +41,8 @@ class ShiftAlphabetCipher extends ShiftCipher {
     'Z',
   ];
 
-  constructor(alphabet?: string[]) {
-    if (!alphabet) {
-      alphabet = ShiftAlphabetCipher.DEFAULT_ALPHABET;
-    }
-    super(alphabet, [alphabet]);
-  }
-
-  encode(
-    input: string,
-    { shift }: ShiftAlphabetCipherOptions,
-    opts?: CipherOptions,
-  ): string {
-    const mergedOpts = withDefaultCipherOptions(opts, {
-      input: {
-        caseSensitive: false,
-        letterSeparator: '',
-        wordSeparator: ' ',
-      },
-      output: {
-        casing: 'original',
-        letterSeparator: '',
-        wordSeparator: ' ',
-      },
-    });
-
-    return super.encode(input, { shifts: [shift] }, mergedOpts);
-  }
-
-  decode(
-    input: string,
-    { shift }: ShiftAlphabetCipherOptions,
-    opts?: CipherOptions,
-  ): string {
-    const mergedOpts = withDefaultCipherOptions(opts, {
-      input: {
-        caseSensitive: false,
-        letterSeparator: '',
-        wordSeparator: ' ',
-      },
-      output: {
-        casing: 'original',
-        letterSeparator: '',
-        wordSeparator: ' ',
-      },
-    });
-
-    return super.decode(input, { shifts: [shift] }, mergedOpts);
+  constructor() {
+    super(ShiftAlphabetCipher.DEFAULT_ALPHABET);
   }
 }
 

@@ -2,44 +2,63 @@ import { CipherOptions } from '../../core/cipher-options/CipherOptions';
 import { withDefaultCipherOptions } from '../../core/cipher-options/CipherOptionsDefault';
 import Cipher, { CipherConfigurationsRecord } from '../Cipher';
 
-type ShiftCipherOptions =
+export type ShiftCipherOptions =
   | CipherConfigurationsRecord
   | {
-      shifts: number[];
+      shift: number;
+      outputAsIndex?: boolean; // output index instead of letter
+      inputAsIndex?: boolean; // interpret input as index instead of letter
     };
 
-abstract class ShiftCipher extends Cipher {
-  private baseAlphabet: string[];
-  private rotors: string[][];
+class ShiftCipher extends Cipher {
+  private alphabet: string[];
 
-  constructor(baseAlphabet: string[], rotors: string[][]) {
+  constructor(alphabet: string[]) {
     super();
-
-    // Check all alphabets have the same length
-    for (const alpha of rotors) {
-      if (alpha.length !== baseAlphabet.length) {
-        throw new Error('All alphabets must have the same length');
-      }
-    }
-
-    this.baseAlphabet = baseAlphabet;
-    this.rotors = rotors;
+    this.alphabet = alphabet;
   }
 
   encodeToken(token: string, configuration: ShiftCipherOptions): string {
-    const { shifts } = configuration;
+    const { shift, outputAsIndex, inputAsIndex } = configuration;
 
-    let encoded = '';
-    if (this.baseAlphabet.includes(token)) {
-      const index = this.baseAlphabet.indexOf(token);
+    let index: number;
 
-      for (let i = 0; i < this.rotors.length; i++) {
-        const wheel = this.rotors[i];
-        const shiftedIndex = (index + shifts[i]) % wheel.length;
-        encoded += wheel[shiftedIndex];
+    if (inputAsIndex) {
+      index = parseInt(token, 10);
+      if (isNaN(index) || index < 0 || index >= this.alphabet.length) {
+        return token; // invalid index
       }
+    } else {
+      if (!this.alphabet.includes(token)) return ''; // invalid token
+      index = this.alphabet.indexOf(token);
     }
-    return encoded;
+
+    const shiftedIndex = (index + shift) % this.alphabet.length;
+    return outputAsIndex
+      ? shiftedIndex.toString()
+      : this.alphabet[shiftedIndex];
+  }
+
+  decodeToken(token: string, configuration: ShiftCipherOptions): string {
+    const { shift, inputAsIndex, outputAsIndex } = configuration;
+
+    let index: number;
+
+    if (inputAsIndex) {
+      index = parseInt(token, 10);
+      if (isNaN(index) || index < 0 || index >= this.alphabet.length) {
+        return ''; // invalid index
+      }
+    } else {
+      if (!this.alphabet.includes(token)) return ''; // invalid token
+      index = this.alphabet.indexOf(token);
+    }
+
+    const shiftedIndex =
+      (index - shift + this.alphabet.length) % this.alphabet.length;
+    return outputAsIndex
+      ? shiftedIndex.toString()
+      : this.alphabet[shiftedIndex];
   }
 
   encode(
@@ -48,43 +67,11 @@ abstract class ShiftCipher extends Cipher {
     opts?: CipherOptions,
   ): string {
     const mergedOpts = withDefaultCipherOptions(opts, {
-      input: {
-        caseSensitive: false,
-        letterSeparator: '',
-        wordSeparator: ' ',
-      },
-      output: {
-        casing: 'original',
-        letterSeparator: '',
-        wordSeparator: ' ',
-      },
+      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+      output: { casing: 'original', letterSeparator: '', wordSeparator: ' ' },
     });
 
     return super.encode(input, configuration, mergedOpts);
-  }
-
-  decodeToken(token: string, configuration: ShiftCipherOptions): string {
-    const { shifts } = configuration;
-    let encoded = '';
-
-    if (token.length === this.rotors.length) {
-      let currentIndex = -1;
-      for (let i = this.rotors.length - 1; 0 <= i; i--) {
-        if (this.rotors[i].includes(token[i])) {
-          currentIndex = this.rotors[i].indexOf(token[i]);
-          currentIndex =
-            (currentIndex - shifts[i] + this.baseAlphabet.length) %
-            this.baseAlphabet.length;
-        } else {
-          // invalid token
-          return '';
-        }
-      }
-
-      encoded = this.baseAlphabet[currentIndex];
-    }
-
-    return encoded;
   }
 
   decode(
@@ -93,16 +80,8 @@ abstract class ShiftCipher extends Cipher {
     opts?: CipherOptions,
   ): string {
     const mergedOpts = withDefaultCipherOptions(opts, {
-      input: {
-        caseSensitive: false,
-        letterSeparator: '',
-        wordSeparator: ' ',
-      },
-      output: {
-        casing: 'original',
-        letterSeparator: '',
-        wordSeparator: ' ',
-      },
+      input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
+      output: { casing: 'original', letterSeparator: '', wordSeparator: ' ' },
     });
 
     return super.decode(input, configuration, mergedOpts);

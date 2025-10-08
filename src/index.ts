@@ -8,5 +8,7 @@ export { default as MobileCipher } from './cipher/mobile/MobileCipher';
 export { default as SpiderCipher } from './cipher/spider/SpiderCipher';
 
 export { default as PolandCrossCipher } from './cipher/cross/poland/PolandCrossCipher';
-export { default as ShiftAlphabetCipher } from './cipher/shift/ShiftAlphabetCipher';
 export { default as ChineseCipher } from './cipher/chinese/ChineseCipher';
+
+export { default as ShiftAlphabetCipher } from './cipher/shift/ShiftAlphabetCipher';
+export { default as ShiftRotorABCDCipher } from './cipher/shift/ShiftRotorABCDCipher';
