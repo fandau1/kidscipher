@@ -1,57 +1,51 @@
 import { useState } from 'react';
-import Cipher from '../../../dist/types/cipher/Cipher';
+import Cipher, {
+  CipherConfigurationsRecord,
+} from '../../../dist/types/cipher/Cipher';
 
 interface BaseDemoProps {
   title?: string;
   Cipher: new () => Cipher;
+  cipherConfiguration?: CipherConfigurationsRecord;
   defaultValue?: string;
 }
 
 export default function BaseCipherDemo({
   title = 'Demo',
   Cipher,
+  cipherConfiguration,
   defaultValue = 'The quick brown fox jumps over the lazy dog',
 }: BaseDemoProps) {
   const cipher = new Cipher();
 
   const [mode, setMode] = useState<'encode' | 'decode'>('encode');
   const [input, setInput] = useState(defaultValue);
-  const [output, setOutput] = useState(() => cipher.encode(defaultValue));
+  const [output, setOutput] = useState(() => transform(defaultValue, 'encode'));
+
+  // unified encode/decode logic
+  function transform(value: string, currentMode: 'encode' | 'decode'): string {
+    try {
+      return currentMode === 'encode'
+        ? cipher.encode(value, cipherConfiguration, { caseSensitive: false })
+        : cipher.decode(value, cipherConfiguration, { caseSensitive: false });
+    } catch {
+      return '⚠️ Error during transformation';
+    }
+  }
 
   const handleTransform = (value: string) => {
     setInput(value);
-
-    try {
-      const result =
-        mode === 'encode'
-          ? cipher.encode(value, {}, { caseSensitive: false })
-          : cipher.decode(value, {}, { caseSensitive: false });
-      setOutput(result);
-    } catch {
-      setOutput('⚠️ Error during transformation');
-    }
+    setOutput(transform(value, mode));
   };
 
   const handleSwitchMode = () => {
     const newMode = mode === 'encode' ? 'decode' : 'encode';
-
-    // Swap input and output
     const newInput = output;
+    const newOutput = transform(newInput, newMode);
 
-    try {
-      const newOutput =
-        newMode === 'encode'
-          ? cipher.encode(newInput, {}, { caseSensitive: false })
-          : cipher.decode(newInput, {}, { caseSensitive: false });
-
-      setMode(newMode);
-      setInput(newInput);
-      setOutput(newOutput);
-    } catch {
-      setMode(newMode);
-      setInput(newInput);
-      setOutput('⚠️ Error during transformation');
-    }
+    setMode(newMode);
+    setInput(newInput);
+    setOutput(newOutput);
   };
 
   return (

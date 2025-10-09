@@ -36,7 +36,7 @@ The font allows you to render encoded text as graphical symbols (necesary only f
 
 - ✅ Shift Cipher
   - ✅ Shift Alphabet
-  - ❌ ABCD Shift 3-rotor
+  - ✅ ABCD Shift 3-rotor
 - ✅ Substitution Cipher
   - ✅ MorseCode
   - ✅ Poland Cross (need font)
