@@ -95,7 +95,7 @@ export default function BaseCipherDemo({
             }
             style={{
               width: '100%',
-              height: '120px',
+              height: '300px',
               marginTop: '0.5rem',
               fontSize: '20px',
               fontFamily:
@@ -116,7 +116,7 @@ export default function BaseCipherDemo({
             placeholder="Result will appear here..."
             style={{
               width: '100%',
-              height: '120px',
+              height: '300px',
               marginTop: '0.5rem',
               fontSize: '20px',
               fontFamily:
