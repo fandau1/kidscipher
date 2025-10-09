@@ -51,19 +51,43 @@ class ShiftRotorCipher extends Cipher {
   decodeToken(token: string, configuration: ShiftRotorCipherOptions): string {
     const { shifts = [], outputAsIndex, inputAsIndex } = configuration;
 
-    let result = '';
+    const symbols = token.split('').reverse();
+
+    if (symbols.length != this.rotors.length) {
+      throw new Error('Invalid symbol length');
+    }
+
+    let includesIn: number[][] = [];
 
     // Reverse through rotors for decoding
     for (let i = this.rotors.length - 1; i >= 0; i--) {
       const rotor = this.rotors[i];
       const shift = shifts[i % shifts.length] ?? 0;
+      const symbol = symbols[i];
 
-      result += rotor.decodeToken(result, {
-        shift,
-        outputAsIndex: outputAsIndex,
-        inputAsIndex: inputAsIndex,
-      } as ShiftCipherOptions);
+      const ocurencies = rotor.getAllTokenIndexes(symbol, shift);
+      includesIn.push(ocurencies);
     }
+
+    // Find intersection of all arrays (items common to all rotors)
+    const intersection = includesIn.reduce((acc, arr) =>
+      acc.filter((x) => arr.includes(x)),
+    );
+
+    // If there is exactly one common index, decode it
+    if (intersection.length !== 1) {
+      throw new Error(
+        `Invalid decoding — intersection size is ${intersection.length}`,
+      );
+    }
+
+    const finalIndex = intersection[0];
+
+    const result = this.baseAlphabet.decodeToken(finalIndex.toString(), {
+      shift: 0,
+      inputAsIndex: true,
+      outputAsIndex: outputAsIndex,
+    });
 
     return result;
   }

@@ -61,6 +61,16 @@ class ShiftCipher extends Cipher {
       : this.alphabet[shiftedIndex];
   }
 
+  getAllTokenIndexes(token: string, shift: number): number[] {
+    if (!this.alphabet.includes(token)) return []; // invalid token
+    const indexes = this.alphabet.flatMap((ch, i) =>
+      ch === token
+        ? [(i - shift + this.alphabet.length) % this.alphabet.length]
+        : [],
+    );
+
+    return indexes;
+  }
   encode(
     input: string,
     configuration?: ShiftCipherOptions,
