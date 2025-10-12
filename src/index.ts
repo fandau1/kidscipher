@@ -7,6 +7,7 @@ export { default as MorseCodeCipher } from './cipher/morsecode/MorseCodeCipher';
 export { default as MobileCipher } from './cipher/mobile/MobileCipher';
 export { default as SpiderCipher } from './cipher/spider/SpiderCipher';
 
+export { default as FractionCipher } from './cipher/fraction/FractionCipher';
 export { default as PolandCrossCipher } from './cipher/cross/poland/PolandCrossCipher';
 export { default as ChineseCipher } from './cipher/chinese/ChineseCipher';
 
