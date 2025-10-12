@@ -42,8 +42,8 @@ export async function generateSvgSymbolFraction(config, options = {}) {
     centerY + fontSize,
   );
 
-  parts.push(`${numPath.toSVG(2)}`);
-  parts.push(`${denPath.toSVG(2)}`);
+  parts.push(`${numPath.toSVG()}`);
+  parts.push(`${denPath.toSVG()}`);
 
   return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="${width}" height="${height}">
   ${parts.join('\n  ')}
