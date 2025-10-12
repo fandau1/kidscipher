@@ -3,11 +3,11 @@ import { textToPath } from '../../utils/textToPath.js';
 export async function generateSvgSymbolFraction(config, options = {}) {
   const { numerator, denominator } = config;
   const {
-    width = 40,
-    height = 60,
-    padding = 5,
-    lineWidth = 2,
-    fontSize = 20,
+    width = 120,
+    height = 180,
+    padding = 10,
+    lineWidth = 4,
+    fontSize = 60,
     fontPath = './scripts/generate_font/assets/OpenSans-Regular.ttf',
     textColor = 'black',
     lineColor = 'black',
