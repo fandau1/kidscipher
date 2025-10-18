@@ -57,4 +57,5 @@ jobs:
         with:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
-          files: '*.tgz'
+          artifacts: '*.tgz'
+          token: ${{ secrets.GITHUB_TOKEN }}
