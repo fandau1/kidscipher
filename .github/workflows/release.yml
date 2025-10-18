@@ -53,7 +53,7 @@ jobs:
 
       # 8. Create GitHub Release and attach .tgz
       - name: Create GitHub Release
-        uses: ncipollo/release-action@v2
+        uses: ncipollo/release-action@v1
         with:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
