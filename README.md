@@ -44,7 +44,7 @@ The font allows you to render encoded text as graphical symbols (necesary only f
   - ❌ Small Cross (need font)
   - ❌ Different Cross (need font)
   - ✅ Mobile
-  - ❌ Chess
+  - 🔄 Chess
   - 🔄 Cipher table
   - ✅ Fractions (need font)
 - ✅ Spider-Net Cipher
