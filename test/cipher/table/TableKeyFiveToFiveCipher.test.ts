@@ -37,16 +37,12 @@ describe('TableKeyFiveToFiveCipher', () => {
 
   it('should encode and decode consistently (round-trip)', () => {
     const cipher = new TableKeyFiveToFiveCipher(horizontalKey, verticalKey);
-    const text = 'HELLO';
-    const encoded = text
-      .split('')
-      .map((ch) => cipher.encodeToken(ch))
-      .join(';');
-    const decoded = encoded
-      .split(';')
-      .map((coord) => cipher.decodeToken(coord))
-      .join('');
+    const text = 'hello';
 
+    const encoded = cipher.encode(text);
+    expect(encoded).toBe('b3 a5 c2 c2 c5');
+
+    const decoded = cipher.decode(encoded);
     expect(decoded).toBe(text);
   });
 });

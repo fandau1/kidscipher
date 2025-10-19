@@ -1,4 +1,9 @@
+import { CipherOptions } from '../../core/cipher-options/CipherOptions';
+import { withDefaultCipherOptions } from '../../core/cipher-options/CipherOptionsDefault';
+import { CipherConfigurationsRecord } from '../Cipher';
 import SubstitutionCyclicCipher from './SubstitutionCyclicCipher';
+
+export type Substitution2DCipherOptions = CipherConfigurationsRecord;
 
 class Substitution2DCipher extends SubstitutionCyclicCipher {
   constructor(
@@ -35,6 +40,48 @@ class Substitution2DCipher extends SubstitutionCyclicCipher {
     }
 
     super(encodeMap);
+  }
+
+  encode(
+    input: string,
+    configuration?: Substitution2DCipherOptions,
+    opts?: CipherOptions,
+  ): string {
+    const mergedOpts = withDefaultCipherOptions(opts, {
+      input: {
+        caseSensitive: false,
+        letterSeparator: '',
+        wordSeparator: ' ',
+      },
+      output: {
+        casing: 'original',
+        letterSeparator: ' ',
+        wordSeparator: ' | ',
+      },
+    });
+
+    return super.encode(input, configuration, mergedOpts);
+  }
+
+  decode(
+    input: string,
+    configuration?: Substitution2DCipherOptions,
+    opts?: CipherOptions,
+  ): string {
+    const mergedOpts = withDefaultCipherOptions(opts, {
+      input: {
+        caseSensitive: true,
+        letterSeparator: ' ',
+        wordSeparator: ' | ',
+      },
+      output: {
+        casing: 'lower',
+        letterSeparator: '',
+        wordSeparator: ' ',
+      },
+    });
+
+    return super.decode(input, configuration, mergedOpts);
   }
 }
 
