@@ -45,10 +45,12 @@ The font allows you to render encoded text as graphical symbols (necesary only f
   - ❌ Different Cross (need font)
   - ✅ Mobile
   - ❌ Chess
-  - ❌ Cipher table
+  - 🔄 Cipher table
   - ✅ Fractions (need font)
 - ✅ Spider-Net Cipher
 - ✅ Chinese Cipher (need font)
+
+🔄 - implemented, but not showcased in docs
 
 ## Development
 

@@ -13,3 +13,6 @@ export { default as ChineseCipher } from './cipher/chinese/ChineseCipher';
 
 export { default as ShiftAlphabetCipher } from './cipher/shift/ShiftAlphabetCipher';
 export { default as ShiftRotorABCDCipher } from './cipher/shift/ShiftRotorABCDCipher';
+
+export { default as Substitution2DCipher } from './cipher/substitution/Substitution2DCipher';
+export { default as TableKeyFiveToFiveCipher } from './cipher/table/TableKeyFiveToFiveCipher';
