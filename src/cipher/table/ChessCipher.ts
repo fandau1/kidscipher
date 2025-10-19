@@ -49,13 +49,13 @@ class ChessCipher extends Substitution2DCipher {
       );
     }
 
-    // horizontal key (columns A, B, C, …)
+    // horizontal key (rows 1, 2, 3, …)
     const horizontalKey: string[] = [];
     for (let i = 0; i < width; i++) {
       horizontalKey.push((i + 1).toString());
     }
 
-    // vertical key (rows 1, 2, 3, …)
+    // vertical key (columns A, B, C, …)
     const verticalKey: string[] = [];
     for (let i = 0; i < height; i++) {
       verticalKey.push(String.fromCharCode('A'.charCodeAt(0) + i));
