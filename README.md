@@ -52,6 +52,17 @@ The font allows you to render encoded text as graphical symbols (necesary only f
 
 🔄 - implemented, but not showcased in docs
 
+## Aditional cipher which can be in future implemented
+
+- Playfair cipher
+- Trasposition ciphers
+  - Route cipher (Hadovka)
+  - Rail fence
+  - Scytale
+- Atbash
+- Vigenere cipher
+-
+
 ## Development
 
 The main focus of the project is to provide a lightweight, dependency-minimal library with high customization for ciphers.
