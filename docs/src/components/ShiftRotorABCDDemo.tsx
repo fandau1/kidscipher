@@ -11,8 +11,6 @@ const schema: Schema = {
     type: 'object',
     fields: {
       shifts: { type: 'array', default: ['0', '0', '0'] },
-      outputAsIndex: { type: 'boolean', default: false },
-      inputAsIndex: { type: 'boolean', default: false },
     },
     default: {},
   },

@@ -6,7 +6,11 @@ import { Schema } from './ArgumentForm/DynamicForm';
 const schema: Schema = {
   cipher: {
     type: 'object',
-    fields: { shift: { type: 'number', default: 3 } },
+    fields: {
+      shift: { type: 'number', default: 3 },
+      outputAsIndex: { type: 'boolean', default: false },
+      inputAsIndex: { type: 'boolean', default: false },
+    },
     default: {},
   },
   encode: withDefaultEncodeDecode({
