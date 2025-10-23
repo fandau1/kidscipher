@@ -1,14 +1,46 @@
+import GenericCipherDemo from './GenericCipherDemo';
 import {
   ShiftAlphabetCipher,
   ShiftRotorABCDCipher,
 } from '../../../dist/index.esm';
-import BaseCipherDemo from './BaseCipherDemo';
+import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
+import { Schema } from './ArgumentForm/DynamicForm';
 
-export default function ShiftRotorABCDDemo() {
+const shiftAlphabetSchema: Schema = {
+  cipher: {
+    type: 'object',
+    fields: {
+      shifts: { type: 'array', default: ['0', '0', '0'] },
+      outputAsIndex: { type: 'boolean', default: false },
+      inputAsIndex: { type: 'boolean', default: false },
+    },
+    default: {},
+  },
+  encode: withDefaultEncodeDecode({
+    input: {
+      letterSeparator: '',
+      wordSeparator: ' ',
+      caseSensitive: false,
+      normalizeDiacritics: true,
+    },
+    output: { letterSeparator: ' ', wordSeparator: ' | ', casing: 'upper' },
+  }),
+  decode: withDefaultEncodeDecode({
+    input: {
+      letterSeparator: ' ',
+      wordSeparator: ' | ',
+      caseSensitive: false,
+      normalizeDiacritics: false,
+    },
+    output: { letterSeparator: '', wordSeparator: ' ', casing: 'upper' },
+  }),
+};
+
+export default function ShiftAlphabetDemo() {
   return (
-    <BaseCipherDemo
-      Cipher={ShiftRotorABCDCipher}
-      cipherConfiguration={{ shifts: [0, 0, 0] }}
+    <GenericCipherDemo
+      schema={shiftAlphabetSchema}
+      createCipherInstance={() => new ShiftRotorABCDCipher()}
     />
   );
 }

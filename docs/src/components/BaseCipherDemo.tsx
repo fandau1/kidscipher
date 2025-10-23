@@ -1,33 +1,46 @@
-import { useState } from 'react';
-import Cipher, {
-  CipherConfigurationsRecord,
-} from '../../../dist/types/cipher/Cipher';
+import { useEffect, useState } from 'react';
+import Cipher from '../../../dist/types/cipher/Cipher';
 
 interface BaseDemoProps {
   title?: string;
-  Cipher: new () => Cipher;
-  cipherConfiguration?: CipherConfigurationsRecord;
+  cipher: Cipher;
+  cipherConfiguration?: Record<string, any>;
+  encodeOptions?: Record<string, any>;
+  decodeOptions?: Record<string, any>;
   defaultValue?: string;
+  mode?: 'encode' | 'decode';
 }
 
 export default function BaseCipherDemo({
-  title = 'Demo',
-  Cipher,
+  cipher,
   cipherConfiguration,
+  encodeOptions,
+  decodeOptions,
   defaultValue = 'The quick brown fox jumps over the lazy dog',
 }: BaseDemoProps) {
-  const cipher = new Cipher();
-
   const [mode, setMode] = useState<'encode' | 'decode'>('encode');
   const [input, setInput] = useState(defaultValue);
-  const [output, setOutput] = useState(() => transform(defaultValue, 'encode'));
+  const [output, setOutput] = useState(() =>
+    safeTransform(defaultValue, 'encode'),
+  );
 
   // unified encode/decode logic
-  function transform(value: string, currentMode: 'encode' | 'decode'): string {
+  function safeTransform(
+    value: string,
+    currentMode: 'encode' | 'decode',
+  ): string {
+    if (!value) return '';
     try {
+      const config = cipherConfiguration || {};
       return currentMode === 'encode'
-        ? cipher.encode(value, cipherConfiguration, { caseSensitive: false })
-        : cipher.decode(value, cipherConfiguration, { caseSensitive: false });
+        ? cipher.encode(value, config, {
+            caseSensitive: false,
+            ...encodeOptions,
+          })
+        : cipher.decode(value, config, {
+            caseSensitive: false,
+            ...decodeOptions,
+          });
     } catch {
       return '⚠️ Error during transformation';
     }
@@ -35,13 +48,18 @@ export default function BaseCipherDemo({
 
   const handleTransform = (value: string) => {
     setInput(value);
-    setOutput(transform(value, mode));
+    setOutput(safeTransform(value, mode));
   };
+
+  useEffect(() => {
+    // re-transform when options or configuration change
+    setOutput(safeTransform(input, mode));
+  }, [cipher, cipherConfiguration, encodeOptions, decodeOptions]);
 
   const handleSwitchMode = () => {
     const newMode = mode === 'encode' ? 'decode' : 'encode';
-    const newInput = output;
-    const newOutput = transform(newInput, newMode);
+    const newInput = output; // swap input/output when switching
+    const newOutput = safeTransform(newInput, newMode);
 
     setMode(newMode);
     setInput(newInput);
@@ -50,8 +68,6 @@ export default function BaseCipherDemo({
 
   return (
     <div style={{ margin: '1rem 0' }}>
-      <h3>{title}</h3>
-
       {/* Mode switcher */}
       <div
         style={{

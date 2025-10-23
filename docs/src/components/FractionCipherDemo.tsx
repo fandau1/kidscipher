@@ -1,6 +1,34 @@
 import { FractionCipher } from '../../../dist/index.esm';
-import BaseCipherDemo from './BaseCipherDemo';
+import { Schema } from './ArgumentForm/DynamicForm';
+import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
+import GenericCipherDemo from './GenericCipherDemo';
+
+const schema: Schema = {
+  encode: withDefaultEncodeDecode({
+    input: {
+      letterSeparator: '',
+      wordSeparator: ' ',
+      caseSensitive: false,
+      normalizeDiacritics: true,
+    },
+    output: { letterSeparator: '', wordSeparator: '  ', casing: 'upper' },
+  }),
+  decode: withDefaultEncodeDecode({
+    input: {
+      letterSeparator: '',
+      wordSeparator: '  ',
+      caseSensitive: false,
+      normalizeDiacritics: false,
+    },
+    output: { letterSeparator: '', wordSeparator: ' ', casing: 'upper' },
+  }),
+};
 
 export default function FractionDemo() {
-  return <BaseCipherDemo Cipher={FractionCipher} />;
+  return (
+    <GenericCipherDemo
+      schema={schema}
+      createCipherInstance={() => new FractionCipher()}
+    />
+  );
 }

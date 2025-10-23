@@ -1,11 +1,39 @@
+import GenericCipherDemo from './GenericCipherDemo';
 import { ShiftAlphabetCipher } from '../../../dist/index.esm';
-import BaseCipherDemo from './BaseCipherDemo';
+import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
+import { Schema } from './ArgumentForm/DynamicForm';
+
+const shiftAlphabetSchema: Schema = {
+  cipher: {
+    type: 'object',
+    fields: { shift: { type: 'number', default: 3 } },
+    default: {},
+  },
+  encode: withDefaultEncodeDecode({
+    input: {
+      letterSeparator: '',
+      wordSeparator: ' ',
+      caseSensitive: false,
+      normalizeDiacritics: true,
+    },
+    output: { letterSeparator: '', wordSeparator: ' ', casing: 'upper' },
+  }),
+  decode: withDefaultEncodeDecode({
+    input: {
+      letterSeparator: '',
+      wordSeparator: ' ',
+      caseSensitive: false,
+      normalizeDiacritics: false,
+    },
+    output: { letterSeparator: '', wordSeparator: ' ', casing: 'upper' },
+  }),
+};
 
 export default function ShiftAlphabetDemo() {
   return (
-    <BaseCipherDemo
-      Cipher={ShiftAlphabetCipher}
-      cipherConfiguration={{ shift: 3 }}
+    <GenericCipherDemo
+      schema={shiftAlphabetSchema}
+      createCipherInstance={() => new ShiftAlphabetCipher()}
     />
   );
 }
