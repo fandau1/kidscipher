@@ -1,18 +1,14 @@
 import GenericCipherDemo from './GenericCipherDemo';
-import {
-  ShiftAlphabetCipher,
-  ShiftRotorABCDCipher,
-} from '../../../dist/index.esm';
+import { ChessCipher, TableKeyFiveToFiveCipher } from '../../../dist/index.esm';
 import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
 import { Schema } from './ArgumentForm/DynamicForm';
 
 const schema: Schema = {
-  cipher: {
+  constructorOptions: {
     type: 'object',
     fields: {
-      shifts: { type: 'array', default: ['0', '0', '0'] },
-      outputAsIndex: { type: 'boolean', default: false },
-      inputAsIndex: { type: 'boolean', default: false },
+      horizontalKey: { type: 'array', default: ['0', '3', '5', '6', '8'] },
+      verticalKey: { type: 'array', default: ['H', 'O', 'M', 'E', 'R'] },
     },
     default: {},
   },
@@ -32,15 +28,22 @@ const schema: Schema = {
       caseSensitive: false,
       normalizeDiacritics: false,
     },
-    output: { letterSeparator: '', wordSeparator: ' ', casing: 'upper' },
+    output: { letterSeparator: '', wordSeparator: ' ', casing: 'lower' },
   }),
 };
 
-export default function ShiftAlphabetDemo() {
+export default function TableKeyFiveToFiveDemo() {
   return (
     <GenericCipherDemo
       schema={schema}
-      createCipherInstance={() => new ShiftRotorABCDCipher()}
+      createCipherInstance={(options) =>
+        options.horizontalKey && options.verticalKey
+          ? new TableKeyFiveToFiveCipher(
+              options.horizontalKey,
+              options.verticalKey,
+            )
+          : null
+      }
     />
   );
 }

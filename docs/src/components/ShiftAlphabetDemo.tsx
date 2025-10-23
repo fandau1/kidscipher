@@ -3,7 +3,7 @@ import { ShiftAlphabetCipher } from '../../../dist/index.esm';
 import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
 import { Schema } from './ArgumentForm/DynamicForm';
 
-const shiftAlphabetSchema: Schema = {
+const schema: Schema = {
   cipher: {
     type: 'object',
     fields: { shift: { type: 'number', default: 3 } },
@@ -32,7 +32,7 @@ const shiftAlphabetSchema: Schema = {
 export default function ShiftAlphabetDemo() {
   return (
     <GenericCipherDemo
-      schema={shiftAlphabetSchema}
+      schema={schema}
       createCipherInstance={() => new ShiftAlphabetCipher()}
     />
   );

@@ -1,4 +1,4 @@
-import { ChineseCipher, SpiderCipher } from '../../../dist/index.esm';
+import { ChineseCipher } from '../../../dist/index.esm';
 import { Schema } from './ArgumentForm/DynamicForm';
 import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
 import GenericCipherDemo from './GenericCipherDemo';

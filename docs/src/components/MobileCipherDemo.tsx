@@ -1,7 +1,5 @@
-import { useState, useMemo } from 'react';
-import { MobileCipher, PolandCrossCipher } from '../../../dist/index.esm';
-import BaseCipherDemo from './BaseCipherDemo';
-import { Schema, DynamicForm } from './ArgumentForm/DynamicForm';
+import { MobileCipher } from '../../../dist/index.esm';
+import { Schema } from './ArgumentForm/DynamicForm';
 import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
 import GenericCipherDemo from './GenericCipherDemo';
 

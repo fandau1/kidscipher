@@ -1,18 +1,14 @@
 import GenericCipherDemo from './GenericCipherDemo';
-import {
-  ShiftAlphabetCipher,
-  ShiftRotorABCDCipher,
-} from '../../../dist/index.esm';
+import { ChessCipher } from '../../../dist/index.esm';
 import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
 import { Schema } from './ArgumentForm/DynamicForm';
 
 const schema: Schema = {
-  cipher: {
+  constructorOptions: {
     type: 'object',
     fields: {
-      shifts: { type: 'array', default: ['0', '0', '0'] },
-      outputAsIndex: { type: 'boolean', default: false },
-      inputAsIndex: { type: 'boolean', default: false },
+      height: { type: 'number', default: 8 },
+      width: { type: 'number', default: 8 },
     },
     default: {},
   },
@@ -32,15 +28,17 @@ const schema: Schema = {
       caseSensitive: false,
       normalizeDiacritics: false,
     },
-    output: { letterSeparator: '', wordSeparator: ' ', casing: 'upper' },
+    output: { letterSeparator: '', wordSeparator: ' ', casing: 'lower' },
   }),
 };
 
-export default function ShiftAlphabetDemo() {
+export default function ChessDemo() {
   return (
     <GenericCipherDemo
       schema={schema}
-      createCipherInstance={() => new ShiftRotorABCDCipher()}
+      createCipherInstance={(options) =>
+        new ChessCipher(options.height, options.width)
+      }
     />
   );
 }
