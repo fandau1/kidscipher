@@ -41,7 +41,7 @@ The font allows you to render encoded text as graphical symbols (necesary only f
   - ✅ MorseCode
   - ✅ Poland Cross (need font)
   - ❌ Hebrew Cross (need font)
-  - ❌ Small Cross (need font)
+  - ✅ Small Cross (need font)
   - ❌ Different Cross (need font)
   - ✅ Mobile
   - ✅ Chess

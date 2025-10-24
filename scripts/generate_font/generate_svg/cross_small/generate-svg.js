@@ -53,55 +53,54 @@ export function generateSvgSymbolSmallCross(config, options = {}) {
       );
     }
   } else if (config.type === 'rhombus') {
-    // Rhombus type: draw diagonal lines
     const { line, dot } = config;
 
-    // Calculate diagonal endpoints
-    const topX = centerX;
-    const topY = innerY;
-    const rightX = innerX + innerWidth;
-    const rightY = centerY;
-    const bottomX = centerX;
-    const bottomY = innerY + innerHeight;
-    const leftX = innerX;
-    const leftY = centerY;
+    const halfW = innerWidth / 2;
+    const halfH = innerHeight / 2;
+    const r = lineWidth / 2;
 
-    // Draw the appropriate diagonal line
+    const top = { x: centerX, y: centerY - halfH };
+    const right = { x: centerX + halfW, y: centerY };
+    const bottom = { x: centerX, y: centerY + halfH };
+    const left = { x: centerX - halfW, y: centerY };
+
+    // helper for filled thick segment between two points with rounded ends
+    const makeThickLine = (x1, y1, x2, y2) => {
+      const dx = x2 - x1;
+      const dy = y2 - y1;
+      const len = Math.hypot(dx, dy);
+      const nx = (dy / len) * r; // normal x
+      const ny = -(dx / len) * r; // normal y
+
+      // path: semicircle at start, side, semicircle at end, side back
+      return `
+        M ${x1 - nx} ${y1 - ny}
+        A ${r} ${r} 0 0 1 ${x1 + nx} ${y1 + ny}
+        L ${x2 + nx} ${y2 + ny}
+        A ${r} ${r} 0 0 1 ${x2 - nx} ${y2 - ny}
+        Z
+      `;
+    };
+
+    // build the polygon for each arm type
     if (line === 'top') {
-      // Bottom-right to bottom-left diagonal
-      parts.push(
-        `<line x1="${rightX}" y1="${rightY}" x2="${bottomX}" y2="${bottomY}" stroke="black" stroke-width="${lineWidth}" stroke-linecap="round" />`,
-      );
-      parts.push(
-        `<line x1="${bottomX}" y1="${bottomY}" x2="${leftX}" y2="${leftY}" stroke="black" stroke-width="${lineWidth}" stroke-linecap="round" />`,
-      );
+      const d1 = makeThickLine(left.x, left.y, top.x, top.y);
+      const d2 = makeThickLine(top.x, top.y, right.x, right.y);
+      parts.push(`<path d="${d1 + d2}" fill="black" />`);
     } else if (line === 'right') {
-      // Bottom-left to top-left diagonal
-      parts.push(
-        `<line x1="${bottomX}" y1="${bottomY}" x2="${leftX}" y2="${leftY}" stroke="black" stroke-width="${lineWidth}" stroke-linecap="round" />`,
-      );
-      parts.push(
-        `<line x1="${leftX}" y1="${leftY}" x2="${topX}" y2="${topY}" stroke="black" stroke-width="${lineWidth}" stroke-linecap="round" />`,
-      );
+      const d1 = makeThickLine(top.x, top.y, right.x, right.y);
+      const d2 = makeThickLine(right.x, right.y, bottom.x, bottom.y);
+      parts.push(`<path d="${d1 + d2}" fill="black" />`);
     } else if (line === 'bottom') {
-      // Top-left to top-right diagonal
-      parts.push(
-        `<line x1="${leftX}" y1="${leftY}" x2="${topX}" y2="${topY}" stroke="black" stroke-width="${lineWidth}" stroke-linecap="round" />`,
-      );
-      parts.push(
-        `<line x1="${topX}" y1="${topY}" x2="${rightX}" y2="${rightY}" stroke="black" stroke-width="${lineWidth}" stroke-linecap="round" />`,
-      );
+      const d1 = makeThickLine(right.x, right.y, bottom.x, bottom.y);
+      const d2 = makeThickLine(bottom.x, bottom.y, left.x, left.y);
+      parts.push(`<path d="${d1 + d2}" fill="black" />`);
     } else if (line === 'left') {
-      // Top-right to bottom-right diagonal
-      parts.push(
-        `<line x1="${topX}" y1="${topY}" x2="${rightX}" y2="${rightY}" stroke="black" stroke-width="${lineWidth}" stroke-linecap="round" />`,
-      );
-      parts.push(
-        `<line x1="${rightX}" y1="${rightY}" x2="${bottomX}" y2="${bottomY}" stroke="black" stroke-width="${lineWidth}" stroke-linecap="round" />`,
-      );
+      const d1 = makeThickLine(bottom.x, bottom.y, left.x, left.y);
+      const d2 = makeThickLine(left.x, left.y, top.x, top.y);
+      parts.push(`<path d="${d1 + d2}" fill="black" />`);
     }
 
-    // Center dot for rhombus
     if (dot) {
       parts.push(
         `<circle cx="${centerX}" cy="${centerY}" r="${dotRadius}" fill="black" />`,
