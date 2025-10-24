@@ -1,5 +1,5 @@
-import { KidscipherGlyphs } from '../../../font';
-import SubstitutionCipher from '../../substitution/SubstitutionCipher';
+import { KidscipherGlyphs } from '../../font';
+import SubstitutionCipher from '../substitution/SubstitutionCipher';
 
 class PolandCrossCipher extends SubstitutionCipher {
   static POLAND_CROSS_MAP: Record<string, string> = {
