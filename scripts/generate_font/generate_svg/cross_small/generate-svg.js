@@ -1,10 +1,10 @@
 export function generateSvgSymbolSmallCross(config, options = {}) {
   const {
-    width = 80,
-    height = 60,
-    padding = 5,
-    dotRadius = 8,
-    lineWidth = 6,
+    width = 100,
+    height = 100,
+    padding = 10,
+    dotRadius = 12,
+    lineWidth = 10,
   } = options;
 
   // Dimensions
