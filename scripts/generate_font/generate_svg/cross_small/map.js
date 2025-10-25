@@ -17,9 +17,9 @@ export const POLAND_CROSS_CONFIG_MAP = {
   },
   C: {
     type: 'square',
-    leftLine: false,
-    rightLine: true,
-    topLine: true,
+    leftLine: true,
+    rightLine: false,
+    topLine: false,
     bottomLine: true,
     dot: false,
   },
