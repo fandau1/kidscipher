@@ -10,6 +10,7 @@ export { default as SpiderCipher } from './cipher/spider/SpiderCipher';
 export { default as FractionCipher } from './cipher/fraction/FractionCipher';
 export { default as PolandCrossCipher } from './cipher/cross/PolandCrossCipher';
 export { default as SmallCrossCipher } from './cipher/cross/SmallCrossCipher';
+export { default as HebrewCrossCipher } from './cipher/cross/HebrewCrossCipher';
 export { default as ChineseCipher } from './cipher/chinese/ChineseCipher';
 
 export { default as ShiftAlphabetCipher } from './cipher/shift/ShiftAlphabetCipher';
