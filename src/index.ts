@@ -7,10 +7,12 @@ export { default as MorseCodeCipher } from './cipher/morsecode/MorseCodeCipher';
 export { default as MobileCipher } from './cipher/mobile/MobileCipher';
 export { default as SpiderCipher } from './cipher/spider/SpiderCipher';
 
-export { default as FractionCipher } from './cipher/fraction/FractionCipher';
 export { default as PolandCrossCipher } from './cipher/cross/PolandCrossCipher';
 export { default as SmallCrossCipher } from './cipher/cross/SmallCrossCipher';
 export { default as HebrewCrossCipher } from './cipher/cross/HebrewCrossCipher';
+export { default as DifferentCrossCipher } from './cipher/cross/DifferentCrossCipher';
+
+export { default as FractionCipher } from './cipher/fraction/FractionCipher';
 export { default as ChineseCipher } from './cipher/chinese/ChineseCipher';
 
 export { default as ShiftAlphabetCipher } from './cipher/shift/ShiftAlphabetCipher';

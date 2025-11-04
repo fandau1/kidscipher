@@ -1,0 +1,10 @@
+---
+sidebar_position: 4
+hide_table_of_contents: true
+---
+
+# Different Cross
+
+import DifferentCrossDemo from '@site/src/components/DifferentCrossDemo';
+
+<DifferentCrossDemo />

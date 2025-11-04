@@ -23,6 +23,7 @@ const folderOrder = [
   'fraction',
   'cross_small',
   'cross_hebrew',
+  'cross_different',
 ];
 
 // Collect SVG files in order
