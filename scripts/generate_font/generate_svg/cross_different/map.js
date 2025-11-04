@@ -185,7 +185,7 @@ export const DIFFERENT_CROSS_CONFIG_MAP = {
     rightLine: true,
     topLine: true,
     bottomLine: false,
-    dotPosition: 3,
+    dotPosition: 2,
   },
   // next type
   U: {
