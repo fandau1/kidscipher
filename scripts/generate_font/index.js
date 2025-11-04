@@ -17,7 +17,13 @@ const PROJECT_OUTPUT_DIR = path.resolve(__dirname, '../../src/fonts');
 ensureDir(OUTPUT_DIR);
 ensureDir(PROJECT_OUTPUT_DIR);
 
-const folderOrder = ['cross_poland', 'chinese', 'fraction', 'cross_small'];
+const folderOrder = [
+  'cross_poland',
+  'chinese',
+  'fraction',
+  'cross_small',
+  'cross_hebrew',
+];
 
 // Collect SVG files in order
 let svgFiles = [];
