@@ -141,7 +141,7 @@ export const DIFFERENT_CROSS_CONFIG_MAP = {
     topLine: true,
     bottomLine: true,
     dotPosition: 1,
-    special: 'DoubleRight',
+    special: 'DoubleLeft',
   },
   // next type
   P: {
