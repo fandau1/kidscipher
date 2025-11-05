@@ -1,6 +1,9 @@
 ![NPM Version](https://img.shields.io/npm/v/kidscipher)
 
-# kidscipher
+<div style="display: flex; align-items: center; gap: 10px;">
+  <img src="./static/logo-kidscipher-square.png" alt="Kidscipher Logo" width="100" height="100">
+  <h1 style="margin: 0;">kidscipher</h1>
+</div>
 
 Kidscipher is an npm library for encoding and decoding educational and fun ciphers. It mainly provides ciphers that can be solved as a game and also includes a custom font `Kidscipher`, which makes it possible to work with graphical ciphers and symbols.
 

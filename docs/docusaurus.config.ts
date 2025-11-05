@@ -8,7 +8,7 @@ const config: Config = {
   title: 'Kidscipher Docs',
   tagline:
     'Kidscipher is an js library for encoding and decoding educational and fun ciphers.',
-  //favicon: 'img/favicon.ico',
+  favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
   future: {
@@ -78,11 +78,10 @@ const config: Config = {
     //image: 'img/docusaurus-social-card.jpg',
     navbar: {
       title: 'Kidscipher',
-      /*
       logo: {
         alt: 'Kidscipher Logo',
+        src: 'img/logo-kidscipher-square.png',
       },
-      */
       items: [
         {
           type: 'docSidebar',
