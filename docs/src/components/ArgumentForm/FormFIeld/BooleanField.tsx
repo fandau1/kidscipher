@@ -12,6 +12,8 @@ export const BooleanField: React.FC<BooleanFieldProps> = ({
   value,
   onChange,
 }) => {
+  const uniqueId = React.useId();
+
   return (
     <div className={styles.checkboxField}>
       <input
@@ -19,9 +21,9 @@ export const BooleanField: React.FC<BooleanFieldProps> = ({
         checked={value}
         onChange={(e) => onChange(e.target.checked)}
         className={styles.checkbox}
-        id={`checkbox-${label}`}
+        id={uniqueId}
       />
-      <label htmlFor={`checkbox-${label}`} className={styles.checkboxLabel}>
+      <label htmlFor={uniqueId} className={styles.checkboxLabel}>
         {label}
       </label>
     </div>
