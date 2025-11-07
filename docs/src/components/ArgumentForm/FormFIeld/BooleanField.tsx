@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../../CipherDemo.module.css';
 
 interface BooleanFieldProps {
   label: string;
@@ -12,14 +13,15 @@ export const BooleanField: React.FC<BooleanFieldProps> = ({
   onChange,
 }) => {
   return (
-    <div style={{ marginBottom: 8 }}>
-      <label>
-        <input
-          type="checkbox"
-          checked={value}
-          onChange={(e) => onChange(e.target.checked)}
-          style={{ marginRight: 6 }}
-        />
+    <div className={styles.checkboxField}>
+      <input
+        type="checkbox"
+        checked={value}
+        onChange={(e) => onChange(e.target.checked)}
+        className={styles.checkbox}
+        id={`checkbox-${label}`}
+      />
+      <label htmlFor={`checkbox-${label}`} className={styles.checkboxLabel}>
         {label}
       </label>
     </div>

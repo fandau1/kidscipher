@@ -1,15 +1,18 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { ArrayField } from './FormFIeld/ArrayField';
+import { ArrayFixedField } from './FormFIeld/ArrayFixedField';
 import { EnumField } from './FormFIeld/EnumField';
 import { NumberField } from './FormFIeld/NumberField';
 import { StringField } from './FormFIeld/StringField';
 import { BooleanField } from './FormFIeld/BooleanField';
+import styles from '../CipherDemo.module.css';
 
 export type FieldSchema =
   | { type: 'string'; default?: string }
   | { type: 'number'; min?: number; max?: number; default?: number }
   | { type: 'enum'; options: string[]; default?: string }
   | { type: 'array'; default?: string[] }
+  | { type: 'arrayFixed'; size: number; default?: string[] }
   | { type: 'boolean'; default?: boolean }
   | {
       type: 'object';
@@ -46,6 +49,8 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
         return false;
       case 'array':
         return [];
+      case 'arrayFixed':
+        return Array(field.size).fill('');
       case 'enum':
         return field.options?.[0] ?? '';
       case 'object':
@@ -148,10 +153,20 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
             onChange={(v) => handleChange(key, v)}
           />
         );
+      case 'arrayFixed':
+        return (
+          <ArrayFixedField
+            key={key}
+            label={key}
+            values={Array.isArray(value) ? value : []}
+            size={field.size}
+            onChange={(v) => handleChange(key, v)}
+          />
+        );
       case 'object':
         return (
-          <div key={key} style={{ marginTop: 10 }}>
-            <strong>{key}</strong>
+          <div key={key} className={styles.formSection} style={{ marginTop: '1rem' }}>
+            <h4 className={styles.subsectionTitle}>{key}</h4>
             <DynamicForm
               schema={field.fields}
               values={value ?? {}}
@@ -163,12 +178,7 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
   };
 
   return (
-    <div
-      style={{
-        paddingLeft: path ? 20 : 0,
-        borderLeft: path ? '1px solid #ccc' : 'none',
-      }}
-    >
+    <div className={styles.formGrid}>
       {Object.entries(schema).map(([key, field]) => renderField(key, field))}
     </div>
   );

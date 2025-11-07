@@ -10,7 +10,7 @@ const schema: Schema = {
   cipher: {
     type: 'object',
     fields: {
-      shifts: { type: 'array', default: ['0', '0', '0'] },
+      shifts: { type: 'arrayFixed', size: 3, default: ['0', '0', '0'] },
     },
     default: {},
   },

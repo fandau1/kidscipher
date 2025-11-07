@@ -5,9 +5,9 @@ import type * as Preset from '@docusaurus/preset-classic';
 // This runs in Node.js - Don't use client-side code here (browser APIs, JSX...)
 
 const config: Config = {
-  title: 'Kidscipher Docs',
+  title: 'Kidscipher',
   tagline:
-    'Kidscipher is an js library for encoding and decoding educational and fun ciphers.',
+    'Educational cipher library for encoding and decoding fun cryptographic messages',
   favicon: 'img/favicon.ico',
 
   // Future flags, see https://docusaurus.io/docs/api/docusaurus-config#future
@@ -26,6 +26,7 @@ const config: Config = {
   organizationName: 'fandau1', // Usually your GitHub org/user name.
   projectName: 'kidscipher', // Usually your repo name.
   deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -74,28 +75,46 @@ const config: Config = {
   ],
 
   themeConfig: {
-    // Replace with your project's social card
-    //image: 'img/docusaurus-social-card.jpg',
+    image: 'img/logo-kidscipher-square.png',
+    metadata: [
+      { name: 'keywords', content: 'cipher, encryption, education, cryptography, javascript, typescript' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+    ],
+    colorMode: {
+      defaultMode: 'light',
+      disableSwitch: false,
+      respectPrefersColorScheme: true,
+    },
     navbar: {
       title: 'Kidscipher',
       logo: {
         alt: 'Kidscipher Logo',
         src: 'img/logo-kidscipher-square.png',
       },
+      hideOnScroll: false,
       items: [
         {
           type: 'docSidebar',
           sidebarId: 'cipherSidebar',
           docsPluginId: 'cipher',
           position: 'left',
-          label: 'Cipher',
+          label: '🔐 Ciphers',
         },
         {
           type: 'docSidebar',
           sidebarId: 'apiSidebar',
           docsPluginId: 'api',
           position: 'left',
-          label: 'API',
+          label: '📚 API',
+        },
+        {
+          type: 'search',
+          position: 'right',
+        },
+        {
+          href: 'https://www.npmjs.com/package/kidscipher',
+          label: '📦 npm',
+          position: 'right',
         },
         {
           href: 'https://github.com/fandau1/kidscipher',
@@ -105,33 +124,68 @@ const config: Config = {
       ],
     },
     footer: {
-      style: 'dark',
+      style: 'light',
       links: [
-        /*
         {
-          title: 'Community',
+          title: 'Documentation',
           items: [
             {
-              label: 'Stack Overflow',
-              href: 'https://stackoverflow.com/questions/tagged/docusaurus',
+              label: '🚀 Getting Started',
+              to: '/api/intro',
             },
             {
-              label: 'Discord',
-              href: 'https://discordapp.com/invite/docusaurus',
+              label: '🔐 Cipher Types',
+              to: '/cipher/intro',
             },
             {
-              label: 'X',
-              href: 'https://x.com/docusaurus',
+              label: '🤝 Contributing',
+              to: '/api/contribute',
             },
           ],
         },
-        */
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: '📦 npm Package',
+              href: 'https://www.npmjs.com/package/kidscipher',
+            },
+            {
+              label: '💻 GitHub',
+              href: 'https://github.com/fandau1/kidscipher',
+            },
+            {
+              label: '📝 License (MIT)',
+              href: 'https://github.com/fandau1/kidscipher/blob/main/LICENSE',
+            },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: '🐛 Report Issues',
+              href: 'https://github.com/fandau1/kidscipher/issues',
+            },
+            {
+              label: '✨ Request Features',
+              href: 'https://github.com/fandau1/kidscipher/issues/new',
+            },
+          ],
+        },
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Kidscipher`,
+      copyright: `Copyright © ${new Date().getFullYear()} Kidscipher. All rights reserved.`,
     },
     prism: {
       theme: prismThemes.github,
       darkTheme: prismThemes.dracula,
+      additionalLanguages: ['bash', 'json'],
+    },
+    docs: {
+      sidebar: {
+        hideable: true,
+        autoCollapseCategories: true,
+      },
     },
   } satisfies Preset.ThemeConfig,
 };

@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import Cipher from '../../../dist/types/cipher/Cipher';
+import styles from './CipherDemo.module.css';
 
 interface BaseDemoProps {
   title?: string;
@@ -67,81 +68,45 @@ export default function BaseCipherDemo({
   };
 
   return (
-    <div style={{ margin: '1rem 0' }}>
+    <div style={{ marginTop: '1.5rem' }}>
       {/* Mode switcher */}
-      <div
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          gap: '1rem',
-          marginBottom: '1rem',
-        }}
-      >
-        <span>
-          <strong>Mode:</strong> {mode === 'encode' ? 'Encoding' : 'Decoding'}
+      <div className={styles.modeSwitcher}>
+        <span className={styles.modeLabel}>
+          Mode:{' '}
+          <span className={styles.modeValue}>
+            {mode === 'encode' ? 'Encoding' : 'Decoding'}
+          </span>
         </span>
-        <button
-          onClick={handleSwitchMode}
-          style={{
-            padding: '0.4rem 0.8rem',
-            borderRadius: '8px',
-            border: '1px solid #ccc',
-            cursor: 'pointer',
-            background: '#f5f5f5',
-            fontWeight: 500,
-          }}
-        >
-          🔁 Switch
+        <button onClick={handleSwitchMode} className={styles.switchButton}>
+          🔁 Switch Mode
         </button>
       </div>
 
       {/* Input + Output */}
-      <div style={{ display: 'flex', gap: '1rem' }}>
-        <div style={{ flex: 1 }}>
-          <label>
-            <strong>
-              {mode === 'encode' ? 'Plain text:' : 'Cipher text:'}
-            </strong>
+      <div className={styles.ioSection}>
+        <div className={styles.ioPanel}>
+          <label className={styles.ioLabel}>
+            {mode === 'encode' ? 'Plain Text' : 'Cipher Text'}
           </label>
           <textarea
             value={input}
             onChange={(e) => handleTransform(e.target.value)}
             placeholder={
-              mode === 'encode' ? 'Enter plain text' : 'Enter cipher text'
+              mode === 'encode' ? 'Enter plain text...' : 'Enter cipher text...'
             }
-            style={{
-              width: '100%',
-              height: '300px',
-              marginTop: '0.5rem',
-              fontSize: '20px',
-              fontFamily:
-                mode === 'encode' ? 'monospace' : 'Kidscipher, monospace',
-              borderRadius: '8px',
-              padding: '0.5rem',
-            }}
+            className={`${styles.ioTextarea} ${mode === 'decode' ? styles.cipherFont : ''}`}
           />
         </div>
 
-        <div style={{ flex: 1 }}>
-          <label>
-            <strong>Result:</strong>
+        <div className={styles.ioPanel}>
+          <label className={styles.ioLabel}>
+            {mode === 'encode' ? 'Cipher Text' : 'Plain Text'}
           </label>
           <textarea
             value={output}
             readOnly
             placeholder="Result will appear here..."
-            style={{
-              width: '100%',
-              height: '300px',
-              marginTop: '0.5rem',
-              fontSize: '20px',
-              fontFamily:
-                mode === 'decode' ? 'monospace' : 'Kidscipher, monospace',
-              backgroundColor: '#f3f3f3',
-              borderRadius: '8px',
-              padding: '0.5rem',
-              color: '#333',
-            }}
+            className={`${styles.ioTextarea} ${mode === 'encode' ? styles.cipherFont : ''}`}
           />
         </div>
       </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../../CipherDemo.module.css';
 
 interface NumberFieldProps {
   label: string;
@@ -15,14 +16,15 @@ export const NumberField: React.FC<NumberFieldProps> = ({
   min,
   max,
 }) => (
-  <div>
-    <label>{label}</label>
+  <div className={styles.formField}>
+    <label className={styles.formLabel}>{label}</label>
     <input
       type="number"
       value={value}
       min={min}
       max={max}
       onChange={(e) => onChange(Number(e.target.value))}
+      className={styles.input}
     />
   </div>
 );

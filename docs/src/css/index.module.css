@@ -1,17 +1,246 @@
+/* ============================================
+   HERO SECTION
+   ============================================ */
+
 .heroBanner {
   text-align: center;
-  padding: 4rem 0;
+  padding: 5rem 2rem;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
 }
+
+[data-theme='dark'] .heroBanner {
+  background: linear-gradient(135deg, #4338ca, #6366f1);
+}
+
+.heroBanner h1,
+.heroBanner p {
+  color: white;
+}
+
+.heroBanner h1 {
+  font-size: 3rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.heroBanner p {
+  font-size: 1.3rem;
+  margin-bottom: 2rem;
+}
+
+/* ============================================
+   BUTTONS
+   ============================================ */
 
 .buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 12px; /* consistent spacing */
+  gap: 1rem;
   justify-content: center;
-  margin-top: 1.5rem;
+  margin-top: 2rem;
 }
 
+.buttons .button {
+  min-width: 150px;
+}
+
+/* ============================================
+   FEATURES SECTION
+   ============================================ */
+
 .features {
-  padding: 3rem 0;
+  padding: 4rem 2rem;
+}
+
+.features h2 {
   text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  color: var(--ifm-color-primary);
+}
+
+.features .row {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.featureCard {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.5rem;
+  padding: 2rem;
+  height: 100%;
+  transition: all 0.2s;
+}
+
+.featureCard:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  border-color: var(--ifm-color-primary);
+}
+
+[data-theme='dark'] .featureCard {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .featureCard:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+.featureCard h3 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-heading-color);
+}
+
+.featureCard p {
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+}
+
+/* ============================================
+   CIPHER SHOWCASE SECTION
+   ============================================ */
+
+.cipherShowcase {
+  padding: 4rem 2rem;
+  background: var(--ifm-background-surface-color);
+}
+
+[data-theme='dark'] .cipherShowcase {
+  background: var(--ifm-background-color);
+}
+
+.cipherShowcase h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: var(--ifm-color-primary);
+}
+
+.cipherShowcase p {
+  text-align: center;
+  font-size: 1.2rem;
+  color: var(--ifm-color-emphasis-700);
+  margin-bottom: 3rem;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.cipherGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.cipherItem {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  transition: all 0.2s;
+}
+
+.cipherItem:hover {
+  transform: scale(1.03);
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme='dark'] .cipherItem {
+  background: var(--ifm-background-surface-color);
+}
+
+[data-theme='dark'] .cipherItem:hover {
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.cipherItem h4 {
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.5rem;
+  font-size: 1.2rem;
+}
+
+.cipherItem p {
+  font-size: 0.95rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0;
+}
+
+/* ============================================
+   CTA SECTION
+   ============================================ */
+
+.ctaSection {
+  padding: 4rem 2rem;
+  text-align: center;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  color: white;
+}
+
+[data-theme='dark'] .ctaSection {
+  background: linear-gradient(135deg, #4338ca, #6366f1);
+}
+
+.ctaSection h2 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: white;
+}
+
+.ctaSection p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.ctaSection .button {
+  background: white;
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+.ctaSection .button:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media screen and (max-width: 768px) {
+  .heroBanner {
+    padding: 3rem 1rem;
+  }
+
+  .heroBanner h1 {
+    font-size: 2rem;
+  }
+
+  .heroBanner p {
+    font-size: 1.1rem;
+  }
+
+  .features,
+  .cipherShowcase,
+  .ctaSection {
+    padding: 3rem 1rem;
+  }
+
+  .features h2,
+  .cipherShowcase h2,
+  .ctaSection h2 {
+    font-size: 2rem;
+  }
+
+  .cipherGrid {
+    grid-template-columns: 1fr;
+  }
 }

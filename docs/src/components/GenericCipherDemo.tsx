@@ -2,6 +2,7 @@ import { useState, useMemo } from 'react';
 import BaseCipherDemo from './BaseCipherDemo';
 import { Schema, DynamicForm } from './ArgumentForm/DynamicForm';
 import { Cipher } from '../../../dist/types';
+import styles from './CipherDemo.module.css';
 
 type GenericCipherDemoProps = {
   schema: Schema;
@@ -41,38 +42,34 @@ export default function GenericCipherDemo({
   }, [constructorConfig, createCipherInstance]);
 
   return (
-    <div>
-      <h2>{title}</h2>
+    <div className={styles.demoContainer}>
+      <h2 className={styles.sectionTitle}>{title}</h2>
 
       {Object.keys(constructorFields).length > 0 && (
-        <>
-          <h3>Constructor options</h3>
-          <div style={{ marginBottom: '1rem' }}>
-            <DynamicForm
-              schema={constructorFields}
-              values={constructorConfig}
-              onChange={setConstructorConfig}
-            />
-          </div>
-        </>
+        <div className={styles.formSection}>
+          <h3 className={styles.subsectionTitle}>Constructor Options</h3>
+          <DynamicForm
+            schema={constructorFields}
+            values={constructorConfig}
+            onChange={setConstructorConfig}
+          />
+        </div>
       )}
 
       {Object.keys(cipherFields).length > 0 && (
-        <>
-          <h3>Configuration</h3>
-          <div style={{ marginBottom: '1rem' }}>
-            <DynamicForm
-              schema={cipherFields}
-              values={cipherConfiguration}
-              onChange={setCipherConfiguration}
-            />
-          </div>
-        </>
+        <div className={styles.formSection}>
+          <h3 className={styles.subsectionTitle}>Configuration</h3>
+          <DynamicForm
+            schema={cipherFields}
+            values={cipherConfiguration}
+            onChange={setCipherConfiguration}
+          />
+        </div>
       )}
 
-      <div style={{ display: 'flex', gap: '2rem' }}>
-        <div style={{ flex: 1 }}>
-          <h4>Encode Options</h4>
+      <div className={styles.optionsGrid}>
+        <div className={styles.optionsPanel}>
+          <h4 className={styles.optionsTitle}>Encode Options</h4>
           <DynamicForm
             schema={encodeFields}
             values={encodeOptions}
@@ -80,8 +77,8 @@ export default function GenericCipherDemo({
           />
         </div>
 
-        <div style={{ flex: 1 }}>
-          <h4>Decode Options</h4>
+        <div className={styles.optionsPanel}>
+          <h4 className={styles.optionsTitle}>Decode Options</h4>
           <DynamicForm
             schema={decodeFields}
             values={decodeOptions}

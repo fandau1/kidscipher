@@ -1,4 +1,5 @@
 import React from 'react';
+import styles from '../../CipherDemo.module.css';
 
 interface EnumFieldProps {
   label: string;
@@ -13,9 +14,13 @@ export const EnumField: React.FC<EnumFieldProps> = ({
   options,
   onChange,
 }) => (
-  <div>
-    <label>{label}</label>
-    <select value={value} onChange={(e) => onChange(e.target.value)}>
+  <div className={styles.formField}>
+    <label className={styles.formLabel}>{label}</label>
+    <select
+      value={value}
+      onChange={(e) => onChange(e.target.value)}
+      className={styles.select}
+    >
       {options.map((opt) => (
         <option key={opt} value={opt}>
           {opt}

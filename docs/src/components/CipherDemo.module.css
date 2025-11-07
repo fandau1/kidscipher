@@ -1,0 +1,412 @@
+/* ============================================
+   CIPHER DEMO COMPONENTS - UNIFIED STYLING
+   ============================================ */
+
+/* Demo Container */
+.demoContainer {
+  background: var(--ifm-background-color);
+  border: 2px solid var(--ifm-color-primary-lighter);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  margin: 2rem 0;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+[data-theme='dark'] .demoContainer {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-primary-dark);
+}
+
+/* Section Headers */
+.sectionTitle {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  margin-bottom: 0.75rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.subsectionTitle {
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+  margin-bottom: 0.75rem;
+}
+
+/* Form Section */
+.formSection {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .formSection {
+  background: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+/* Form Grid Layout - kompaktní grid pro krátké hodnoty */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+
+/* Group header for nested sections in grid */
+.groupHeader {
+  grid-column: 1 / -1;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  margin-top: 0.5rem;
+  padding-bottom: 0.35rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Form Field */
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.formLabel {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+  word-break: break-word;
+}
+
+[data-theme='dark'] .formLabel {
+  color: var(--ifm-color-emphasis-600);
+}
+
+.formDescription {
+  font-size: 0.8rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-top: 0.15rem;
+}
+
+/* Input Fields - kompaktní pro krátké hodnoty */
+.input,
+.select,
+.textarea {
+  width: 100%;
+  max-width: 100%;
+  padding: 0.4rem 0.5rem;
+  font-size: 0.9rem;
+  font-family: inherit;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.375rem;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.input:focus,
+.select:focus,
+.textarea:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+[data-theme='dark'] .input,
+[data-theme='dark'] .select,
+[data-theme='dark'] .textarea {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+[data-theme='dark'] .input:focus,
+[data-theme='dark'] .select:focus,
+[data-theme='dark'] .textarea:focus {
+  border-color: var(--ifm-color-primary-light);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.15);
+}
+
+.select {
+  cursor: pointer;
+  appearance: none;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23666' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2.5rem;
+}
+
+/* Checkbox Field */
+.checkboxField {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 0.375rem;
+  transition: background 0.2s;
+}
+
+.checkboxField:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+.checkbox {
+  width: 1.1rem;
+  height: 1.1rem;
+  cursor: pointer;
+  accent-color: var(--ifm-color-primary);
+}
+
+.checkboxLabel {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ifm-font-color-base);
+  cursor: pointer;
+  user-select: none;
+}
+
+/* Mode Switcher */
+.modeSwitcher {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 0.5rem;
+  margin-bottom: 0.75rem;
+}
+
+[data-theme='dark'] .modeSwitcher {
+  background: var(--ifm-color-emphasis-200);
+}
+
+.modeLabel {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--ifm-font-color-base);
+}
+
+.modeValue {
+  color: var(--ifm-color-primary);
+  font-weight: 700;
+}
+
+.switchButton {
+  padding: 0.4rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--ifm-color-primary);
+  background: var(--ifm-background-color);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.switchButton:hover {
+  background: var(--ifm-color-primary);
+  color: white;
+  transform: translateY(-1px);
+}
+
+.switchButton:active {
+  transform: translateY(0);
+}
+
+/* IO Section (Input/Output) */
+.ioSection {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.ioPanel {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.ioLabel {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--ifm-heading-color);
+}
+
+.ioTextarea {
+  width: 100%;
+  max-width: 100%;
+  min-height: 250px;
+  padding: 0.75rem;
+  font-size: 1rem;
+  font-family: monospace;
+  border: 2px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.5rem;
+  background: var(--ifm-background-color);
+  color: var(--ifm-font-color-base);
+  resize: vertical;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.ioTextarea:focus {
+  outline: none;
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+}
+
+[data-theme='dark'] .ioTextarea {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+[data-theme='dark'] .ioTextarea:focus {
+  border-color: var(--ifm-color-primary-light);
+  box-shadow: 0 0 0 3px rgba(129, 140, 248, 0.15);
+}
+
+.ioTextarea:read-only {
+  background: var(--ifm-color-emphasis-100);
+  cursor: not-allowed;
+}
+
+[data-theme='dark'] .ioTextarea:read-only {
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* Cipher Font for encoded text */
+.cipherFont {
+  font-family: 'Kidscipher', monospace !important;
+}
+
+/* Options Wrapper */
+.optionsWrapper {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+[data-theme='dark'] .optionsWrapper {
+  background: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+/* Options Grid */
+.optionsGrid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-top: 0.75rem;
+  width: 100%;
+  max-width: 100%;
+}
+
+.optionsPanel {
+  background: var(--ifm-background-color);
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 0.375rem;
+  padding: 0.75rem;
+  min-width: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+[data-theme='dark'] .optionsPanel {
+  background: var(--ifm-background-surface-color);
+  border-color: var(--ifm-color-emphasis-400);
+}
+
+.optionsTitle {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--ifm-color-primary);
+  margin: 0 0 0.65rem 0;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Error State */
+.error {
+  color: var(--ifm-color-danger);
+  font-weight: 600;
+  padding: 0.75rem;
+  background: var(--ifm-color-danger-lightest);
+  border-radius: 0.375rem;
+  border-left: 4px solid var(--ifm-color-danger);
+}
+
+/* Responsive Design */
+@media screen and (max-width: 1200px) {
+  .optionsGrid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 996px) {
+  .ioSection {
+    grid-template-columns: 1fr;
+  }
+
+  .demoContainer {
+    padding: 1rem;
+  }
+
+  .formSection {
+    padding: 0.75rem;
+  }
+
+  .formGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .formGridSmall {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .demoContainer {
+    padding: 0.75rem;
+  }
+
+  .ioTextarea {
+    min-height: 180px;
+    font-size: 0.95rem;
+  }
+
+  .modeSwitcher {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .formGrid,
+  .formGridSmall {
+    grid-template-columns: 1fr;
+  }
+}
+

@@ -1,5 +1,5 @@
 import GenericCipherDemo from './GenericCipherDemo';
-import { ChessCipher, TableKeyFiveToFiveCipher } from '../../../dist/index.esm';
+import { TableKeyFiveToFiveCipher } from '../../../dist/index.esm';
 import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
 import { Schema } from './ArgumentForm/DynamicForm';
 
@@ -7,8 +7,8 @@ const schema: Schema = {
   constructorOptions: {
     type: 'object',
     fields: {
-      horizontalKey: { type: 'array', default: ['0', '3', '5', '6', '8'] },
-      verticalKey: { type: 'array', default: ['H', 'O', 'M', 'E', 'R'] },
+      horizontalKey: { type: 'arrayFixed', size: 5, default: ['0', '3', '5', '6', '8'] },
+      verticalKey: { type: 'arrayFixed', size: 5, default: ['H', 'O', 'M', 'E', 'R'] },
     },
     default: {},
   },
