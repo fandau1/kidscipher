@@ -77,7 +77,11 @@ const config: Config = {
   themeConfig: {
     image: 'img/logo-kidscipher-square.png',
     metadata: [
-      { name: 'keywords', content: 'cipher, encryption, education, cryptography, javascript, typescript' },
+      {
+        name: 'keywords',
+        content:
+          'cipher, encryption, education, cryptography, javascript, typescript',
+      },
       { name: 'twitter:card', content: 'summary_large_image' },
     ],
     colorMode: {
@@ -130,15 +134,15 @@ const config: Config = {
           title: 'Documentation',
           items: [
             {
-              label: '🚀 Getting Started',
+              label: 'Getting Started',
               to: '/api/intro',
             },
             {
-              label: '🔐 Cipher Types',
+              label: 'Cipher Types',
               to: '/cipher/intro',
             },
             {
-              label: '🤝 Contributing',
+              label: 'Contributing',
               to: '/api/contribute',
             },
           ],
@@ -147,15 +151,15 @@ const config: Config = {
           title: 'Resources',
           items: [
             {
-              label: '📦 npm Package',
+              label: 'npm Package',
               href: 'https://www.npmjs.com/package/kidscipher',
             },
             {
-              label: '💻 GitHub',
+              label: 'GitHub',
               href: 'https://github.com/fandau1/kidscipher',
             },
             {
-              label: '📝 License (MIT)',
+              label: 'License (MIT)',
               href: 'https://github.com/fandau1/kidscipher/blob/main/LICENSE',
             },
           ],
@@ -164,11 +168,11 @@ const config: Config = {
           title: 'More',
           items: [
             {
-              label: '🐛 Report Issues',
+              label: 'Report Issues',
               href: 'https://github.com/fandau1/kidscipher/issues',
             },
             {
-              label: '✨ Request Features',
+              label: 'Request Features',
               href: 'https://github.com/fandau1/kidscipher/issues/new',
             },
           ],
