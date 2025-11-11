@@ -27,7 +27,9 @@ class ShiftRotorCipher extends SubstitutionCipher {
       for (let j = 0; j < rotors.length; j++) {
         const rotor = rotors[j];
 
-        toChar += rotor[(i + shifts[j]) % rotor.length];
+        const normalizedShiftedIndex =
+          (((i + shifts[j]) % rotor.length) + rotor.length) % rotor.length;
+        toChar += rotor[normalizedShiftedIndex];
       }
       encodeMap[fromChar] = toChar;
     }

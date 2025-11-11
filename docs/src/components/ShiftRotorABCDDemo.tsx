@@ -39,7 +39,9 @@ export default function ShiftAlphabetDemo() {
     <GenericCipherDemo
       schema={schema}
       createCipherInstance={(options) =>
-        options.shifts ? new ShiftRotorABCDCipher(options.shifts) : null
+        options.shifts
+          ? new ShiftRotorABCDCipher(options.shifts.map(Number))
+          : null
       }
     />
   );
