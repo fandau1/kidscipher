@@ -1,79 +1,58 @@
 import { CipherOptions } from '../../core/cipher-options/CipherOptions';
 import { withDefaultCipherOptions } from '../../core/cipher-options/CipherOptionsDefault';
-import Cipher, { CipherConfigurationsRecord } from '../Cipher';
+import { CipherConfigurationsRecord } from '../Cipher';
+import SubstitutionCipher from '../substitution/SubstitutionCipher';
 
-export type ShiftCipherOptions =
-  | CipherConfigurationsRecord
-  | {
-      shift: number;
-      outputAsIndex?: boolean; // output index instead of letter
-      inputAsIndex?: boolean; // interpret input as index instead of letter
-    };
-
-class ShiftCipher extends Cipher {
+class ShiftCipher extends SubstitutionCipher {
   private alphabet: string[];
+  private inputMode: 'letter' | 'index';
+  private outputMode: 'letter' | 'index';
 
-  constructor(alphabet: string[]) {
-    super();
+  constructor(
+    alphabet: string[],
+    shift: number,
+    inputMode: 'letter' | 'index' = 'letter',
+    outputMode: 'letter' | 'index' = 'letter',
+  ) {
+    let encodeMap: Record<string, string> = {};
+
+    for (let i = 0; i < alphabet.length; i++) {
+      let fromChar: string;
+      let toChar: string;
+
+      switch (inputMode) {
+        case 'index':
+          fromChar = i.toString();
+          break;
+        case 'letter':
+          fromChar = alphabet[i];
+          break;
+      }
+
+      const normalizedShiftedIndex =
+        (((i + shift) % alphabet.length) + alphabet.length) % alphabet.length;
+
+      switch (outputMode) {
+        case 'index':
+          toChar = normalizedShiftedIndex.toString();
+          break;
+        case 'letter':
+          toChar = alphabet[normalizedShiftedIndex];
+          break;
+      }
+
+      encodeMap[fromChar] = toChar;
+    }
+
+    super(encodeMap);
     this.alphabet = alphabet;
+    this.inputMode = inputMode;
+    this.outputMode = outputMode;
   }
 
-  encodeToken(token: string, configuration: ShiftCipherOptions): string {
-    const { shift, outputAsIndex, inputAsIndex } = configuration;
-
-    let index: number;
-
-    if (inputAsIndex) {
-      index = parseInt(token, 10);
-      if (isNaN(index) || index < 0 || index >= this.alphabet.length) {
-        return token; // invalid index
-      }
-    } else {
-      if (!this.alphabet.includes(token)) return ''; // invalid token
-      index = this.alphabet.indexOf(token);
-    }
-
-    const shiftedIndex = (index + shift) % this.alphabet.length;
-    return outputAsIndex
-      ? shiftedIndex.toString()
-      : this.alphabet[shiftedIndex];
-  }
-
-  decodeToken(token: string, configuration: ShiftCipherOptions): string {
-    const { shift, inputAsIndex, outputAsIndex } = configuration;
-
-    let index: number;
-
-    if (inputAsIndex) {
-      index = parseInt(token, 10);
-      if (isNaN(index) || index < 0 || index >= this.alphabet.length) {
-        return ''; // invalid index
-      }
-    } else {
-      if (!this.alphabet.includes(token)) return ''; // invalid token
-      index = this.alphabet.indexOf(token);
-    }
-
-    const shiftedIndex =
-      (index - shift + this.alphabet.length) % this.alphabet.length;
-    return outputAsIndex
-      ? shiftedIndex.toString()
-      : this.alphabet[shiftedIndex];
-  }
-
-  getAllTokenIndexes(token: string, shift: number): number[] {
-    if (!this.alphabet.includes(token)) return []; // invalid token
-    const indexes = this.alphabet.flatMap((ch, i) =>
-      ch === token
-        ? [(i - shift + this.alphabet.length) % this.alphabet.length]
-        : [],
-    );
-
-    return indexes;
-  }
   encode(
     input: string,
-    configuration?: ShiftCipherOptions,
+    configuration?: CipherConfigurationsRecord,
     opts?: CipherOptions,
   ): string {
     const mergedOpts = withDefaultCipherOptions(opts, {
@@ -86,7 +65,7 @@ class ShiftCipher extends Cipher {
 
   decode(
     input: string,
-    configuration?: ShiftCipherOptions,
+    configuration?: CipherConfigurationsRecord,
     opts?: CipherOptions,
   ): string {
     const mergedOpts = withDefaultCipherOptions(opts, {

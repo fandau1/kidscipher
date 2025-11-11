@@ -63,7 +63,7 @@ class ShiftRotorABCDCipher extends ShiftRotorCipher {
   static ROTOR_ALPHABETS = [
     ShiftRotorABCDCipher.generateRepeatRotorAlphabet(
       ShiftRotorABCDCipher.REPEAT_ALPHABET,
-      1,
+      9,
     ),
     ShiftRotorABCDCipher.generateRepeatRotorAlphabet(
       ShiftRotorABCDCipher.REPEAT_ALPHABET,
@@ -71,19 +71,19 @@ class ShiftRotorABCDCipher extends ShiftRotorCipher {
     ),
     ShiftRotorABCDCipher.generateRepeatRotorAlphabet(
       ShiftRotorABCDCipher.REPEAT_ALPHABET,
-      9,
+      1,
     ),
   ];
 
-  constructor() {
-    const rotors: ShiftCipher[] = [];
-    const baseAlphabet = new ShiftCipher(ShiftRotorABCDCipher.BASE_ALPHABET);
+  constructor(shifts: number[]) {
+    const rotors: string[][] = [];
+    const baseAlphabet = ShiftRotorABCDCipher.BASE_ALPHABET;
 
     for (let i = 0; i < ShiftRotorABCDCipher.ROTOR_ALPHABETS.length; i++) {
-      rotors.push(new ShiftCipher(ShiftRotorABCDCipher.ROTOR_ALPHABETS[i]));
+      rotors.push(ShiftRotorABCDCipher.ROTOR_ALPHABETS[i]);
     }
 
-    super(baseAlphabet, rotors);
+    super(baseAlphabet, rotors, shifts);
   }
 }
 

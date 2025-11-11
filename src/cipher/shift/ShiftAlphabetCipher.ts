@@ -41,8 +41,8 @@ class ShiftAlphabetCipher extends ShiftCipher {
     'Z',
   ];
 
-  constructor() {
-    super(ShiftAlphabetCipher.DEFAULT_ALPHABET);
+  constructor(shift: number = 1) {
+    super(ShiftAlphabetCipher.DEFAULT_ALPHABET, shift);
   }
 }
 

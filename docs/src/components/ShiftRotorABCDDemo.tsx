@@ -7,7 +7,7 @@ import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
 import { Schema } from './ArgumentForm/DynamicForm';
 
 const schema: Schema = {
-  cipher: {
+  constructorOptions: {
     type: 'object',
     fields: {
       shifts: { type: 'arrayFixed', size: 3, default: ['0', '0', '0'] },
@@ -38,7 +38,9 @@ export default function ShiftAlphabetDemo() {
   return (
     <GenericCipherDemo
       schema={schema}
-      createCipherInstance={() => new ShiftRotorABCDCipher()}
+      createCipherInstance={(options) =>
+        options.shifts ? new ShiftRotorABCDCipher(options.shifts) : null
+      }
     />
   );
 }
