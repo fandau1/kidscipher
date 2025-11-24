@@ -30,7 +30,6 @@ const config: Config = {
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-
   // Even if you don't use internationalization, you can use this field to set
   // useful metadata like html lang. For example, if your site is Chinese, you
   // may want to replace "en" with "zh-Hans".
@@ -70,6 +69,44 @@ const config: Config = {
         path: 'api', // složka ./api
         routeBasePath: 'api', // URL = /api
         sidebarPath: require.resolve('./sidebarsApi.ts'),
+      },
+    ],
+    [
+      '@docusaurus/plugin-pwa',
+      {
+        debug: false,
+        offlineModeActivationStrategies: [
+          'appInstalled',
+          'standalone',
+          'queryString',
+        ],
+        // Rozšířená offline podpora
+        injectManifestConfig: {
+          globPatterns: ['**/*.{json,pdf,html,css,js,png,svg,jpg,jpeg,gif,webp,woff,woff2}'],
+        },
+        pwaHead: [
+          {
+            tagName: 'link',
+            rel: 'manifest',
+            href: '/kidscipher/manifest.json',
+          },
+          { tagName: 'meta', name: 'theme-color', content: '#2e8555' },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-capable',
+            content: 'yes',
+          },
+          {
+            tagName: 'meta',
+            name: 'apple-mobile-web-app-status-bar-style',
+            content: '#2e8555',
+          },
+          {
+            tagName: 'link',
+            rel: 'apple-touch-icon',
+            href: '/kidscipher/img/logo-kidscipher-square.png',
+          },
+        ],
       },
     ],
   ],

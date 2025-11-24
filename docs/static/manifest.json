@@ -1,0 +1,47 @@
+{
+  "name": "Kidscipher - Educational Cipher Library",
+  "short_name": "Kidscipher",
+  "start_url": "/kidscipher/?source=pwa",
+  "scope": "/kidscipher/",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#2e8555",
+  "description": "Educational cipher library for encoding and decoding fun cryptographic messages. Works offline!",
+  "orientation": "any",
+  "categories": ["education", "utilities"],
+  "icons": [
+    {
+      "src": "/kidscipher/img/logo-kidscipher-square.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [],
+  "shortcuts": [
+    {
+      "name": "Ciphers",
+      "short_name": "Ciphers",
+      "description": "Browse cipher types",
+      "url": "/kidscipher/cipher/intro",
+      "icons": [
+        {
+          "src": "/kidscipher/img/logo-kidscipher-square.png",
+          "sizes": "512x512"
+        }
+      ]
+    },
+    {
+      "name": "API Docs",
+      "short_name": "API",
+      "description": "API documentation",
+      "url": "/kidscipher/api/intro",
+      "icons": [
+        {
+          "src": "/kidscipher/img/logo-kidscipher-square.png",
+          "sizes": "512x512"
+        }
+      ]
+    }
+  ]
+}
