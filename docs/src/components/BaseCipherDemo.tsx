@@ -70,15 +70,39 @@ export default function BaseCipherDemo({
   return (
     <div style={{ marginTop: '1.5rem' }}>
       {/* Mode switcher */}
-      <div className={styles.modeSwitcher}>
-        <span className={styles.modeLabel}>
-          Mode:{' '}
-          <span className={styles.modeValue}>
-            {mode === 'encode' ? 'Encoding' : 'Decoding'}
-          </span>
-        </span>
-        <button onClick={handleSwitchMode} className={styles.switchButton}>
-          🔁 Switch Mode
+      {/* Mode switcher - Translator style */}
+      <div className={styles.modeSelector}>
+        <button
+          className={`${styles.modeButton} ${mode === 'encode' ? styles.modeButtonActive : ''}`}
+          onClick={() => {
+            if (mode === 'decode') handleSwitchMode();
+          }}
+        >
+          Encode
+        </button>
+        <button
+          className={styles.swapButton}
+          onClick={handleSwitchMode}
+          title="Swap encode/decode"
+        >
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            strokeWidth="2"
+          >
+            <path d="M7 16V4M7 4L3 8M7 4L11 8M17 8V20M17 20L21 16M17 20L13 16" />
+          </svg>
+        </button>
+        <button
+          className={`${styles.modeButton} ${mode === 'decode' ? styles.modeButtonActive : ''}`}
+          onClick={() => {
+            if (mode === 'encode') handleSwitchMode();
+          }}
+        >
+          Decode
         </button>
       </div>
 
@@ -104,7 +128,6 @@ export default function BaseCipherDemo({
           </label>
           <textarea
             value={output}
-            readOnly
             placeholder="Result will appear here..."
             className={`${styles.ioTextarea} ${mode === 'encode' ? styles.cipherFont : ''}`}
           />

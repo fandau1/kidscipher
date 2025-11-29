@@ -1,246 +1,366 @@
-/* ============================================
-   HERO SECTION
-   ============================================ */
-
+/* Hero Banner */
 .heroBanner {
+  padding: 4rem 0;
   text-align: center;
-  padding: 5rem 2rem;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  background: linear-gradient(
+    135deg,
+    var(--ifm-color-primary) 0%,
+    var(--ifm-color-primary-dark) 100%
+  );
+  color: var(--ifm-color-content-inverse);
 }
-
-[data-theme='dark'] .heroBanner {
-  background: linear-gradient(135deg, #4338ca, #6366f1);
-}
-
-.heroBanner h1,
-.heroBanner p {
-  color: white;
-}
-
-.heroBanner h1 {
-  font-size: 3rem;
-  font-weight: 800;
-  margin-bottom: 1rem;
-}
-
-.heroBanner p {
-  font-size: 1.3rem;
-  margin-bottom: 2rem;
-}
-
-/* ============================================
-   BUTTONS
-   ============================================ */
 
 .buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
+  align-items: center;
   justify-content: center;
+  gap: 1rem;
   margin-top: 2rem;
+  flex-wrap: wrap;
 }
 
-.buttons .button {
-  min-width: 150px;
-}
-
-/* ============================================
-   FEATURES SECTION
-   ============================================ */
-
-.features {
-  padding: 4rem 2rem;
-}
-
-.features h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 3rem;
-  color: var(--ifm-color-primary);
-}
-
-.features .row {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.featureCard {
-  background: var(--ifm-background-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 0.5rem;
+/* Demo Container */
+.demoContainer {
+  margin: 2rem auto;
   padding: 2rem;
-  height: 100%;
-  transition: all 0.2s;
-}
-
-.featureCard:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  border-color: var(--ifm-color-primary);
-}
-
-[data-theme='dark'] .featureCard {
   background: var(--ifm-background-surface-color);
-  border-color: var(--ifm-color-emphasis-300);
+  border-radius: 16px;
+  box-shadow: var(--ifm-shadow-md);
+  max-width: 900px;
 }
 
-[data-theme='dark'] .featureCard:hover {
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+/* Cipher Selector */
+.cipherSelector {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  background: var(--ifm-color-emphasis-200);
+  border-radius: 12px;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
-.featureCard h3 {
+.cipherButton {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.375rem;
+  padding: 0.75rem 1rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ifm-color-emphasis-600);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: 80px;
+}
+
+.cipherButton:hover {
+  background: var(--ifm-color-emphasis-300);
+  color: var(--ifm-color-content);
+}
+
+.cipherButtonActive {
+  background: var(--ifm-background-surface-color);
+  color: var(--ifm-color-primary);
+  box-shadow: var(--ifm-shadow-sm);
+}
+
+.cipherIcon {
   font-size: 1.5rem;
-  margin-bottom: 1rem;
-  color: var(--ifm-heading-color);
+  line-height: 1;
 }
 
-.featureCard p {
-  color: var(--ifm-color-emphasis-700);
+.cipherName {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.025em;
+}
+
+/* Section Headers */
+.sectionHeader {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.sectionHeader h2 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: 700;
+}
+
+.sectionSubtitle {
+  font-size: 1.125rem;
+  color: var(--ifm-color-emphasis-600);
+}
+
+/* Sections */
+.apiSection,
+.cipherTypesSection {
+  padding: 5rem 0;
+  background: var(--ifm-color-emphasis-100);
+}
+
+.fontSection {
+  padding: 5rem 0;
+  background: var(--ifm-background-surface-color);
+}
+
+/* API Content */
+.apiContent {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+.apiFeatures {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.featureItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.featureIcon {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.featureItem h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
   margin: 0;
 }
 
-/* ============================================
-   CIPHER SHOWCASE SECTION
-   ============================================ */
-
-.cipherShowcase {
-  padding: 4rem 2rem;
-  background: var(--ifm-background-surface-color);
-}
-
-[data-theme='dark'] .cipherShowcase {
-  background: var(--ifm-background-color);
-}
-
-.cipherShowcase h2 {
-  text-align: center;
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--ifm-color-primary);
-}
-
-.cipherShowcase p {
-  text-align: center;
-  font-size: 1.2rem;
+.featureItem p {
   color: var(--ifm-color-emphasis-700);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Code Showcase */
+.codeShowcase {
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--ifm-shadow-lg);
+}
+
+.codeHeader {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 1rem 1.25rem;
+  background: #2d2d2d;
+  border-bottom: 1px solid #3d3d3d;
+}
+
+.codeDot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #ff5f56;
+}
+
+.codeDot:nth-child(2) {
+  background: #ffbd2e;
+}
+
+.codeDot:nth-child(3) {
+  background: #27c93f;
+}
+
+.codeTitle {
+  margin-left: auto;
+  color: #8b8b8b;
+  font-size: 0.875rem;
+  font-family: 'SF Mono', 'Monaco', 'Consolas', monospace;
+}
+
+/* Override CodeBlock styles */
+.codeShowcase :global(.theme-code-block) {
+  margin: 0;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.codeShowcase :global(.prism-code) {
+  border-radius: 0;
+}
+
+/* Font Showcase */
+.fontShowcase {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.fontDescription {
+  text-align: center;
+  font-size: 1.125rem;
+  color: var(--ifm-color-emphasis-700);
+  line-height: 1.7;
   margin-bottom: 3rem;
+}
+
+.fontExamples {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2rem;
+}
+
+.fontExample {
+  padding: 2rem;
+  background: var(--ifm-color-emphasis-100);
+  border-radius: 12px;
+  border: 2px solid var(--ifm-color-emphasis-200);
+  transition: all 0.3s ease;
+}
+
+.fontExample:hover {
+  border-color: var(--ifm-color-primary);
+  box-shadow: 0 4px 12px rgba(26, 115, 232, 0.15);
+  transform: translateY(-2px);
+}
+
+.fontLabel {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-600);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 1rem;
+}
+
+.fontDisplay {
+  font-size: 1.5rem;
+  letter-spacing: 0.1em;
+  word-break: break-all;
+  line-height: 1.8;
+}
+
+/* Cipher Types */
+.cipherTypesGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-bottom: 3rem;
+}
+
+.cipherTypeCard {
+  background: var(--ifm-background-surface-color);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: var(--ifm-shadow-sm);
+  transition: box-shadow 0.3s ease;
+}
+
+.cipherTypeCard:hover {
+  box-shadow: var(--ifm-shadow-lg);
+}
+
+.cipherTypeCategory {
+  font-size: 1.125rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.cipherTypeList {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.cipherTypeList li {
+  padding: 0.5rem 0;
+  color: var(--ifm-color-emphasis-700);
+  font-size: 0.9375rem;
+  position: relative;
+  padding-left: 1.5rem;
+}
+
+.cipherTypeList li::before {
+  content: '→';
+  position: absolute;
+  left: 0;
+  color: var(--ifm-color-primary);
+  font-weight: bold;
+}
+
+.cipherTypesFooter {
+  text-align: center;
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 2px solid var(--ifm-color-emphasis-200);
+}
+
+.cipherTypesFooter p {
+  font-size: 1.125rem;
+  color: var(--ifm-color-emphasis-600);
+  margin-bottom: 2rem;
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
 }
 
-.cipherGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 1.5rem;
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
-.cipherItem {
-  background: var(--ifm-background-color);
-  border: 1px solid var(--ifm-color-emphasis-300);
-  border-radius: 0.5rem;
-  padding: 1.5rem;
-  transition: all 0.2s;
-}
-
-.cipherItem:hover {
-  transform: scale(1.03);
-  border-color: var(--ifm-color-primary);
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
-}
-
-[data-theme='dark'] .cipherItem {
-  background: var(--ifm-background-surface-color);
-}
-
-[data-theme='dark'] .cipherItem:hover {
-  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
-}
-
-.cipherItem h4 {
-  color: var(--ifm-color-primary);
-  margin-bottom: 0.5rem;
-  font-size: 1.2rem;
-}
-
-.cipherItem p {
-  font-size: 0.95rem;
-  color: var(--ifm-color-emphasis-600);
-  margin: 0;
-}
-
-/* ============================================
-   CTA SECTION
-   ============================================ */
-
-.ctaSection {
-  padding: 4rem 2rem;
-  text-align: center;
-  background: linear-gradient(135deg, #6366f1, #8b5cf6);
-  color: white;
-}
-
-[data-theme='dark'] .ctaSection {
-  background: linear-gradient(135deg, #4338ca, #6366f1);
-}
-
-.ctaSection h2 {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.ctaSection p {
-  font-size: 1.2rem;
-  margin-bottom: 2rem;
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.ctaSection .button {
-  background: white;
-  color: var(--ifm-color-primary);
-  font-weight: 700;
-}
-
-.ctaSection .button:hover {
-  background: rgba(255, 255, 255, 0.9);
-  transform: translateY(-2px);
-}
-
-/* ============================================
-   RESPONSIVE
-   ============================================ */
-
-@media screen and (max-width: 768px) {
-  .heroBanner {
-    padding: 3rem 1rem;
-  }
-
-  .heroBanner h1 {
-    font-size: 2rem;
-  }
-
-  .heroBanner p {
-    font-size: 1.1rem;
-  }
-
-  .features,
-  .cipherShowcase,
-  .ctaSection {
-    padding: 3rem 1rem;
-  }
-
-  .features h2,
-  .cipherShowcase h2,
-  .ctaSection h2 {
-    font-size: 2rem;
-  }
-
-  .cipherGrid {
+/* Responsive Design */
+@media (max-width: 996px) {
+  .apiContent,
+  .fontExamples {
     grid-template-columns: 1fr;
+  }
+
+  .cipherTypesGrid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .heroBanner {
+    padding: 3rem 0;
+  }
+
+  .demoContainer {
+    padding: 1.5rem 1rem;
+  }
+
+  .cipherSelector {
+    gap: 0.375rem;
+    padding: 0.375rem;
+  }
+
+  .cipherButton {
+    padding: 0.625rem 0.75rem;
+    min-width: 70px;
+  }
+
+  .cipherIcon {
+    font-size: 1.25rem;
+  }
+
+  .cipherName {
+    font-size: 0.7rem;
+  }
+
+  .sectionHeader h2 {
+    font-size: 2rem;
+  }
+
+  .apiSection,
+  .fontSection,
+  .cipherTypesSection {
+    padding: 3rem 0;
+  }
+
+  .fontDisplay {
+    font-size: 1.25rem;
   }
 }

@@ -359,6 +359,76 @@
   border-left: 4px solid var(--ifm-color-danger);
 }
 
+/* Modern translator-style mode selector */
+.modeSelector {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-bottom: 2rem;
+  padding: 0.5rem;
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 12px;
+  max-width: 320px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.modeButton {
+  flex: 1;
+  padding: 0.625rem 1.5rem;
+  border: none;
+  background: transparent;
+  color: #666;
+  font-weight: 500;
+  font-size: 0.9375rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  position: relative;
+}
+
+.modeButton:hover {
+  color: #333;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.modeButtonActive {
+  background: white;
+  color: #1a73e8;
+  box-shadow:
+    0 1px 3px rgba(0, 0, 0, 0.1),
+    0 1px 2px rgba(0, 0, 0, 0.06);
+}
+
+.modeButtonActive:hover {
+  background: white;
+  color: #1a73e8;
+}
+
+.swapButton {
+  padding: 0.5rem;
+  border: none;
+  background: transparent;
+  color: #666;
+  cursor: pointer;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.swapButton:hover {
+  background: rgba(0, 0, 0, 0.05);
+  color: #1a73e8;
+  transform: rotate(180deg);
+}
+
+.swapButton:active {
+  transform: rotate(180deg) scale(0.95);
+}
+
 /* Responsive Design */
 @media screen and (max-width: 1200px) {
   .optionsGrid {
@@ -409,4 +479,3 @@
     grid-template-columns: 1fr;
   }
 }
-

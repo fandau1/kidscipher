@@ -82,7 +82,9 @@ const config: Config = {
         ],
         // Rozšířená offline podpora
         injectManifestConfig: {
-          globPatterns: ['**/*.{json,pdf,html,css,js,png,svg,jpg,jpeg,gif,webp,woff,woff2}'],
+          globPatterns: [
+            '**/*.{json,pdf,html,css,js,png,svg,jpg,jpeg,gif,webp,woff,woff2}',
+          ],
         },
         pwaHead: [
           {
@@ -139,14 +141,14 @@ const config: Config = {
           sidebarId: 'cipherSidebar',
           docsPluginId: 'cipher',
           position: 'left',
-          label: '🔐 Ciphers',
+          label: 'Ciphers',
         },
         {
           type: 'docSidebar',
           sidebarId: 'apiSidebar',
           docsPluginId: 'api',
           position: 'left',
-          label: '📚 API',
+          label: 'API',
         },
         {
           type: 'search',
