@@ -1,0 +1,70 @@
+---
+title: Mobile
+sidebar_position: 6
+hide_table_of_contents: true
+---
+
+import { MobileCipher } from '../../../dist/index.esm';
+import MobileCipherDemo from '@site/src/components/MobileCipherDemo';
+
+export const cipher = new MobileCipher();
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+# Mobile Cipher
+
+The **Mobile Cipher** lets you write messages using old-school mobile keypad codes. On old mobile phones (before smartphones), you had to press number keys multiple times to type letters. Each number key had 3-4 letters assigned to it.
+
+<div style={{ textAlign: 'center' }}>
+  <img
+    src="/kidscipher/img/cipher/telephone-keypad.svg"
+    alt="Telephone T9 keypad"
+    style={{ width: '220px', height: 'auto' }}
+  />
+  <p style={{ fontSize: '0.9rem', color: '#666' }}>
+    A classic telephone keypad layout used for T9-style encoding. Source:
+    [Wikipedia](https://it.wikipedia.org/wiki/T9)
+  </p>
+</div>
+
+---
+
+## Encoding
+
+To encode a message, find each letter on the keypad and write down the key number repeated by how many times you'd need to press it.
+
+- **H** → Press key **4** twice → `44`
+- **E** → Press key **3** twice → `33`
+- **L** → Press key **5** three times → `555`
+- **O** → Press key **6** three times → `666`
+- **Space** → Press key **1** once → `1`
+
+So "HELLO WORLD" becomes a series of number presses like you'd make on an old phone!
+
+## Decoding
+
+To decode, group the numbers and convert each group back to its corresponding letter:
+
+1. Split the encoded message into groups of the same digit
+2. Count how many times each digit repeats
+3. Look up which letter that combination represents
+
+## Example:
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+The decoder figures out that `44` means the 2nd letter on key 4 (which is H), `33` means the 2nd letter on key 3 (which is E), and so on!
+
+#### Learn More
+
+- [T9 (predictive text) on Wikipedia](<https://en.wikipedia.org/wiki/T9_(predictive_text)>)
+- [Sifry Beil](https://sifry.sourceforge.net/abc_mobil.html)
+
+## Demo
+
+<MobileCipherDemo />

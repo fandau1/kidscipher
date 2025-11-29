@@ -1,0 +1,66 @@
+---
+title: Spider
+sidebar_position: 8
+hide_table_of_contents: true
+---
+
+import { SpiderCipher } from '../../../dist/index.esm';
+import SpiderCipherDemo from '@site/src/components/SpiderCipherDemo';
+
+export const cipher = new SpiderCipher();
+export const exampleInput = 'HELLO KENNY';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+# Spider Cipher
+
+The **Spider Cipher** encodes text using a method inspired by classic **bifid/polybius** techniques and the concept of a **spider web**. Each letter is replaced by a pair of letters according to its position in a predefined grid.
+
+Limitation is the alphabet does not contain letters: `Q` and `W`
+
+<div style={{ textAlign: 'center' }}>
+  <img
+    src="/kidscipher/img/cipher/spider-cipher.png"
+    alt="Spider cipher"
+    style={{ width: '220px', height: 'auto' }}
+  />
+  <p style={{ fontSize: '0.9rem', color: '#666' }}>
+    Spider cipher tool. Source:
+    [Zoubek](https://www.zoubek.cz/homepage/sifry/index.html)
+  </p>
+</div>
+
+---
+
+## Encoding
+
+To encode a message, each letter is looked up in the spider web grid and replaced with its corresponding letter pair. When a letter has multiple possible pairs, they cycle through on each use.
+
+- `A → BC / JX / DG`
+- `B → AC / FX / EH`
+
+## Decoding
+
+To decode, the process is reversed:
+
+1. Split the encoded message into pairs of letters
+2. Look up each pair in the spider web grid
+3. Replace each pair with its corresponding original letter
+
+## Example
+
+**Encoded:** <code>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+The decoder figures out which original letter each pair represents by consulting the spider web mapping!
+
+#### Learn More
+
+- [Spider Cipher on Wikipedia](https://en.wikipedia.org/wiki/Bifid_cipher)
+- [Polybius Square](https://en.wikipedia.org/wiki/Polybius_square)
+- [Sifry Beil](https://sifry.sourceforge.net/abc_spider.html)
+
+## Demo
+
+<SpiderCipherDemo />

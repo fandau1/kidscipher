@@ -53,7 +53,7 @@ class MobileCipher extends SubstitutionCipher {
       output: {
         casing: 'original',
         letterSeparator: ' ',
-        wordSeparator: ' | ',
+        wordSeparator: ' 1 ',
       },
     });
 
@@ -69,7 +69,7 @@ class MobileCipher extends SubstitutionCipher {
       input: {
         caseSensitive: false,
         letterSeparator: ' ',
-        wordSeparator: ' | ',
+        wordSeparator: ' 1 ',
       },
       output: {
         casing: 'lower',

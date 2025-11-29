@@ -18,6 +18,12 @@ import CodeBlock from '@theme/CodeBlock';
 
 const DEMO_CIPHERS = [
   {
+    id: 'cross_poland',
+    name: 'Poland Cross',
+    icon: '',
+    cipher: new PolandCrossCipher(),
+  },
+  {
     id: 'morse',
     name: 'Morse Code',
     icon: '',
@@ -31,12 +37,6 @@ const DEMO_CIPHERS = [
   },
   { id: 'chinese', name: 'Chinese', icon: '', cipher: new ChineseCipher() },
   { id: 'mobile', name: 'Mobile', icon: '', cipher: new MobileCipher() },
-  {
-    id: 'cross_poland',
-    name: 'Poland Cross',
-    icon: '',
-    cipher: new PolandCrossCipher(),
-  },
 ];
 const CODE_EXAMPLE = `import { ShiftCipher, MorseCodeCipher } from 'kidscipher';
 

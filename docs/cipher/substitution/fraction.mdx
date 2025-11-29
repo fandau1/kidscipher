@@ -1,0 +1,76 @@
+---
+title: Fraction
+sidebar_position: 5
+hide_table_of_contents: true
+---
+
+import { FractionCipher } from '../../../dist/index.esm';
+import FractionCipherDemo from '@site/src/components/FractionCipherDemo';
+import GlyphAlphabetRender from '@site/src/components/GlyphAlphabetRender';
+
+export const cipher = new FractionCipher();
+export const exampleInput = 'HELLO';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+# Fraction Cipher
+
+The **Fraction Cipher** encodes text using **mathematical fractions**, where each letter is replaced by a specific fraction representation. This creates a unique visual encoding that looks like mathematical notation.
+
+Limitation is the alphabet does not contain letter: `W`
+
+<div style={{ textAlign: 'center' }}>
+  <img
+    src="/kidscipher/img/cipher/fractions.png"
+    alt="Fraction tool"
+    style={{ width: '560px', height: 'auto' }}
+  />
+  <p style={{ fontSize: '0.9rem', color: '#666' }}>
+    Fraction encode/decode tool
+  </p>
+</div>
+
+---
+
+## Encoding
+
+To encode a message, each letter is replaced with its corresponding fraction symbol from the alphabet table below.
+
+- **H** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('H')}</code>
+- **E** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('E')}</code>
+- **L** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('L')}</code>
+- **O** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('O')}</code>
+
+## Decoding
+
+To decode, replace each fraction symbol back to its corresponding letter:
+
+1. Identify each fraction symbol in the encoded message
+2. Look up which letter that fraction represents in the alphabet table
+3. Replace the fraction with its corresponding letter
+
+## Example
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+The decoder figures out that each fraction symbol maps back to its original letter based on the predefined alphabet mapping!
+
+---
+
+## Alphabet Table
+
+{(() => {
+return <GlyphAlphabetRender map={FractionCipher.FRACTION_MAP} />;
+})()}
+
+#### Learn More
+
+- [Fractions from Sifry Beil](https://sifry.sourceforge.net/abc_zlomky.html)
+
+## Demo
+
+<FractionCipherDemo />
