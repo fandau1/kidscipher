@@ -4,48 +4,71 @@ sidebar_position: 7
 hide_table_of_contents: true
 ---
 
-# Morse Code Cipher
-
-The `MorseCodeCipher` is part of the Kidscipher library.  
-It allows encoding and decoding messages using **Morse code**, a method of transmitting text using sequences of dots (`.`) and dashes (`-`) to represent letters and numbers.
-
-Morse code was originally developed for telegraph communication and is still used for learning, puzzles, and fun ciphers today.
-
-## How It Works
-
-Each letter, number, and some punctuation marks have a unique sequence of dots and dashes. Words are separated by slashes (`/`) or spaces, depending on the implementation.
-
-For example, the word `HELLO` is encoded as:
-
-```
-
-...././.-../.-../---///.--/---/.-./.-../-..
-
-```
-
----
-
-## Morse Code Table
-
-| Letter | Morse | Letter | Morse | Number | Morse |
-| ------ | ----- | ------ | ----- | ------ | ----- |
-| A      | .-    | N      | -.    | 0      | ----- |
-| B      | -...  | O      | ---   | 1      | .---- |
-| C      | -.-.  | P      | .--.  | 2      | ..--- |
-| D      | -..   | Q      | --.-  | 3      | ...-- |
-| E      | .     | R      | .-.   | 4      | ....- |
-| F      | ..-.  | S      | ...   | 5      | ..... |
-| G      | --.   | T      | -     | 6      | -.... |
-| H      | ....  | U      | ..-   | 7      | --... |
-| I      | ..    | V      | ...-  | 8      | ---.. |
-| J      | .---  | W      | .--   | 9      | ----. |
-| K      | -.-   | X      | -..-  |        |       |
-| L      | .-..  | Y      | -.--  |        |       |
-| M      | --    | Z      | --..  |        |       |
-
----
-
+import { MorseCodeCipher } from '../../../dist/index.esm';
 import MorseCodeDemo from '@site/src/components/MorseCodeDemo';
 
+export const cipher = new MorseCodeCipher();
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+# Morse Code
+
+**Morse Code** lets you write messages using sequences of dots (`.`) and dashes (`-`) to represent letters and numbers. Originally developed for telegraph communication, it's still used for learning, puzzles, and fun ciphers today.
+
+<div style={{ textAlign: 'center' }}>
+  <img
+    src="/kidscipher/img/cipher/morsecode.png"
+    alt="Morse Code table"
+    style={{ width: '800px', height: 'auto' }}
+  />
+  <p style={{ fontSize: '0.9rem', color: '#666' }}>
+    Morse Code table showing dots and dashes for each letter
+  </p>
+</div>
+
+## History
+
+Samuel Morse was originally a portrait painter who became interested in telegraphy during a ship voyage from Europe in 1832. Together with his friend Alfred Vail, he developed the system of dots and dashes in 1838 that became known throughout the world as the Morse Code.
+
+On May 24, 1844, Morse sent his first telegraph message from Washington, D.C., to Baltimore, Maryland with the historic words: "What hath God wrought!" The telegraph system quickly spread across America and the world, becoming the primary method of long-distance communication for decades.
+
+Morse code was used as an international standard for maritime distress until 1999 when it was replaced by the Global Maritime Distress and Safety System. While it's no longer used for commercial communication, Morse code remains popular for learning, amateur radio, and fun ciphers today!
+
+---
+
+## Encoding
+
+To encode a message, convert each letter to its corresponding sequence of dots and dashes. Each letter, number, and some punctuation marks have a unique pattern.
+
+- **H** → `....`
+- **E** → `.`
+- **L** → `.-..`
+- **O** → `---`
+- **Space** → `/` (words are separated by slashes)
+
+So "HELLO WORLD" becomes a series of dots and dashes representing each letter!
+
+## Decoding
+
+To decode, split the message by spaces and convert each pattern back to its corresponding letter:
+
+1. Separate the encoded message into individual letter patterns
+2. Look up which letter each dot-dash pattern represents
+3. Combine the letters to form words (slashes indicate spaces)
+
+## Example:
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+#### Learn More
+
+- [Morse Code on Wikipedia](https://en.wikipedia.org/wiki/Morse_code)
+
+## Demo
+
 <MorseCodeDemo />
-```
