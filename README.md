@@ -36,10 +36,11 @@ The font allows you to render encoded text as graphical symbols (necesary only f
 
 ### Supported Ciphers
 
-- ✅ Shift Cipher
-  - ✅ Shift Alphabet
-  - ✅ ABCD Shift 3-rotor
-- ✅ Substitution Cipher
+- Substitution Cipher
+  - ✅ Shift Cipher
+    - ✅ Shift Alphabet
+    - ✅ ABCD Shift 3-rotor
+    - ❌ Atbash
   - ✅ MorseCode
   - ✅ Poland Cross (need font)
   - ✅ Hebrew Cross (need font)
@@ -47,23 +48,30 @@ The font allows you to render encoded text as graphical symbols (necesary only f
   - ✅ Different Cross (need font)
   - ✅ Mobile
   - ✅ Chess
-  - ✅ Cipher table
+  - ✅ Cipher table - ADFGVX/ADFGX
   - ✅ Fractions (need font)
-- ✅ Spider-Net Cipher
-- ✅ Chinese Cipher (need font)
-
-🔄 - implemented, but not showcased in docs
-
-## Aditional cipher which can be in future implemented
-
-- Playfair cipher
+  - ✅ Spider-Net Cipher
+  - ✅ Chinese Cipher (need font)
+  - ❌ Playfair
+  - ❌ Vigenere
+  - ❌ Binary
+  - ❌ Brail
+  - ❌ Sign Language
+  - ❌ Semaphore Flag
 - Trasposition ciphers
-  - Route cipher (Hadovka)
-  - Rail fence
-  - Scytale
-- Atbash
-- Vigenere cipher
--
+  - ❌ Route cipher (Hadovka)
+  - ❌ Reverse Text
+  - ❌ Word Reversal Cipher
+  - ❌ Rail fence
+  - ❌ Scytale
+  - ❌ Anagram Cipher
+- Steganography ciphers
+  - Null Cipher
+    - ❌ Case Steganography
+
+> ✅ - implemented and showcased in docs
+> 🔄 - implemented, but not showcased in docs
+> ❌ - not implemented
 
 ## Development
 
