@@ -24,14 +24,6 @@
 }
 
 @media screen and (max-width: 996px) {
-  .ioSection {
-    grid-template-columns: 1fr;
-  }
-
-  .demoContainer {
-    padding: 1rem;
-  }
-
   .formSection {
     padding: 0.75rem;
   }
