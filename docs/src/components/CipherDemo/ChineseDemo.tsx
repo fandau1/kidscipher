@@ -1,7 +1,7 @@
-import { Schema } from './ArgumentForm/DynamicForm';
-import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
-import GenericCipherDemo from './GenericCipherDemo';
-import { SmallCrossCipher } from '../../../dist/index.esm';
+import { ChineseCipher } from '../../../../dist/index.esm';
+import { Schema } from '../ArgumentForm/DynamicForm';
+import { withDefaultEncodeDecode } from '../ArgumentForm/DefaultFormOptions';
+import GenericCipherDemo from './base/GenericCipherDemo';
 
 const schema: Schema = {
   encode: withDefaultEncodeDecode({
@@ -24,11 +24,11 @@ const schema: Schema = {
   }),
 };
 
-export default function SmallCrossDemo() {
+export default function ChineseDemo() {
   return (
     <GenericCipherDemo
       schema={schema}
-      createCipherInstance={() => new SmallCrossCipher()}
+      createCipherInstance={() => new ChineseCipher()}
     />
   );
 }

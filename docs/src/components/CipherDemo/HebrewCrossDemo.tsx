@@ -1,7 +1,7 @@
-import { HebrewCrossCipher } from '../../../dist/index.esm';
-import { Schema } from './ArgumentForm/DynamicForm';
-import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
-import GenericCipherDemo from './GenericCipherDemo';
+import { HebrewCrossCipher } from '../../../../dist/index.esm';
+import { Schema } from '../ArgumentForm/DynamicForm';
+import { withDefaultEncodeDecode } from '../ArgumentForm/DefaultFormOptions';
+import GenericCipherDemo from './base/GenericCipherDemo';
 
 const schema: Schema = {
   encode: withDefaultEncodeDecode({

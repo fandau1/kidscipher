@@ -1,11 +1,11 @@
 import React, { useEffect, useState, useRef } from 'react';
-import { ArrayField } from './FormFIeld/ArrayField';
-import { ArrayFixedField } from './FormFIeld/ArrayFixedField';
-import { EnumField } from './FormFIeld/EnumField';
-import { NumberField } from './FormFIeld/NumberField';
-import { StringField } from './FormFIeld/StringField';
-import { BooleanField } from './FormFIeld/BooleanField';
-import styles from '../CipherDemo.module.css';
+import { ArrayField } from './FormField/ArrayField';
+import { ArrayFixedField } from './FormField/ArrayFixedField';
+import { EnumField } from './FormField/EnumField';
+import { NumberField } from './FormField/NumberField';
+import { StringField } from './FormField/StringField';
+import { BooleanField } from './FormField/BooleanField';
+import styles from './DynamicForm.module.css';
 
 export type FieldSchema =
   | { type: 'string'; default?: string }
@@ -165,7 +165,11 @@ export const DynamicForm: React.FC<DynamicFormProps> = ({
         );
       case 'object':
         return (
-          <div key={key} className={styles.formSection} style={{ marginTop: '1rem' }}>
+          <div
+            key={key}
+            className={styles.formSection}
+            style={{ marginTop: '1rem' }}
+          >
             <h4 className={styles.subsectionTitle}>{key}</h4>
             <DynamicForm
               schema={field.fields}

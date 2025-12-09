@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from '../../CipherDemo.module.css';
+import styles from '../FormField.module.css';
 
 interface StringFieldProps {
   label: string;

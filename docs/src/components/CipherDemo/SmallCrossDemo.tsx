@@ -1,7 +1,7 @@
-import { FractionCipher } from '../../../dist/index.esm';
-import { Schema } from './ArgumentForm/DynamicForm';
-import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
-import GenericCipherDemo from './GenericCipherDemo';
+import { Schema } from '../ArgumentForm/DynamicForm';
+import { withDefaultEncodeDecode } from '../ArgumentForm/DefaultFormOptions';
+import GenericCipherDemo from './base/GenericCipherDemo';
+import { SmallCrossCipher } from '../../../../dist/index.esm';
 
 const schema: Schema = {
   encode: withDefaultEncodeDecode({
@@ -24,11 +24,11 @@ const schema: Schema = {
   }),
 };
 
-export default function FractionDemo() {
+export default function SmallCrossDemo() {
   return (
     <GenericCipherDemo
       schema={schema}
-      createCipherInstance={() => new FractionCipher()}
+      createCipherInstance={() => new SmallCrossCipher()}
     />
   );
 }

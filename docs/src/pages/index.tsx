@@ -4,7 +4,7 @@ import clsx from 'clsx';
 import Layout from '@theme/Layout';
 import Link from '@docusaurus/Link';
 import styles from '../css/index.module.css';
-import BaseCipherDemo from '../components/BaseCipherDemo';
+import BaseCipherDemo from '../components/CipherDemo/base/BaseCipherDemo';
 import {
   ChineseCipher,
   FractionCipher,

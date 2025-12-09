@@ -1,0 +1,53 @@
+/* Form Section */
+.formSection {
+  background: var(--ifm-background-surface-color);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 0.5rem;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  max-width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+[data-theme='dark'] .formSection {
+  background: var(--ifm-color-emphasis-100);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+/* Form Grid Layout - kompaktní grid pro krátké hodnoty */
+.formGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 0.75rem;
+  width: 100%;
+}
+
+@media screen and (max-width: 996px) {
+  .ioSection {
+    grid-template-columns: 1fr;
+  }
+
+  .demoContainer {
+    padding: 1rem;
+  }
+
+  .formSection {
+    padding: 0.75rem;
+  }
+
+  .formGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+
+  .formGridSmall {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .formGrid,
+  .formGridSmall {
+    grid-template-columns: 1fr;
+  }
+}

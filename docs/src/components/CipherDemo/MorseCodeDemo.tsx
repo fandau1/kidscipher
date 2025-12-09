@@ -1,9 +1,7 @@
-import { useState, useMemo } from 'react';
-import { MorseCodeCipher, ShiftAlphabetCipher } from '../../../dist/index.esm';
-import BaseCipherDemo from './BaseCipherDemo';
-import { Schema, DynamicForm } from './ArgumentForm/DynamicForm';
-import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
-import GenericCipherDemo from './GenericCipherDemo';
+import { MorseCodeCipher } from '../../../../dist/index.esm';
+import { Schema } from '../ArgumentForm/DynamicForm';
+import { withDefaultEncodeDecode } from '../ArgumentForm/DefaultFormOptions';
+import GenericCipherDemo from './base/GenericCipherDemo';
 
 const schema: Schema = {
   cipher: {

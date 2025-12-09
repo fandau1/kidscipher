@@ -1,7 +1,7 @@
 import { useState, useMemo } from 'react';
 import BaseCipherDemo from './BaseCipherDemo';
-import { Schema, DynamicForm } from './ArgumentForm/DynamicForm';
-import { Cipher } from '../../../dist/types';
+import { Schema, DynamicForm } from '../../ArgumentForm/DynamicForm';
+import { Cipher } from '../../../../../dist/types';
 import styles from './CipherDemo.module.css';
 
 type GenericCipherDemoProps = {

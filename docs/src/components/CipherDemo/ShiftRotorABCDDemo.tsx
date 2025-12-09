@@ -1,10 +1,10 @@
-import GenericCipherDemo from './GenericCipherDemo';
+import GenericCipherDemo from './base/GenericCipherDemo';
 import {
   ShiftAlphabetCipher,
   ShiftRotorABCDCipher,
-} from '../../../dist/index.esm';
-import { withDefaultEncodeDecode } from './ArgumentForm/DefaultFormOptions';
-import { Schema } from './ArgumentForm/DynamicForm';
+} from '../../../../dist/index.esm';
+import { withDefaultEncodeDecode } from '../ArgumentForm/DefaultFormOptions';
+import { Schema } from '../ArgumentForm/DynamicForm';
 
 const schema: Schema = {
   constructorOptions: {

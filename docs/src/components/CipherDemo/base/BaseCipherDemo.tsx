@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import Cipher from '../../../dist/types/cipher/Cipher';
+import Cipher from '../../../../../dist/types/cipher/Cipher';
 import styles from './CipherDemo.module.css';
 
 interface BaseDemoProps {
