@@ -1,7 +1,7 @@
 import GenericCipherDemo from './base/GenericCipherDemo';
 import { ChessCipher } from '../../../../dist/index.esm';
-import { withDefaultEncodeDecode } from '../ArgumentForm/DefaultFormOptions';
-import { Schema } from '../ArgumentForm/DynamicForm';
+import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
+import { Schema } from '../DynamicForm/DynamicForm';
 
 const schema: Schema = {
   constructorOptions: {

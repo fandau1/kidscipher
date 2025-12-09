@@ -1,6 +1,6 @@
 import { useState, useMemo } from 'react';
 import BaseCipherDemo from './BaseCipherDemo';
-import { Schema, DynamicForm } from '../../ArgumentForm/DynamicForm';
+import { Schema, DynamicForm } from '../../DynamicForm/DynamicForm';
 import { Cipher } from '../../../../../dist/types';
 import styles from './CipherDemo.module.css';
 

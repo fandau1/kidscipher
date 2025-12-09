@@ -1,5 +1,5 @@
-import { Schema } from '../ArgumentForm/DynamicForm';
-import { withDefaultEncodeDecode } from '../ArgumentForm/DefaultFormOptions';
+import { Schema } from '../DynamicForm/DynamicForm';
+import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import GenericCipherDemo from './base/GenericCipherDemo';
 import { DifferentCrossCipher } from '../../../../dist/index.esm';
 
