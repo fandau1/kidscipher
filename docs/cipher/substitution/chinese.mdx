@@ -4,8 +4,63 @@ sidebar_position: 4
 hide_table_of_contents: true
 ---
 
+import ChineseDemo from '@site/src/components/CipherDemo/ChineseDemo';
+import { ChineseCipher } from '../../../dist/index.esm';
+
+export const cipher = new ChineseCipher();
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
 # Chinese
 
-import ChineseDemo from '@site/src/components/CipherDemo/ChineseDemo';
+The Chinese Cipher is a simple visual cipher that makes letters look like Chinese characters, even though it is much easier to learn. Each letter is encoded using a combination of vertical and horizontal lines based on its position in a grid.
+
+Just like other grid-based ciphers, the alphabet is arranged in a table with rows and columns. To encode a letter, you locate it in the table and then draw a symbol according to its coordinates.
+
+Limitation is the alphabet does not contain letter: `Q`
+
+<div style={{ textAlign: 'center' }}>
+  <img
+    src="/kidscipher/img/cipher/chinese-q.png"
+    alt="Chinese tool"
+    style={{ width: '250px', height: 'auto' }}
+  />
+  <p style={{ fontSize: '0.9rem', color: '#666' }}>
+    Chinese table for encoding and decoding. Source: [Magazin
+    Mensa](https://magazin.mensa.cz/nebojte-se-sifrovani-iv-cinstina-a-pavucina/)
+  </p>
+</div>
+
+# Encoding
+
+1. Find the letter in the cipher table.
+2. Count the column number → draw that many vertical lines.
+3. Count the row number → draw that many horizontal lines.
+4. Vary the line lengths so the symbol resembles a character rather than a geometric pattern.
+
+- **A** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('A')}</code>
+- **B** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('B')}</code>
+- **C** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('C')}</code>
+- **D** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('D')}</code>
+- **E** → <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{cipher.encode('E')}</code>
+
+# Decoding
+
+1. Count the vertical lines in the symbol → this gives you the column.
+2. Count the horizontal lines → this gives you the row.
+3. Look up the letter at that position in the table.
+
+## Example
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code style={{fontFamily: 'kidscipher', fontSize: 32}}>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+#### Learn More
+
+- [Zoubek](https://www.zoubek.cz/homepage/sifry/index.html%23TABULKY)
 
 <ChineseDemo />
