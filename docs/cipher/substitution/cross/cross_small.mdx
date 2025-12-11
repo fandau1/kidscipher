@@ -1,10 +1,65 @@
 ---
+title: Small Cross / Pigpen Cipher
 sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-# Small Cross
-
+import { SmallCrossCipher } from '../../../../dist/index.esm';
 import SmallCrossDemo from '@site/src/components/CipherDemo/SmallCrossDemo';
+
+export const cipher = new SmallCrossCipher();
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+# Small Cross / Pigpen Cipher
+
+The **Small Cross Cipher** (also known as the **Pigpen Cipher** or **Masonic Cipher**) is a simple substitution cipher that replaces letters with symbols based on a grid or "pigpen" pattern. Each letter is assigned a unique symbol derived from portions of grids or X-shaped patterns.
+
+<div style={{ textAlign: 'center' }}>
+  <img
+    src="/kidscipher/img/cipher/small-cross.png"
+    alt="Pigpen cipher"
+    style={{ width: '550px', height: 'auto' }}
+  />
+  <p style={{ fontSize: '0.9rem', color: '#666' }}>
+    Pigpen cipher grid. Source: [Skaut Lisak](https://skaut-lisak.cz/sifrator/sifra-maly-polsky-kriz/)
+  </p>
+</div>
+
+## Encoding
+
+To encode a message using the Pigpen Cipher:
+
+1. Find each letter in the Pigpen grid or X-shaped symbol table.
+2. Replace the letter with the corresponding symbol.
+
+- **H** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('H')}</code>
+- **E** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('E')}</code>
+- **L** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('L')}</code>
+- **L** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('L')}</code>
+- **O** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('O')}</code>
+
+## Decoding
+
+To decode a message:
+
+1. Split the message into individual Pigpen symbols.
+2. Identify each symbol in the grid table.
+3. Replace each symbol with its corresponding letter.
+
+Repeat this process for the entire message.
+
+## Example
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+#### Learn More
+
+- [Pigpen Cipher on Wikipedia](https://en.wikipedia.org/wiki/Pigpen_cipher)
 
 <SmallCrossDemo />
