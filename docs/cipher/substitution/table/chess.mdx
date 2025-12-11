@@ -1,10 +1,111 @@
 ---
+title: Chess
 sidebar_position: 1
 hide_table_of_contents: true
 ---
 
+import ChessDemo from '@site/src/components/CipherDemo/ChessDemo';
+import { ChessCipher } from '../../../../dist/index.esm';
+
+export const alphabet = 'ABCDEFGHIJKLMNOQPRSTUVWXYZ0123456789'.split('');
+export const TABLE_SIZE = { rows: 8, cols: 8 };
+export const cipher = new ChessCipher(TABLE_SIZE.cols, TABLE_SIZE.rows);
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+export const generateRowKeys = (size) => {
+  return Array.from({ length: size }, (_, i) => String.fromCharCode(65 + i));
+};
+
+export const generateColKeys = (size) => {
+  return Array.from({ length: size }, (_, i) => (i + 1).toString());
+};
+
+export const buildTable = (alphabet, rowSize, colSize) => {
+  const table = [];
+  const totalCells = rowSize * colSize;
+  let alphabetIndex = 0;
+
+  for (let i = 0; i < rowSize; i++) {
+    const row = [];
+    for (let j = 0; j < colSize; j++) {
+      row.push(alphabet[alphabetIndex % alphabet.length]);
+      alphabetIndex++;
+    }
+    table.push(row);
+  }
+  return table;
+}
+
+export const rowKeys = generateRowKeys(TABLE_SIZE.rows);
+export const colKeys = generateColKeys(TABLE_SIZE.cols);
+export const table = buildTable(alphabet, TABLE_SIZE.rows, TABLE_SIZE.cols);
+
+export const getCellColor = (rowIndex, colIndex) => {
+  return (rowIndex + colIndex) % 2 === 0 ? '#f0d9b5' : '#b58863';
+};
+
 # Chess
 
-import ChessDemo from '@site/src/components/CipherDemo/ChessDemo';
+The **Chess cipher** is a substitution cipher that uses a chessboard-like grid to encode letters and numbers. The table uses automatically generated keys with rows labeled **A-G** and columns labeled **0-9**, similar to chess notation. Each character in the alphabet is placed in the grid, and the alphabet repeats to fill the entire board.
+
+The cipher uses an extended alphabet including **A-Z and 0-9** (36 characters total). If the grid size exceeds the alphabet length, the alphabet wraps around to fill the grid.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <table style={{ borderCollapse: 'collapse', textAlign: 'center', }}>
+    <thead>
+    <tr>
+      <th style={{ padding: '0.75rem', }}></th>
+      {colKeys.map((ck) => {
+        return <th key={ck} style={{ padding: '0.75rem', fontWeight: 'bold', minWidth: '50px' }}>{ck}</th>
+      })}
+    </tr>
+    </thead>
+    <tbody>
+    {rowKeys.map((rk, rowIndex) => {
+      return (
+        <tr key={rk}>
+          <th style={{ padding: '0.75rem', fontWeight: 'bold' }}>{rk}</th>
+          {table[rowIndex].map((letter, colIndex) => {
+            return <td key={colIndex} style={{
+              padding: '0.75rem',
+              fontWeight: '600',
+              minWidth: '50px',
+              minHeight: '50px'
+            }}>{letter}</td>
+          })}
+        </tr>
+      )
+    })}
+    </tbody>
+  </table>
+</div>
+
+## Encoding
+
+1. Each character is placed in a cell of the grid (rows labeled A-H, columns labeled 1-8).
+2. To encode a letter, find its row and column in the table.
+3. Combine the row and column keys to form the encoded symbol.
+4. Repeat for every character in the message.
+
+- **H** → <code>{cipher.encode('H')}</code>
+- **E** → <code>{cipher.encode('E')}</code>
+- **L** → <code>{cipher.encode('L')}</code>
+- **O** → <code>{cipher.encode('O')}</code>
+
+## Decoding
+
+1. Split the encoded message into grid coordinates
+2. Look up each pair in the table using row (A-H) and column (0-7) keys
+3. Replace with the corresponding letter
+
+## Example
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
 
 <ChessDemo />
