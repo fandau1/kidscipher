@@ -23,7 +23,7 @@ const plugins = [
   url({
     limit: 0,
     include: ['**/*.png', '**/*.ttf', '**/*.woff', '**/*.woff2'],
-    fileName: '[name][hash][extname]',
+    fileName: '[name][extname]',
     destDir: 'dist/assets',
   }),
   postcss({

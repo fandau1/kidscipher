@@ -15,6 +15,9 @@ import {
   SmallCrossCipher,
 } from '../../../dist/index.esm';
 import CodeBlock from '@theme/CodeBlock';
+import fontTTF from '../../../dist/assets/Kidscipher.ttf';
+import fontWOFF from '../../../dist/assets/Kidscipher.woff';
+import fontWOFF2 from '../../../dist/assets/Kidscipher.woff2';
 
 const DEMO_CIPHERS = [
   {
@@ -184,6 +187,30 @@ export default function Home() {
                 Transform your ciphers into stunning visual symbols with the
                 Kidscipher font family.
               </p>
+            </div>
+
+            <div className={styles.fontDownloads}>
+              <a
+                href={fontTTF}
+                download="Kidscipher.ttf"
+                className={styles.fontDownloadButton}
+              >
+                Download TTF
+              </a>
+              <a
+                href={fontWOFF}
+                download="Kidscipher.woff"
+                className={styles.fontDownloadButton}
+              >
+                Download WOFF
+              </a>
+              <a
+                href={fontWOFF2}
+                download="Kidscipher.woff2"
+                className={styles.fontDownloadButton}
+              >
+                Download WOFF2
+              </a>
             </div>
 
             <div className={styles.fontShowcase}>

@@ -112,7 +112,6 @@ const config: Config = {
       },
     ],
   ],
-
   themeConfig: {
     image: 'img/logo-kidscipher-square.png',
     metadata: [

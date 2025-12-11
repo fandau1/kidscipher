@@ -364,3 +364,28 @@
     font-size: 1.25rem;
   }
 }
+
+.fontDownloads {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin: 2rem 0;
+  flex-wrap: wrap;
+}
+
+.fontDownloadButton {
+  padding: 0.75rem 1.5rem;
+  background: var(--ifm-color-primary);
+  color: white;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-weight: 600;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.fontDownloadButton:hover {
+  background: var(--ifm-color-primary-dark);
+  transform: translateY(-2px);
+  text-decoration: none;
+  color: white;
+}

@@ -14,6 +14,7 @@
       "import": "./dist/font.esm.js",
       "require": "./dist/font.cjs.js"
     },
+    "./assets/*": "./dist/assets/*",
     "./kidscipher.css": "./dist/kidscipher.css"
   },
   "scripts": {

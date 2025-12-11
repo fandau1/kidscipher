@@ -1,4 +1,5 @@
 import path from 'path';
+import fs from 'fs';
 import { fileURLToPath } from 'url';
 import { getAllSVGFiles } from './utils.js';
 import { generateGlyphs, writeJSGlyphsFile } from './generateGlyphs.js';
@@ -47,7 +48,7 @@ const jsFilePath = writeJSGlyphsFile(
 );
 
 // 2️. Generate font files
-const { woff2Buffer } = await generateFont(svgFiles, {
+const { ttfPath, woffPath, woff2Path, woff2Buffer } = await generateFont(svgFiles, {
   fontName: FONT_NAME,
   outputDir: OUTPUT_DIR,
   startCode: INIT_GLYMP,
@@ -57,14 +58,14 @@ const { woff2Buffer } = await generateFont(svgFiles, {
 const cssFilePath = generateCSS(woff2Buffer, OUTPUT_DIR, FONT_NAME);
 
 // 4️. Copy JS + CSS to project
-import fs from 'fs';
-fs.copyFileSync(
-  jsFilePath,
-  path.join(PROJECT_OUTPUT_DIR, path.basename(jsFilePath)),
-);
-fs.copyFileSync(
-  cssFilePath,
-  path.join(PROJECT_OUTPUT_DIR, path.basename(cssFilePath)),
-);
+// JS file
+fs.copyFileSync(jsFilePath, path.join(PROJECT_OUTPUT_DIR, path.basename(jsFilePath)),);
+// CSS file
+fs.copyFileSync(cssFilePath, path.join(PROJECT_OUTPUT_DIR, path.basename(cssFilePath)),);
+
+// Font files
+fs.copyFileSync(ttfPath, path.join(PROJECT_OUTPUT_DIR, path.basename(ttfPath)));
+fs.copyFileSync(woffPath, path.join(PROJECT_OUTPUT_DIR, path.basename(woffPath)));
+fs.copyFileSync(woff2Path, path.join(PROJECT_OUTPUT_DIR, path.basename(woff2Path)));
 
 console.log('Font pipeline completed. JS + CSS generated.');
