@@ -47,6 +47,13 @@ jobs:
       - name: Pack package
         run: npm pack
 
+      # Prepare font files for GitHub release
+      - name: Prepare fonts for Github release
+        run: |
+          cp src/**/*.ttf .
+          cp src/**/*.woff .
+          cp src/**/*.woff2 .
+
       # 7. Publish package
       - name: Publish package
         run: npm publish
@@ -59,5 +66,9 @@ jobs:
         with:
           tag: ${{ github.ref_name }}
           name: Release ${{ github.ref_name }}
-          artifacts: '*.tgz'
+          artifacts: |
+            *.tgz
+            *.ttf
+            *.woff
+            *.woff2
           token: ${{ secrets.GITHUB_TOKEN }}
