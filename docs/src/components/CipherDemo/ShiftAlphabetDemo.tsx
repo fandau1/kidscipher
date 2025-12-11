@@ -1,5 +1,5 @@
 import GenericCipherDemo from './base/GenericCipherDemo';
-import { ShiftAlphabetCipher } from '../../../../dist/index.esm';
+import { ShiftAlphabetCipher } from 'kidscipher';
 import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import { Schema } from '../DynamicForm/DynamicForm';
 

@@ -1,4 +1,4 @@
-import { SpiderCipher } from '../../../../dist/index.esm';
+import { SpiderCipher } from 'kidscipher';
 import { Schema } from '../DynamicForm/DynamicForm';
 import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import GenericCipherDemo from './base/GenericCipherDemo';

@@ -1,5 +1,5 @@
 import GenericCipherDemo from './base/GenericCipherDemo';
-import { TableKeyFiveToFiveCipher } from '../../../../dist/index.esm';
+import { TableKeyFiveToFiveCipher } from 'kidscipher';
 import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import { Schema } from '../DynamicForm/DynamicForm';
 

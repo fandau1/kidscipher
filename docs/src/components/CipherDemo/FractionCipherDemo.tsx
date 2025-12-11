@@ -1,4 +1,4 @@
-import { FractionCipher } from '../../../../dist/index.esm';
+import { FractionCipher } from 'kidscipher';
 import { Schema } from '../DynamicForm/DynamicForm';
 import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import GenericCipherDemo from './base/GenericCipherDemo';

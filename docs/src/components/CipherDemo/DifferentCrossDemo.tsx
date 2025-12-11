@@ -1,7 +1,7 @@
 import { Schema } from '../DynamicForm/DynamicForm';
 import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import GenericCipherDemo from './base/GenericCipherDemo';
-import { DifferentCrossCipher } from '../../../../dist/index.esm';
+import { DifferentCrossCipher } from 'kidscipher';
 
 const schema: Schema = {
   encode: withDefaultEncodeDecode({

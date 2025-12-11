@@ -8,11 +8,13 @@
   "exports": {
     ".": {
       "import": "./dist/index.esm.js",
-      "require": "./dist/index.cjs.js"
+      "require": "./dist/index.cjs.js",
+      "types": "./dist/types/index.d.ts"
     },
     "./font": {
       "import": "./dist/font.esm.js",
-      "require": "./dist/font.cjs.js"
+      "require": "./dist/font.cjs.js",
+      "types": "./dist/types/font.d.ts"
     },
     "./assets/*": "./dist/assets/*",
     "./kidscipher.css": "./dist/kidscipher.css"

@@ -1,5 +1,5 @@
 import GenericCipherDemo from './base/GenericCipherDemo';
-import { ChessCipher } from '../../../../dist/index.esm';
+import { ChessCipher } from 'kidscipher';
 import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import { Schema } from '../DynamicForm/DynamicForm';
 

@@ -4,9 +4,9 @@ sidebar_position: 5
 hide_table_of_contents: true
 ---
 
-import { FractionCipher } from '../../../dist/index.esm';
+import { FractionCipher } from 'kidscipher';
 import FractionCipherDemo from '@site/src/components/CipherDemo/FractionCipherDemo';
-import GlyphAlphabetRender from '@site/src/components/CipherDemo/GlyphAlphabetRender';
+import GlyphAlphabetRender from '@site/src/components/GlyphRender/GlyphAlphabetRender';
 
 export const cipher = new FractionCipher();
 export const exampleInput = 'HELLO';
@@ -64,9 +64,7 @@ The decoder figures out that each fraction symbol maps back to its original lett
 
 ## Alphabet Table
 
-{(() => {
-return <GlyphAlphabetRender map={FractionCipher.FRACTION_MAP} />;
-})()}
+<GlyphAlphabetRender map={FractionCipher.FRACTION_MAP} />
 
 #### Learn More
 

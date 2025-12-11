@@ -1,8 +1,7 @@
 import GenericCipherDemo from './base/GenericCipherDemo';
 import {
-  ShiftAlphabetCipher,
   ShiftRotorABCDCipher,
-} from '../../../../dist/index.esm';
+} from 'kidscipher';
 import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import { Schema } from '../DynamicForm/DynamicForm';
 
