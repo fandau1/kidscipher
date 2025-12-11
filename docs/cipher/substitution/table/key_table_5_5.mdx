@@ -1,10 +1,84 @@
 ---
+title: Table 5x5 with key
 sidebar_position: 2
 hide_table_of_contents: true
 ---
 
+import TableKeyFiveToFiveDemo from '@site/src/components/CipherDemo/TableKeyFiveToFiveDemo';
+import { TableKeyFiveToFiveCipher } from '../../../../dist/index.esm';
+
+export const rowKeys = ['1', '2', '3', '4', '5'];
+export const colKeys = ['H', 'O', 'M', 'E', 'R'];
+export const alphabet = 'ABCDEFGHIJKLMNOPRSTUVWXYZ'.split('');
+export const cipher = new TableKeyFiveToFiveCipher(rowKeys, colKeys);
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+export const buildTable = (alphabet, rowKeys, colKeys) => {
+  const table = [];
+  for (let i = 0; i < colKeys.length; i++) {
+    table.push(alphabet.slice(i * rowKeys.length, (i + 1) * rowKeys.length));
+  }
+  return table;
+}
+
+export const table = buildTable(alphabet, rowKeys, colKeys);
+
 # Table 5x5 with key
 
-import TableKeyFiveToFiveDemo from '@site/src/components/CipherDemo/TableKeyFiveToFiveDemo';
+The **Table 5x5 with key** is a substitution cipher that uses a grid to encode letters as numbers or pairs of symbols. The table uses two keys of five unique characters each to label the rows and columns of the grid. Each letter in the alphabet is placed in the grid, and each letter can be identified by its corresponding row and column labels.
+
+Limitation the cipher uses a 25-letter alphabet and excludes the letter `Q`.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <table style={{ borderCollapse: 'collapse', textAlign: 'center', fontSize: '1.1rem' }}>
+    <thead>
+    <tr>
+      <th style={{ padding: '0.75rem' }}></th>
+      {rowKeys.map((rk) => {
+        return <th key={rk} style={{ border: '1px solid #ccc', padding: '0.75rem', fontWeight: 'bold' }}>{rk}</th>
+      })}
+    </tr>
+    </thead>
+    <tbody>
+    {colKeys.map((ck, rowIndex) => {
+      return (
+        <tr key={ck}>
+          <th style={{ border: '1px solid #ccc', padding: '0.75rem', fontWeight: 'bold' }}>{ck}</th>
+          {table[rowIndex].map((letter, colIndex) => {
+            return <td key={colIndex} style={{ border: '1px solid #ccc', padding: '0.75rem' }}>{letter}</td>
+          })}
+        </tr>
+      )
+    })}
+    </tbody>
+  </table>
+</div>
+
+## Encoding
+
+- **H** → <code>{cipher.encode('H')}</code>
+- **E** → <code>{cipher.encode('E')}</code>
+- **L** → <code>{cipher.encode('L')}</code>
+- **O** → <code>{cipher.encode('O')}</code>
+
+## Decoding
+
+- Split the encoded message into grid coordinates
+- Look up each pair in the table using row and column keys
+- Replace with the corresponding letter
+
+## Example
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+#### Learn More
+
+- [Beil](https://sifry.sourceforge.net/abc_table.html)
 
 <TableKeyFiveToFiveDemo />

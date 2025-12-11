@@ -46,6 +46,8 @@ The font allows you to render encoded text as graphical symbols (necesary only f
   - ✅ Hebrew Cross (need font)
   - ✅ Small Cross (need font)
   - ✅ Different Cross (need font)
+  - ❌ Square Cross (need font)
+  - ❌ Knights Templar Cross (need font)
   - ✅ Mobile
   - ✅ Chess
   - ✅ Cipher table - ADFGVX/ADFGX
