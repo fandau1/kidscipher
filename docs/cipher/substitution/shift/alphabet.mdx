@@ -7,12 +7,14 @@ hide_table_of_contents: true
 import { ShiftAlphabetCipher } from 'kidscipher';
 import ShiftAlphabetDemo from '@site/src/components/CipherDemo/ShiftAlphabetDemo';
 
+import ShiftCipherTool from '@site/src/components/CipherTool/ShiftCipherTool';
+
 export const cipher = new ShiftAlphabetCipher(3);
 export const exampleInput = 'HELLO WORLD';
 export const exampleEncoded = cipher.encode(exampleInput);
 export const exampleDecoded = cipher.decode(exampleEncoded);
 
-export const shift = 3;
+export let shift = 3;
 export const alphabet = [
   'A',
   'B',
@@ -49,32 +51,7 @@ export const shifted_alphabet = alphabet
 
 The Shift Cipher (also known as Caesar Cipher) is one of the simplest and most widely known encryption techniques. It is a type of substitution cipher where each letter in the plaintext is replaced by a letter a fixed number of positions down or up the alphabet.
 
-<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
-  <table style={{ borderCollapse: 'collapse', textAlign: 'center', }}>
-    <thead>
-    <tr>
-      <th style={{ padding: '0.75rem', }}>Letter</th>
-      {alphabet.map((ck) => {
-        return <th key={ck} style={{ padding: '0.75rem', fontWeight: 'bold', minWidth: '50px' }}>{ck}</th>
-      })}
-    </tr>
-    </thead>
-    <tbody>
-        <tr>
-            <th style={{ padding: '0.75rem', }}>Subsitutute letter</th>
-          {shifted_alphabet.map((letter, colIndex) => {
-            return <td key={colIndex} style={{
-              padding: '0.75rem',
-              fontWeight: '600',
-              minWidth: '50px',
-              minHeight: '50px'
-            }}>{letter}</td>
-          })}
-        </tr>
-    </tbody>
-
-  </table>
-</div>
+<ShiftCipherTool />
 
 ## Encoding
 
