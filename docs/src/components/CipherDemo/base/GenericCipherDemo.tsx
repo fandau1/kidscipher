@@ -21,6 +21,9 @@ export default function GenericCipherDemo({
       ? schema.constructorOptions.fields
       : {};
 
+  const [isEncodeOpen, setIsEncodeOpen] = useState(false);
+  const [isDecodeOpen, setIsDecodeOpen] = useState(false);
+
   const cipherFields =
     schema.cipher?.type === 'object' ? schema.cipher.fields : {};
   const encodeFields =
@@ -68,23 +71,47 @@ export default function GenericCipherDemo({
       )}
 
       <div className={styles.optionsGrid}>
-        <div className={styles.optionsPanel}>
-          <h4 className={styles.optionsTitle}>Encode Options</h4>
-          <DynamicForm
-            schema={encodeFields}
-            values={encodeOptions}
-            onChange={setEncodeOptions}
-          />
-        </div>
+        <details className={styles.optionsPanel} open={isEncodeOpen}>
+          <summary
+            className={styles.optionsTitle}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsEncodeOpen(!isEncodeOpen);
+            }}
+          >
+            <span>Encode Options</span>
+          </summary>
+          {isEncodeOpen && (
+            <div className={styles.optionsContent}>
+              <DynamicForm
+                schema={encodeFields}
+                values={encodeOptions}
+                onChange={setEncodeOptions}
+              />
+            </div>
+          )}
+        </details>
 
-        <div className={styles.optionsPanel}>
-          <h4 className={styles.optionsTitle}>Decode Options</h4>
-          <DynamicForm
-            schema={decodeFields}
-            values={decodeOptions}
-            onChange={setDecodeOptions}
-          />
-        </div>
+        <details className={styles.optionsPanel} open={isDecodeOpen}>
+          <summary
+            className={styles.optionsTitle}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsDecodeOpen(!isDecodeOpen);
+            }}
+          >
+            <span>Decode Options</span>
+          </summary>
+          {isDecodeOpen && (
+            <div className={styles.optionsContent}>
+              <DynamicForm
+                schema={decodeFields}
+                values={decodeOptions}
+                onChange={setDecodeOptions}
+              />
+            </div>
+          )}
+        </details>
       </div>
 
       {cipherInstance && (
