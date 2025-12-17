@@ -48,6 +48,7 @@ The font allows you to render encoded text as graphical symbols (necesary only f
   - ✅ Different Cross (need font)
   - ❌ Square Cross (need font)
   - ❌ Knights Templar Cross (need font)
+  - ❌ Musical Code [Musical code paper](https://lair.etamu.edu/cgi/viewcontent.cgi?article=1032&context=honorstheses), [scout wiki](https://scoutwiki.scouts.org.za/wiki/Codes_and_Ciphers)
   - ✅ Mobile
   - ✅ Chess
   - ✅ Cipher table - ADFGVX/ADFGX
