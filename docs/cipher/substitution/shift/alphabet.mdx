@@ -1,10 +1,117 @@
 ---
+title: Shift Alphabet
 sidebar_position: 1
 hide_table_of_contents: true
 ---
 
+import { ShiftAlphabetCipher } from 'kidscipher';
+import ShiftAlphabetDemo from '@site/src/components/CipherDemo/ShiftAlphabetDemo';
+
+export const cipher = new ShiftAlphabetCipher(3);
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+export const shift = 3;
+export const alphabet = [
+  'A',
+  'B',
+  'C',
+  'D',
+  'E',
+  'F',
+  'G',
+  'H',
+  'I',
+  'J',
+  'K',
+  'L',
+  'M',
+  'N',
+  'O',
+  'P',
+  'Q',
+  'R',
+  'S',
+  'T',
+  'U',
+  'V',
+  'W',
+  'X',
+  'Y',
+  'Z',
+];
+export const shifted_alphabet = alphabet
+  .slice(shift)
+  .concat(alphabet.slice(0, shift));
+
 # Shift Alphabet
 
-import ShiftAlphabetDemo from '@site/src/components/CipherDemo/ShiftAlphabetDemo';
+The Shift Cipher (also known as Caesar Cipher) is one of the simplest and most widely known encryption techniques. It is a type of substitution cipher where each letter in the plaintext is replaced by a letter a fixed number of positions down or up the alphabet.
+
+<div style={{ display: 'flex', justifyContent: 'center', margin: '2rem 0' }}>
+  <table style={{ borderCollapse: 'collapse', textAlign: 'center', }}>
+    <thead>
+    <tr>
+      <th style={{ padding: '0.75rem', }}>Letter</th>
+      {alphabet.map((ck) => {
+        return <th key={ck} style={{ padding: '0.75rem', fontWeight: 'bold', minWidth: '50px' }}>{ck}</th>
+      })}
+    </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <th style={{ padding: '0.75rem', }}>Subsitutute letter</th>
+          {shifted_alphabet.map((letter, colIndex) => {
+            return <td key={colIndex} style={{
+              padding: '0.75rem',
+              fontWeight: '600',
+              minWidth: '50px',
+              minHeight: '50px'
+            }}>{letter}</td>
+          })}
+        </tr>
+    </tbody>
+
+  </table>
+</div>
+
+## Encoding
+
+To encode a message using the Shift Alphabet Cipher:
+
+shift = **3**
+
+1. Take each letter in the plaintext.
+2. Shift it by the specified number of positions down the alphabet.
+
+- **H** → <code>{cipher.encode('H')}</code>
+- **E** → <code>{cipher.encode('E')}</code>
+- **L** → <code>{cipher.encode('L')}</code>
+- **L** → <code>{cipher.encode('L')}</code>
+- **O** → <code>{cipher.encode('O')}</code>
+
+## Decoding
+
+To decode a message:
+
+1. Take each letter in the encoded message.
+2. Shift it back by the specified number of positions up the alphabet.
+
+Repeat this process for the entire message.
+
+## Example
+
+shift = **3**
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+#### Learn More
+
+- [Caesar Cipher on Wikipedia](https://en.wikipedia.org/wiki/Caesar_cipher)
 
 <ShiftAlphabetDemo />
