@@ -1,10 +1,69 @@
 ---
+title: Different Cross
 sidebar_position: 4
 hide_table_of_contents: true
 ---
 
 # Different Cross
 
+import { DifferentCrossCipher } from 'kidscipher';
 import DifferentCrossDemo from '@site/src/components/CipherDemo/DifferentCrossDemo';
+
+export const cipher = new DifferentCrossCipher();
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+# Different Cross
+
+The **Different Cross Cipher** is a substitution cipher that uses a unique cross-shaped grid pattern to encode messages. Each letter of the alphabet is assigned a specific position within the cross pattern, and letters are replaced by coordinates that describe their location in the grid.
+
+<div style={{ textAlign: 'center' }}>
+  <img
+    src="/kidscipher/img/cipher/cross-different.png"
+    alt="Different cross cipher"
+    style={{ width: '400px', height: 'auto' }}
+  />
+  <p style={{ fontSize: '0.9rem', color: '#666' }}>
+    Different cross tool. Source:
+    [Beil](https://sifry.sourceforge.net/sff_kriz_jiny.html)
+  </p>
+</div>
+
+## Encoding
+
+To encode a message, convert each letter to its corresponding shape of cross and its position specified by dot inside shape.
+
+- **H** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('H')}</code>
+- **E** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('E')}</code>
+- **L** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('L')}</code>
+- **L** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('L')}</code>
+- **O** → <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{cipher.encode('O')}</code>
+
+1. Find letter in cross
+2. Draw shape of border which is around them
+3. Draw the dot to specified position (LEFT, CENTER, RIGHT)
+
+## Decoding
+
+To decode, split the message by spaces and convert each pattern back to its corresponding letter:
+
+1. Separate the encoded message into glyph
+2. Search for glyph border shape in table
+3. Search where is drawed dot -> the letter is decoded letter
+
+We will repeat the process for the whole message
+
+## Example
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code style={{fontFamily: 'kidscipher', fontSize: 20}}>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+#### Learn More
+
+- [Different Cross on Shaman](http://www.shaman.cz/sifrovani/sifra-jiny-kriz.htm)
 
 <DifferentCrossDemo />
