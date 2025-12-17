@@ -53,7 +53,7 @@ const ShiftCipherTool = () => {
           id={uniqueId}
           type="number"
           value={shift}
-          onChange={(e) => setShift(parseInt(e.target.value) || 0)}
+          onChange={(e) => setShift(parseInt(e.target.value))}
           min="0"
           max={alphabet.length - 1}
         />
