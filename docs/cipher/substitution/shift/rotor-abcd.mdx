@@ -1,13 +1,61 @@
 ---
+title: Shift 3-Rotor ABCD Alphabet
 sidebar_position: 2
 hide_table_of_contents: true
 ---
 
-# Shift 3-Rotor ABCD Alphabet
-
+import { ShiftRotorABCDCipher } from 'kidscipher';
 import ShiftRotorABCDDemo from '@site/src/components/CipherDemo/ShiftRotorABCDDemo';
 import ShiftABCDCipherTool from '@site/src/components/CipherTool/ShiftABCDCipherTool';
 
+export const cipher = new ShiftRotorABCDCipher([9, 3, 0]);
+export const exampleInput = 'hello world';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+# Shift 3-Rotor ABCD Alphabet
+
+The Three-Wheel Cipher is a multi-layer substitution cipher that uses three concentric rotating wheels (small, medium, and large) aligned with an outer plaintext alphabet. Each wheel can be independently rotated to create different encryption patterns, making it significantly more secure than simple substitution ciphers.
+
 <ShiftABCDCipherTool />
+
+## Encoding
+
+To encode a message using the Three-Wheel Cipher:
+
+Find the plaintext character on the outer circle.
+Read the corresponding letters on all three inner wheels.
+The combination of these three letters forms the encoded character position.
+Optionally rotate one or more wheels after each character for polyalphabetic encryption.
+
+Example encoding steps:
+
+shift = small: **9**, medium: **3**, large: **0**
+
+- **H** → Small: `B`, Medium: `D`, Large: `D` → <code>{cipher.encode('H')}</code>
+- **E** → Small: `B`, Medium: `C`, Large: `A` → <code>{cipher.encode('E')}</code>
+- **L** → Small: `C`, Medium: `A`, Large: `D` → <code>{cipher.encode('L')}</code>
+- **L** → Small: `C`, Medium: `A`, Large: `D` → <code>{cipher.encode('L')}</code>
+- **O** → Small: `C`, Medium: `B`, Large: `C` → <code>{cipher.encode('O')}</code>
+
+## Decoding
+
+To decode a message:
+
+1. Take the encoded character representation.
+2. Find the position where all three wheels match the encoded pattern.
+3. Read the corresponding character from the outer plaintext circle.
+
+Apply the same wheel rotation pattern used during encoding.
+
+## Example
+
+shift = small: **9**, medium: **3**, large: **0**
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
 
 <ShiftRotorABCDDemo />
