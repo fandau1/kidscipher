@@ -63,26 +63,30 @@ export default function SubstitutionCipherWheel({
   const totalLetters = plainAlphabet.length;
   const anglePerLetter = 360 / totalLetters;
 
-  const getLetterPosition = (index: number, radius: number) => {
-    const angle = (index * anglePerLetter - 90) * (Math.PI / 180);
+  const getLetterPosition = (
+    index: number,
+    radius: number,
+    anglePerLetter: number,
+  ) => {
+    const angle = (index * anglePerLetter - 180) * (Math.PI / 180);
     return {
       x: centerX + radius * Math.cos(angle),
       y: centerY + radius * Math.sin(angle),
     };
   };
 
-  const getPointOnCircle = (angleDegrees, radius) => {
-    const angleRad = (angleDegrees - 90) * (Math.PI / 180);
+  const getPointOnCircle = (angleDegrees: number, radius: number) => {
+    const angleRad = (angleDegrees - 180) * (Math.PI / 180);
     return {
       x: centerX + radius * Math.cos(angleRad),
       y: centerY + radius * Math.sin(angleRad),
     };
   };
 
-  const renderOuterCircle = () => {
-    return cipherAlphabet.map((letter, index) => {
-      const pos = getLetterPosition(index, outerRadius);
-      const angle = index * anglePerLetter;
+  const renderCircle = (alphabet: string[], radius: number, color: string) => {
+    const anglePerLetter = 360 / alphabet.length;
+    return alphabet.map((letter, index) => {
+      const pos = getLetterPosition(index, radius, anglePerLetter);
 
       return (
         <g key={`outer-${index}`}>
@@ -93,32 +97,8 @@ export default function SubstitutionCipherWheel({
             dominantBaseline="middle"
             fontSize="18"
             fontWeight="bold"
-            fill="#1a73e8"
-            transform={`rotate(${angle}, ${pos.x}, ${pos.y})`}
-          >
-            {letter}
-          </text>
-        </g>
-      );
-    });
-  };
-
-  const renderInnerCircle = () => {
-    return plainAlphabet.map((letter, index) => {
-      const pos = getLetterPosition(index, innerRadius);
-      const angle = index * anglePerLetter;
-
-      return (
-        <g key={`inner-${index}`}>
-          <text
-            x={pos.x}
-            y={pos.y}
-            textAnchor="middle"
-            dominantBaseline="middle"
-            fontSize="16"
-            fontWeight="600"
-            fill="#ea4335"
-            transform={`rotate(${angle}, ${pos.x}, ${pos.y})`}
+            fill={color}
+            transform={`rotate(${pos.x}, ${pos.y})`}
           >
             {letter}
           </text>
@@ -190,10 +170,10 @@ export default function SubstitutionCipherWheel({
       {renderDividers()}
 
       {/* Outer circle letters (ciphertext) */}
-      {renderOuterCircle()}
+      {renderCircle(plainAlphabet, outerRadius, '#1a73e8')}
 
       {/* Inner circle letters (plaintext) */}
-      {renderInnerCircle()}
+      {renderCircle(cipherAlphabet, innerRadius, '#ea4335')}
 
       {/* Center point */}
       <circle cx={centerX} cy={centerY} r="8" fill="#666" />
