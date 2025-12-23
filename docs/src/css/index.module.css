@@ -7,7 +7,7 @@
     var(--ifm-color-primary) 0%,
     var(--ifm-color-primary-dark) 100%
   );
-  color: var(--ifm-color-content-inverse);
+  color: var(--ifm-color-white);
 }
 
 .buttons {
@@ -380,7 +380,9 @@
   border-radius: 0.5rem;
   text-decoration: none;
   font-weight: 600;
-  transition: transform 0.2s, background 0.2s;
+  transition:
+    transform 0.2s,
+    background 0.2s;
 }
 
 .fontDownloadButton:hover {
