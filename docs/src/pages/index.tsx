@@ -112,13 +112,7 @@ export default function Home() {
               className="button button--secondary button--lg"
               to="/cipher/intro"
             >
-              🔍 Explore more Ciphers
-            </Link>
-            <Link
-              className="button button--secondary button--lg"
-              to="/api/intro"
-            >
-              🚀 Get Started
+              Explore more Ciphers
             </Link>
           </div>
         </div>
@@ -129,7 +123,7 @@ export default function Home() {
         <section className={styles.apiSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
-              <h2>🎯 Easy to Use API</h2>
+              <h2>Easy to Use API</h2>
               <p className={styles.sectionSubtitle}>
                 Simple, intuitive, and powerful. Zero dependencies, pure
                 TypeScript.
@@ -139,7 +133,7 @@ export default function Home() {
             <div className={styles.apiContent}>
               <div className={styles.apiFeatures}>
                 <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>📦</div>
+                  <div className={styles.featureIcon}></div>
                   <h3>Zero Dependencies</h3>
                   <p>
                     Lightweight and efficient with no external dependencies. The
@@ -148,7 +142,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>⚡</div>
+                  <div className={styles.featureIcon}></div>
                   <h3>TypeScript First</h3>
                   <p>
                     Built with TypeScript for excellent IDE support,
@@ -156,7 +150,7 @@ export default function Home() {
                   </p>
                 </div>
                 <div className={styles.featureItem}>
-                  <div className={styles.featureIcon}>🌐</div>
+                  <div className={styles.featureIcon}></div>
                   <h3>Universal</h3>
                   <p>
                     Works seamlessly in browsers, Node.js, and modern
@@ -182,7 +176,7 @@ export default function Home() {
         <section className={styles.fontSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
-              <h2>🎨 Custom Font Support</h2>
+              <h2>Custom Font Support</h2>
               <p className={styles.sectionSubtitle}>
                 Transform your ciphers into stunning visual symbols with the
                 Kidscipher font family.
@@ -274,7 +268,7 @@ export default function Home() {
         <section className={styles.cipherTypesSection}>
           <div className="container">
             <div className={styles.sectionHeader}>
-              <h2>🔒 Multiple Cipher Types</h2>
+              <h2>Multiple Cipher Types</h2>
               <p className={styles.sectionSubtitle}>
                 Support for substitution, shift, cross, table, morse code, and
                 many more cipher types with flexible options.

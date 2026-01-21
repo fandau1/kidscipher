@@ -155,7 +155,7 @@ const config: Config = {
         },
         {
           href: 'https://www.npmjs.com/package/kidscipher',
-          label: '📦 npm',
+          label: 'npm',
           position: 'right',
         },
         {
