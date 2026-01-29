@@ -25,7 +25,7 @@ describe('ShiftRotorABCDCipher', () => {
     });
 
     it('should be able work with shift', () => {
-      const cipher = new ShiftRotorABCDCipher([5, 9, 18]);
+      const cipher = new ShiftRotorABCDCipher([18, 9, 5]);
 
       const result = cipher.encode('ATZ2');
       expect(result).toBe('CDB ABA ADC BAB');
@@ -55,7 +55,7 @@ describe('ShiftRotorABCDCipher', () => {
     });
 
     it('should decode with applied shifts', () => {
-      const cipher = new ShiftRotorABCDCipher([5, 9, 18]);
+      const cipher = new ShiftRotorABCDCipher([18, 9, 5]);
 
       const result = cipher.decode('CDB ABA ADC BAB');
       expect(result).toBe('ATZ2');

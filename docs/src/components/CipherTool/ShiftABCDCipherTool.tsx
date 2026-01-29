@@ -189,12 +189,12 @@ const ShiftABCDCipherTool = () => {
       >
         <label
           htmlFor={uniqueId}
-        >{`Shift Large: (0-${alphabet.length - 1})`}</label>
+        >{`Shift Small: (0-${alphabet.length - 1})`}</label>
         <input
           id={uniqueId}
           type="number"
-          value={shiftLarge}
-          onChange={(e) => setShiftLarge(parseInt(e.target.value))}
+          value={shiftSmall}
+          onChange={(e) => setShiftSmall(parseInt(e.target.value))}
           min="0"
           max={alphabet.length - 1}
         />
@@ -213,12 +213,12 @@ const ShiftABCDCipherTool = () => {
 
         <label
           htmlFor={uniqueId}
-        >{`Shift Small: (0-${alphabet.length - 1})`}</label>
+        >{`Shift Large: (0-${alphabet.length - 1})`}</label>
         <input
           id={uniqueId}
           type="number"
-          value={shiftSmall}
-          onChange={(e) => setShiftSmall(parseInt(e.target.value))}
+          value={shiftLarge}
+          onChange={(e) => setShiftLarge(parseInt(e.target.value))}
           min="0"
           max={alphabet.length - 1}
         />

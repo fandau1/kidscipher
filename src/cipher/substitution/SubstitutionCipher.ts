@@ -4,13 +4,33 @@ class SubstitutionCipher extends Cipher {
   protected encodeMap: Record<string, string>;
   protected decodeMap: Record<string, string>;
 
+  protected encodeTokens: string[];
+  protected decodeTokens: string[];
+
   constructor(encodeMap: Record<string, string>) {
     super();
+
     this.encodeMap = encodeMap;
-    this.decodeMap = Object.entries(encodeMap).reduce(
-      (acc, [key, value]) => ({ ...acc, [value]: key }),
-      {} as Record<string, string>,
+
+    this.decodeMap = Object.fromEntries(
+      Object.entries(encodeMap).map(([k, v]) => [v, k]),
     );
+
+    this.encodeTokens = Object.keys(this.encodeMap).sort(
+      (a, b) => b.length - a.length, // longest first
+    );
+
+    this.decodeTokens = Object.keys(this.decodeMap).sort(
+      (a, b) => b.length - a.length, // longest first
+    );
+  }
+
+  getEncodeTokens(): string[] {
+    return this.encodeTokens;
+  }
+
+  getDecodeTokens(): string[] {
+    return this.decodeTokens;
   }
 
   encodeToken(token: string): string {

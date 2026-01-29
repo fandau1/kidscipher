@@ -6,10 +6,13 @@ class SubstitutionCyclicCipher extends Cipher {
   protected decodeMap: Record<string, string>;
   protected counters: Record<string, number>; // counter for each letter
 
+  protected encodeTokens: string[];
+  protected decodeTokens: string[];
+
   constructor(encodeMap: Record<string, string | string[]>) {
     super();
 
-    // chech encodeMap
+    // normalize encode map to arrays
     this.encodeMap = Object.fromEntries(
       Object.entries(encodeMap).map(([key, value]) => [
         key,
@@ -17,7 +20,7 @@ class SubstitutionCyclicCipher extends Cipher {
       ]),
     );
 
-    // decode map
+    // build decode map
     this.decodeMap = {};
     for (const [key, values] of Object.entries(this.encodeMap)) {
       for (const val of values) {
@@ -25,9 +28,26 @@ class SubstitutionCyclicCipher extends Cipher {
       }
     }
 
-    // inialization counters
+    // tokenize keys (longest first)
+    this.encodeTokens = Object.keys(this.encodeMap).sort(
+      (a, b) => b.length - a.length,
+    );
+
+    this.decodeTokens = Object.keys(this.decodeMap).sort(
+      (a, b) => b.length - a.length,
+    );
+
+    // initialize counters
     this.counters = {};
     this.resetCounters();
+  }
+
+  getEncodeTokens(): string[] {
+    return this.encodeTokens;
+  }
+
+  getDecodeTokens(): string[] {
+    return this.decodeTokens;
   }
 
   resetCounters = () => {

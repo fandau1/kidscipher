@@ -10,6 +10,38 @@ abstract class Cipher {
     configuration?: CipherConfigurationsRecord,
   ): string;
 
+  /**
+   * Tokenize input using a dictionary of valid tokens.
+   * Longest tokens win.
+   */
+  protected tokenize(input: string, tokens: string[]): string[] {
+    const result: string[] = [];
+    let i = 0;
+
+    while (i < input.length) {
+      let matched = false;
+
+      for (const token of tokens) {
+        if (input.startsWith(token, i)) {
+          result.push(token);
+          i += token.length;
+          matched = true;
+          break;
+        }
+      }
+
+      if (!matched) {
+        result.push(input[i]);
+        i++;
+      }
+    }
+
+    return result;
+  }
+
+  abstract getEncodeTokens(): string[];
+  abstract getDecodeTokens(): string[];
+
   encode(
     input: string,
     configuration?: CipherConfigurationsRecord,
@@ -36,18 +68,21 @@ abstract class Cipher {
     const words = preprocessedInput.split(inputWordSeparator);
 
     const encodedWords = words.map((word) => {
-      const letters = inputLetterSeparator
-        ? word.split(inputLetterSeparator)
-        : word.split('');
+      const normalizedWord = caseSensitive ? word : word.toUpperCase();
 
-      return letters
-        .map((symbol) => {
-          if (/\s/.test(symbol)) {
-            return symbol;
+      const tokens = inputLetterSeparator
+        ? normalizedWord.split(inputLetterSeparator)
+        : this.tokenize(normalizedWord, this.getEncodeTokens());
+
+      console.log('Tokenized letters:', tokens);
+
+      return tokens
+        .map((token) => {
+          if (/\s/.test(token)) {
+            return token;
           }
 
-          const c = caseSensitive ? symbol : symbol.toUpperCase();
-          let encoded = this.encodeToken(c, configuration);
+          let encoded = this.encodeToken(token, configuration);
           if (casing === 'upper') encoded = encoded.toUpperCase();
           if (casing === 'lower') encoded = encoded.toLowerCase();
           return encoded;

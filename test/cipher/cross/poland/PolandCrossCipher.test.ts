@@ -22,8 +22,9 @@ describe('PolandCrossCipher', () => {
   });
 
   it('should encode multi-character letter CH correctly', () => {
-    const input = 'CH';
-    const expected = KidscipherGlyphs.POLAND_CROSS_CH;
+    const input = 'ACH';
+    const expected =
+      KidscipherGlyphs.POLAND_CROSS_A + KidscipherGlyphs.POLAND_CROSS_CH;
 
     const encoded = cipher.encode(input);
     expect(encoded).toBe(expected);
