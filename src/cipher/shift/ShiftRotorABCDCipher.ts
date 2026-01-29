@@ -1,45 +1,10 @@
-import ShiftCipher from './ShiftCipher';
+import { ALPHABET_EN_ARRAY } from '../../core/alphabet/MapEn';
+import { ALPHABET_NUMBERS_ARRAY } from '../../core/alphabet/MapNumbers';
 import ShiftRotorCipher from './ShiftRotorCipher';
 
 class ShiftRotorABCDCipher extends ShiftRotorCipher {
-  static BASE_ALPHABET = [
-    'A',
-    'B',
-    'C',
-    'D',
-    'E',
-    'F',
-    'G',
-    'H',
-    'I',
-    'J',
-    'K',
-    'L',
-    'M',
-    'N',
-    'O',
-    'P',
-    'Q',
-    'R',
-    'S',
-    'T',
-    'U',
-    'V',
-    'W',
-    'X',
-    'Y',
-    'Z',
-    '0',
-    '1',
-    '2',
-    '3',
-    '4',
-    '5',
-    '6',
-    '7',
-    '8',
-    '9',
-  ];
+  // base alphabet: A-Z + 0-9
+  static BASE_ALPHABET = [...ALPHABET_EN_ARRAY, ...ALPHABET_NUMBERS_ARRAY];
 
   static REPEAT_ALPHABET = ['A', 'B', 'C', 'D'];
 
