@@ -2,19 +2,17 @@ import { beforeEach, describe, expect, test } from 'vitest';
 import { MorseCodeCipher } from '../../../src';
 
 describe('MorseCodeCipher', () => {
-  let morse: MorseCodeCipher;
-
-  beforeEach(() => {
-    morse = new MorseCodeCipher();
-  });
-
   test('encodes HELLO WORLD with default options', () => {
-    const result = morse.encode('HELLO WORLD');
+    const cipher = new MorseCodeCipher();
+
+    const result = cipher.encode('HELLO WORLD');
     expect(result).toBe('...././.-../.-../---///.--/---/.-./.-../-..');
   });
 
   test('decodes Morse back to text with default options', () => {
-    const result = morse.decode(
+    const cipher = new MorseCodeCipher();
+
+    const result = cipher.decode(
       '...././.-../.-../---///.--/---/.-./.-../-..',
       {},
     );
@@ -22,15 +20,20 @@ describe('MorseCodeCipher', () => {
   });
 
   test('roundtrip encode → decode restores text', () => {
+    const cipher = new MorseCodeCipher();
+
     const text = 'SOS HELP';
-    const encoded = morse.encode(text);
-    const decoded = morse.decode(encoded);
+    const encoded = cipher.encode(text);
+    const decoded = cipher.decode(encoded);
     expect(decoded).toBe('sos help');
   });
 
   test('encodes HELLO WORLD with custom dot dash symbol', () => {
-    const result = morse.encode('HELLO WORLD', {
+    const cipher = new MorseCodeCipher({
       dotDashMapping: { dot: '*', dash: '_' },
+    });
+
+    const result = cipher.encode('HELLO WORLD', {
       input: { caseSensitive: false, letterSeparator: '', wordSeparator: ' ' },
       output: {
         casing: 'original',
@@ -42,15 +45,21 @@ describe('MorseCodeCipher', () => {
   });
 
   test('decodes Morse back to text with default options', () => {
-    const result = morse.decode('****/*/*_**/*_**/___///*__/___/*_*/*_**/_**', {
+    const cipher = new MorseCodeCipher({
       dotDashMapping: { dot: '*', dash: '_' },
-      input: {
-        caseSensitive: false,
-        letterSeparator: '/',
-        wordSeparator: '///',
-      },
-      output: { casing: 'lower', letterSeparator: '', wordSeparator: ' ' },
     });
+
+    const result = cipher.decode(
+      '****/*/*_**/*_**/___///*__/___/*_*/*_**/_**',
+      {
+        input: {
+          caseSensitive: false,
+          letterSeparator: '/',
+          wordSeparator: '///',
+        },
+        output: { casing: 'lower', letterSeparator: '', wordSeparator: ' ' },
+      },
+    );
     expect(result).toBe('hello world');
   });
 });

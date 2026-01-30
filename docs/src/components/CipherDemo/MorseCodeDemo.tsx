@@ -4,9 +4,14 @@ import { withDefaultEncodeDecode } from '../DynamicForm/DefaultFormOptions';
 import GenericCipherDemo from './base/GenericCipherDemo';
 
 const schema: Schema = {
-  cipher: {
+  constructorOptions: {
     type: 'object',
     fields: {
+      alphabetVariant: {
+        type: 'enum',
+        options: ['intl', 'cs', 'de', 'es'],
+        default: 'intl',
+      },
       dotDashMapping: {
         type: 'object',
         fields: {
@@ -40,7 +45,12 @@ export default function MorseCodeDemo() {
   return (
     <GenericCipherDemo
       schema={schema}
-      createCipherInstance={() => new MorseCodeCipher()}
+      createCipherInstance={(options) =>
+        new MorseCodeCipher({
+          alphabetVariant: options.alphabetVariant,
+          dotDashMapping: options.dotDashMapping,
+        })
+      }
     />
   );
 }

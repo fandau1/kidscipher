@@ -2,60 +2,41 @@ import SubstitutionCipher from '../substitution/SubstitutionCipher';
 import { CipherOptions } from '../../core/cipher-options/CipherOptions';
 import { withDefaultCipherOptions } from '../../core/cipher-options/CipherOptionsDefault';
 import { CipherConfigurationsRecord } from '../Cipher';
+import {
+  MORSE_CODE_ALPHABETS,
+  MorseCodeAlphabetKey,
+} from './MorseCodeAlphabet';
 
-export type MorseCodeCipherOptions =
-  | CipherConfigurationsRecord
-  | {
-      dotDashMapping?: { dot?: string; dash?: string };
-    };
+type DotDashMapping = {
+  dot: string;
+  dash: string;
+};
+
+type MorseCodeCipherProps = {
+  alphabetVariant?: MorseCodeAlphabetKey;
+  dotDashMapping?: Partial<DotDashMapping>;
+};
 
 class MorseCodeCipher extends SubstitutionCipher {
-  static MORSE_CODE_MAP: Record<string, string> = {
-    A: '.-',
-    B: '-...',
-    C: '-.-.',
-    D: '-..',
-    E: '.',
-    F: '..-.',
-    G: '--.',
-    H: '....',
-    I: '..',
-    J: '.---',
-    K: '-.-',
-    L: '.-..',
-    M: '--',
-    N: '-.',
-    O: '---',
-    P: '.--.',
-    Q: '--.-',
-    R: '.-.',
-    S: '...',
-    T: '-',
-    U: '..-',
-    V: '...-',
-    W: '.--',
-    X: '-..-',
-    Y: '-.--',
-    Z: '--..',
-    '0': '-----',
-    '1': '.----',
-    '2': '..---',
-    '3': '...--',
-    '4': '....-',
-    '5': '.....',
-    '6': '-....',
-    '7': '--...',
-    '8': '---..',
-    '9': '----.',
-  };
+  private readonly dotDashMapping: DotDashMapping;
 
-  constructor() {
-    super(MorseCodeCipher.MORSE_CODE_MAP);
+  public static readonly ALPHABETS = MORSE_CODE_ALPHABETS;
+
+  constructor({
+    alphabetVariant = 'intl',
+    dotDashMapping = { dot: '.', dash: '-' },
+  }: MorseCodeCipherProps = {}) {
+    super(MorseCodeCipher.ALPHABETS[alphabetVariant ?? 'intl']);
+
+    this.dotDashMapping = {
+      dot: dotDashMapping.dot ?? '.',
+      dash: dotDashMapping.dash ?? '-',
+    };
   }
 
   encode(
     input: string,
-    configuration?: MorseCodeCipherOptions,
+    configuration?: CipherConfigurationsRecord,
     opts?: CipherOptions,
   ): string {
     const { dotDashMapping = { dot: '.', dash: '-' } } = configuration || {};
@@ -79,8 +60,8 @@ class MorseCodeCipher extends SubstitutionCipher {
       return encoded
         .split('')
         .map((char) => {
-          if (char === '.') return dotDashMapping.dot;
-          if (char === '-') return dotDashMapping.dash;
+          if (char === '.') return this.dotDashMapping.dot;
+          if (char === '-') return this.dotDashMapping.dash;
           return char;
         })
         .join('');
@@ -91,7 +72,7 @@ class MorseCodeCipher extends SubstitutionCipher {
 
   decode(
     input: string,
-    configuration?: MorseCodeCipherOptions,
+    configuration?: CipherConfigurationsRecord,
     opts?: CipherOptions,
   ): string {
     const { dotDashMapping = { dot: '.', dash: '-' } } = configuration || {};
@@ -112,8 +93,8 @@ class MorseCodeCipher extends SubstitutionCipher {
       normalized = input
         .split('')
         .map((char) => {
-          if (char === dotDashMapping.dot) return '.';
-          if (char === dotDashMapping.dash) return '-';
+          if (char === this.dotDashMapping.dot) return '.';
+          if (char === this.dotDashMapping.dash) return '-';
           return char;
         })
         .join('');

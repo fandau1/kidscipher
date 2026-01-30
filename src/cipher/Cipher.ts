@@ -70,11 +70,13 @@ abstract class Cipher {
     const encodedWords = words.map((word) => {
       const normalizedWord = caseSensitive ? word : word.toUpperCase();
 
+      // tokenize the word
+      // eg. [".-", "-...", ...] or ["A", "B", "CH", ...]
       const tokens = inputLetterSeparator
         ? normalizedWord.split(inputLetterSeparator)
         : this.tokenize(normalizedWord, this.getEncodeTokens());
 
-      console.log('Tokenized letters:', tokens);
+      // console.log('Tokenized letters:', tokens);
 
       return tokens
         .map((token) => {

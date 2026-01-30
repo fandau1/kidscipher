@@ -6,6 +6,7 @@ hide_table_of_contents: true
 
 import { MorseCodeCipher } from 'kidscipher';
 import MorseCodeDemo from '@site/src/components/CipherDemo/MorseCodeDemo';
+import MorseAlphabetGallery from '@site/src/components/CipherTool/MorseAlphabetGallery';
 
 export const cipher = new MorseCodeCipher();
 export const exampleInput = 'HELLO WORLD';
@@ -26,6 +27,12 @@ export const exampleDecoded = cipher.decode(exampleEncoded);
     Morse Code table showing dots and dashes for each letter
   </p>
 </div>
+
+## Available Alphabets
+
+Possible variations of Morse Code exist, depending on the region and usage. Some common variants include:
+
+<MorseAlphabetGallery />
 
 ## History
 
