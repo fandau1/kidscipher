@@ -37,6 +37,7 @@ The font allows you to render encoded text as graphical symbols (necesary only f
 ### Supported Ciphers
 
 - Substitution Cipher
+  - ✅ Letter Number Cipher (A1Z26)
   - ✅ Shift Cipher
     - ✅ Shift Alphabet
     - ✅ ABCD Shift 3-rotor

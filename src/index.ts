@@ -21,3 +21,4 @@ export { default as ShiftRotorABCDCipher } from './cipher/shift/ShiftRotorABCDCi
 export { default as Substitution2DCipher } from './cipher/substitution/Substitution2DCipher';
 export { default as TableKeyFiveToFiveCipher } from './cipher/table/TableKeyFiveToFiveCipher';
 export { default as ChessCipher } from './cipher/table/ChessCipher';
+export { default as LetterNumberCipher } from './cipher/number/LetterNumberCipher';

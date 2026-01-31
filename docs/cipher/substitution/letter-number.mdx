@@ -1,0 +1,62 @@
+---
+title: Letter Number Cipher (A1Z26)
+sidebar_position: 9
+hide_table_of_contents: true
+---
+
+import { LetterNumberCipher } from 'kidscipher';
+import LetterNumberCipherDemo from '@site/src/components/CipherDemo/LetterNumberDemo';
+import GlyphAlphabetRender from '@site/src/components/GlyphRender/GlyphAlphabetRender';
+
+export const cipher = new LetterNumberCipher();
+export const exampleInput = 'HELLO WORLD';
+export const exampleEncoded = cipher.encode(exampleInput);
+export const exampleDecoded = cipher.decode(exampleEncoded);
+
+# Letter Number Cipher (A1Z26)
+
+The Letter _Number Cipher_ (also known as _A1Z26 Cipher_) is one of the simplest substitution ciphers. The idea is straightforward — every letter in the alphabet is replaced by its position number. **A** becomes **1**, **B** becomes **2**, and so on, all the way to **Z**, which becomes **26**.
+
+<GlyphAlphabetRender map={LetterNumberCipher.ALPHABET} />
+
+---
+
+## Encoding
+
+To encode a message, simply replace each letter with its alphabetical position number. A separator (like a dash `-`) is used between numbers so they can be unambiguously read back.
+
+- **H** → position **8** → `8`
+- **E** → position **5** → `5`
+- **L** → position **12** → `12`
+- **O** → position **15** → `15`
+- **W** → position **23** → `23`
+
+So "HELLO WORLD" turns into a sequence of numbers separated by dashes — easy to write down, but not immediately obvious to someone who doesn't know the trick!
+
+## Decoding
+
+To decode, just do the reverse — take each number and find the letter at that position in the alphabet:
+
+1. Split the encoded message by the separator (`-`)
+2. Convert each number back to its corresponding letter (1 = A, 2 = B, …, 26 = Z)
+3. Concatenate the letters to get the original message
+
+Spaces in the original message are typically encoded as `0` or preserved as a space between groups of numbers.
+
+## Example
+
+**Input:** <code>{exampleInput}</code>
+
+**Encoded:** <code>{exampleEncoded}</code>
+
+**Decoded:** <code>{exampleDecoded}</code>
+
+The decoder reads `8` as the 8th letter of the alphabet (H), `5` as the 5th letter (E), `12` as the 12th letter (L), and so on — reconstructing the original message step by step!
+
+#### Learn More
+
+- [A1Z26 cipher on dcode](https://www.dcode.fr/letter-number-cipher)
+
+## Demo
+
+<LetterNumberCipherDemo />
