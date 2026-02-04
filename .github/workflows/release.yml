@@ -58,7 +58,7 @@ jobs:
 
       # 7. Publish package
       - name: Publish package
-        run: NODE_AUTH_TOKEN="" npm publish
+        run: npm publish
 
       # 8. Create GitHub Release and attach .tgz
       - name: Create GitHub Release

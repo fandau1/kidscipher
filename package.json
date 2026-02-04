@@ -3,6 +3,10 @@
   "version": "0.7.0",
   "license": "MIT",
   "homepage": "https://github.com/fandau1/kidscipher",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fandau1/kidscipher.git"
+  },
   "type": "module",
   "types": "dist/types/index.d.ts",
   "exports": {
