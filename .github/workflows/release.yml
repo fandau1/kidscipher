@@ -8,8 +8,10 @@ on:
 jobs:
   release:
     runs-on: ubuntu-latest
+
     permissions:
       contents: write
+      id-token: write
 
     steps:
       # 1. Checkout code
@@ -57,8 +59,6 @@ jobs:
       # 7. Publish package
       - name: Publish package
         run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       # 8. Create GitHub Release and attach .tgz
       - name: Create GitHub Release
